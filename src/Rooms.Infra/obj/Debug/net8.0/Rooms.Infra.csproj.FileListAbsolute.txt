@@ -1,0 +1,15 @@
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\bin\Debug\net8.0\Rooms.Infra.deps.json
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\bin\Debug\net8.0\Rooms.Infra.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\bin\Debug\net8.0\Rooms.Infra.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\bin\Debug\net8.0\Rooms.Domain.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\bin\Debug\net8.0\Rooms.Domain.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.csproj.AssemblyReference.cache
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.AssemblyInfoInputs.cache
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.AssemblyInfo.cs
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.csproj.CoreCompileInputs.cache
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.In.4BA8C622.Up2Date
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\refint\Rooms.Infra.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\ref\Rooms.Infra.dll

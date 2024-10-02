@@ -1,0 +1,17 @@
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.App.deps.json
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.App.dll
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.App.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.Domain.dll
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.Infra.dll
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.Infra.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.App\bin\Debug\net8.0\Rooms.Domain.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.csproj.AssemblyReference.cache
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.AssemblyInfoInputs.cache
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.AssemblyInfo.cs
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.csproj.CoreCompileInputs.cache
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.csproj.Up2Date
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.dll
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\refint\Rooms.App.dll
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\Rooms.App.pdb
+C:\Projects\dotnet\Rooms\src\Rooms.App\obj\Debug\net8.0\ref\Rooms.App.dll

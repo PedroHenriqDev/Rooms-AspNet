@@ -1,0 +1,62 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Rooms.Shared/1.0.0": {
+        "dependencies": {
+          "Rooms.App": "1.0.0"
+        },
+        "runtime": {
+          "Rooms.Shared.dll": {}
+        }
+      },
+      "Rooms.App/1.0.0": {
+        "dependencies": {
+          "Rooms.Infra": "1.0.0"
+        },
+        "runtime": {
+          "Rooms.App.dll": {}
+        }
+      },
+      "Rooms.Domain/1.0.0": {
+        "runtime": {
+          "Rooms.Domain.dll": {}
+        }
+      },
+      "Rooms.Infra/1.0.0": {
+        "dependencies": {
+          "Rooms.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Rooms.Infra.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Rooms.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Rooms.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Rooms.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Rooms.Infra/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
