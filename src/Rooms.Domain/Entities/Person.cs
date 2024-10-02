@@ -6,19 +6,21 @@ namespace Rooms.Domain.Entities;
 
 public class Person : Entity
 {
-    public Person(Age age, Name name, Guid seatId)
+    public Person(Name name, Age age,  Guid seatId)
     {
-        Age = age;
+        Id = Guid.NewGuid();
         Name = name;
+        Age = age;
         SeatId = seatId;
 
         Validate();
     }
 
-    public Person(Age age, Name name, Seat seat)
+    public Person(Name name, Age age, Seat seat)
     {
-        Age = age;
+        Id = Guid.NewGuid();
         Name = name;
+        Age = age;
         SeatId = seat.Id;
         Seat = seat;
 
@@ -32,9 +34,11 @@ public class Person : Entity
 
     public override void Validate()
     {
+        if(Seat != null)
+            AddNotifications(Seat?.Notifications);
+
         AddNotifications(Name.Notifications);
         AddNotifications(Age.Notifications);
-        AddNotifications(Seat?.Notifications);
 
         AddNotifications
         (

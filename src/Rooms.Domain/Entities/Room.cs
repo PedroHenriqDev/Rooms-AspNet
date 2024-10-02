@@ -13,6 +13,7 @@ public class Room : Entity
 
     public Room(string name, int capacity, IList<Seat> seats, ERoomType type = ERoomType.Multipurpose)
     {
+        Id = Guid.NewGuid();
         Name = name;
         Capacity = capacity;
         Type = type;
@@ -23,6 +24,7 @@ public class Room : Entity
 
     public Room(string name, int capacity, ERoomType type = ERoomType.Multipurpose)
     {
+        Id = Guid.NewGuid();
         Name = name;
         Capacity = capacity;
         Type = type;

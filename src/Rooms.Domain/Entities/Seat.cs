@@ -7,6 +7,7 @@ public class Seat : Entity
 {
     public Seat(string name, Guid personId)
     {
+        Id = Guid.NewGuid();
         Name = name;
         PersonId = personId;
 
@@ -15,6 +16,7 @@ public class Seat : Entity
 
     public Seat(string name, Person person)
     {
+        Id = Guid.NewGuid();
         Name = name;
         PersonId = person.Id;
         Person = person;
@@ -28,7 +30,9 @@ public class Seat : Entity
 
     public override void Validate()
     {
-        AddNotifications(Person?.Notifications);
+        if(Person != null)
+          AddNotifications(Person?.Notifications);
+
         AddNotifications
         (
             new Contract<Seat>()
@@ -42,7 +46,7 @@ public class Seat : Entity
             .AreNotEquals
             (
                 PersonId,
-                 Guid.Empty,
+                Guid.Empty,
                 $"{Id}.{nameof(PersonId)}",
                 $"The {nameof(PersonId)} cannot be empty"
             )

@@ -38,7 +38,7 @@ public class Name : Notifiable<Notification>
             .IsLowerThan
             (
                 FirstName.Length,
-                MIN_NAME_LENGTH,
+                MAX_NAME_LENGTH,
                 nameof(FirstName),
                 $"The {nameof(FirstName)} length must be smaller than {MAX_NAME_LENGTH}"
             )
@@ -52,7 +52,7 @@ public class Name : Notifiable<Notification>
             .IsLowerThan
             (
                 LastName.Length,
-                MIN_NAME_LENGTH,
+                MAX_NAME_LENGTH,
                 nameof(LastName),
                 $"The {nameof(LastName)} length must be smaller than {MAX_NAME_LENGTH}"
             )

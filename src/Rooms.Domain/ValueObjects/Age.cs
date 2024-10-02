@@ -51,7 +51,7 @@ public class Age : Notifiable<Notification>
     public void DefineYearsOld()
     {
         DateTime today = DateTime.Now;
-        long yearsOld = BirthDate.Year - today.Year;
+        long yearsOld = today.Year - BirthDate.Year;
 
         if(BirthDate.Date > today.Date)
             yearsOld--;
