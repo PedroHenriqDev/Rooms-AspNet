@@ -39,3 +39,5 @@ C:\Projects\dotnet\Rooms\src\Rooms.Api\obj\Debug\net8.0\refint\Rooms.Api.dll
 C:\Projects\dotnet\Rooms\src\Rooms.Api\obj\Debug\net8.0\Rooms.Api.pdb
 C:\Projects\dotnet\Rooms\src\Rooms.Api\obj\Debug\net8.0\Rooms.Api.genruntimeconfig.cache
 C:\Projects\dotnet\Rooms\src\Rooms.Api\obj\Debug\net8.0\ref\Rooms.Api.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Api\obj\Debug\net8.0\Rooms.Api.sourcelink.json
+C:\Projects\dotnet\Rooms\src\Rooms.Api\bin\Debug\net8.0\Flunt.dll

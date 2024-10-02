@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mthRsDsjxCOSiPQWc+AAMW8vTIf/xMOPwUz0CmHlIGK9H+nAjqfnK7xu1qoJCTK4/nWXbXMdqqEcIkfAenMKEQ==",
+  "dgSpecHash": "vZkaQRpHApIRn5hAqG5yz/QnOtXdc647rUXO7sLQH3MqxWUQVHd8xR5lPevse3aoTg5K65KzWHS+IgG968q8lQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\dotnet\\Rooms\\src\\Rooms.App\\Rooms.App.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512"
+  ],
   "logs": []
 }

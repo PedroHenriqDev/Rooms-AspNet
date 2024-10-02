@@ -13,3 +13,4 @@ C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.dll
 C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\refint\Rooms.Infra.dll
 C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.pdb
 C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\ref\Rooms.Infra.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Infra\obj\Debug\net8.0\Rooms.Infra.sourcelink.json

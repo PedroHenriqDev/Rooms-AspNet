@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tSNv8RxTUUy4s5vL5QqYOva2iMNYL+HJizN9Pyj5zskhzdGsY0o35cs3fBTc86O/7iNJRBqZ/ezj8a0O6U4NZQ==",
+  "dgSpecHash": "Jifoj8doLYO6aiUf4GHt6wHxvJDSlkwAlFwgJqMVU8qDgvpNkWMOGxySUkjNvpaNX8Ia03s87JTohWSpSU04RA==",
   "success": true,
   "projectFilePath": "C:\\Projects\\dotnet\\Rooms\\src\\Rooms.Api\\Rooms.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",

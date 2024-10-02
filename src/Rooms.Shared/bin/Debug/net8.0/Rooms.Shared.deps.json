@@ -14,6 +14,14 @@
           "Rooms.Shared.dll": {}
         }
       },
+      "Flunt/2.0.5": {
+        "runtime": {
+          "lib/netstandard2.0/Flunt.dll": {
+            "assemblyVersion": "2.0.5.0",
+            "fileVersion": "2.0.5.0"
+          }
+        }
+      },
       "Rooms.App/1.0.0": {
         "dependencies": {
           "Rooms.Infra": "1.0.0"
@@ -23,6 +31,9 @@
         }
       },
       "Rooms.Domain/1.0.0": {
+        "dependencies": {
+          "Flunt": "2.0.5"
+        },
         "runtime": {
           "Rooms.Domain.dll": {}
         }
@@ -42,6 +53,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Flunt/2.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CMgq8FUYjkHzyZT3PhkUwZyy79mudON+EL4b0SAT7BfIOJ2CNypwnbdA0cPHAM2CYQfO2L8ubNJCiBHQOIv2pA==",
+      "path": "flunt/2.0.5",
+      "hashPath": "flunt.2.0.5.nupkg.sha512"
     },
     "Rooms.App/1.0.0": {
       "type": "project",

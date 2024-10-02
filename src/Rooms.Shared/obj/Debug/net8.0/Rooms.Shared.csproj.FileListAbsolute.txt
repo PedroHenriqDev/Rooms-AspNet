@@ -17,3 +17,4 @@ C:\Projects\dotnet\Rooms\src\Rooms.Shared\obj\Debug\net8.0\Rooms.Shared.dll
 C:\Projects\dotnet\Rooms\src\Rooms.Shared\obj\Debug\net8.0\refint\Rooms.Shared.dll
 C:\Projects\dotnet\Rooms\src\Rooms.Shared\obj\Debug\net8.0\Rooms.Shared.pdb
 C:\Projects\dotnet\Rooms\src\Rooms.Shared\obj\Debug\net8.0\ref\Rooms.Shared.dll
+C:\Projects\dotnet\Rooms\src\Rooms.Shared\obj\Debug\net8.0\Rooms.Shared.sourcelink.json

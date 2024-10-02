@@ -97,3 +97,4 @@ C:\Projects\dotnet\Rooms\tests\Rooms.UnitTests\obj\Debug\net8.0\refint\Rooms.Uni
 C:\Projects\dotnet\Rooms\tests\Rooms.UnitTests\obj\Debug\net8.0\Rooms.UnitTests.pdb
 C:\Projects\dotnet\Rooms\tests\Rooms.UnitTests\obj\Debug\net8.0\Rooms.UnitTests.genruntimeconfig.cache
 C:\Projects\dotnet\Rooms\tests\Rooms.UnitTests\obj\Debug\net8.0\ref\Rooms.UnitTests.dll
+C:\Projects\dotnet\Rooms\tests\Rooms.UnitTests\obj\Debug\net8.0\Rooms.UnitTests.sourcelink.json
