@@ -7,7 +7,7 @@ namespace Rooms.Domain.Entities;
 
 public class Room : Entity
 {
-    private const long MIN_CAPACITY = 0;
+    private const short MIN_CAPACITY = 0;
     private const int MAX_CAPACITY = int.MaxValue;
 
     private readonly IList<Seat> _seats;
@@ -72,7 +72,7 @@ public class Room : Entity
         (
             new Contract<Room>()
             .Requires()
-            .IsNullOrEmpty
+            .IsNotNullOrEmpty
             (
                 Name,
                 $"{Id}.{nameof(Name)}",

@@ -5,8 +5,8 @@ using Rooms.Domain.Resources;
 namespace Rooms.Domain.ValueObjects;
 public class Name : Notifiable<Notification>
 {
-    public const long MAX_NAME_LENGTH = 50;
-    public const long MIN_NAME_LENGTH = 2;
+    public const short MAX_NAME_LENGTH = 50;
+    public const short MIN_NAME_LENGTH = 2;
 
     public Name(string firstName, string lastName)
     {
