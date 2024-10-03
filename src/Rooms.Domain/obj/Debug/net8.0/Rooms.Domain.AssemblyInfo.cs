@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rooms.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+583d81444c1be1a81e1bacc53f332dfc9340a4c5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf2fa5a550e2fa0fbeee71370138004f67befeb5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rooms.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rooms.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
