@@ -13,4 +13,3 @@ C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.sourceli
 C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.csproj.AssemblyReference.cache
 C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.csproj.GenerateResource.cache
 C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.Resources.ValidationResource.resources
-C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.Resources.DomainResource.resources

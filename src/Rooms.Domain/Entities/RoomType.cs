@@ -6,9 +6,10 @@ namespace Rooms.Domain.Entities;
 
 public class RoomType : Entity
 {
-    public RoomType(string name)
+    private const short MAX_NAME_LENGTH = 50;
+
+    public RoomType(string name) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
 
         Validate();
@@ -18,7 +19,7 @@ public class RoomType : Entity
 
     public override void Validate()
     {
-        ValidateId();
+        ValidateBase();
         AddNotifications
         (
             new Contract<RoomType>()
@@ -28,6 +29,15 @@ public class RoomType : Entity
                 Name,
                 $"{Id}{nameof(Name)}",
                 string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
+            )
+            .IsLowerOrEqualsThan
+            (
+                Name.Length,
+                MAX_NAME_LENGTH,
+                $"{Id}.{nameof(Name)}",
+                string.Format(ValidationResource.SMALLER_MESSAGE,
+                nameof(Name), MAX_NAME_LENGTH
+                )
             )
         );
     }

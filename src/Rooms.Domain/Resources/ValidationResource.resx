@@ -147,4 +147,10 @@
   <data name="START_DATE_EARLIER_MESSAGE" xml:space="preserve">
     <value>The start date must be earlier than the end date.</value>
   </data>
+  <data name="CANNOT_BE_FUTURE_MESSAGE" xml:space="preserve">
+    <value> The {0} cannot be in the future</value>
+  </data>
+  <data name="EQUAL_LENGTH_MESSAGE" xml:space="preserve">
+    <value>The {0} must be have length equal to {1}.</value>
+  </data>
 </root>

@@ -88,11 +88,29 @@ namespace Rooms.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  The {0} cannot be in the future.
+        /// </summary>
+        public static string CANNOT_BE_FUTURE_MESSAGE {
+            get {
+                return ResourceManager.GetString("CANNOT_BE_FUTURE_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} cannot be empty..
         /// </summary>
         public static string EMPTY_MESSAGE {
             get {
                 return ResourceManager.GetString("EMPTY_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} must be have length equal to {1}..
+        /// </summary>
+        public static string EQUAL_LENGTH_MESSAGE {
+            get {
+                return ResourceManager.GetString("EQUAL_LENGTH_MESSAGE", resourceCulture);
             }
         }
         

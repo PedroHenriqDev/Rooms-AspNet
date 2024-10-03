@@ -9,6 +9,7 @@ public class Room : Entity
     private DateTime MIN_START_DATE = DateTime.Now;
     private const short MIN_CAPACITY = 0;
     private const int MAX_CAPACITY = int.MaxValue;
+    private const int MAX_NAME_LENGTH = 100;
 
     private readonly IList<Seat> _seats;
 
@@ -20,9 +21,9 @@ public class Room : Entity
         DateTime startDate,
         DateTime endDate,
         IList<Seat> seats
-    )
+    ) 
+    : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Capacity = capacity;
         TypeId = typeId;
@@ -33,9 +34,17 @@ public class Room : Entity
         Validate();
     }
 
-    public Room(string name, int capacity, Guid typeId, DateTime startDate, DateTime endDate)
+    
+    public Room
+    (
+        string name,
+        int capacity,
+        Guid typeId,
+        DateTime startDate,
+        DateTime endDate
+    )
+    : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Capacity = capacity;
         TypeId = typeId;
@@ -55,8 +64,8 @@ public class Room : Entity
         DateTime endDate,
         IList<Seat> seats
     )
+    : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Capacity = capacity;
         TypeId = type.Id;
@@ -68,9 +77,16 @@ public class Room : Entity
         Validate();
     }
 
-    public Room(string name, int capacity, RoomType type, DateTime startDate, DateTime endDate)
+    public Room
+    (
+        string name,
+        int capacity,
+        RoomType type,
+        DateTime startDate,
+        DateTime endDate
+    )
+    : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Capacity = capacity;
         TypeId = type.Id;
@@ -112,7 +128,7 @@ public class Room : Entity
            
            if(!success)
            {
-              seatsOriginal = seats;
+              seats = seatsOriginal;
               return false;
            }
         }
@@ -128,7 +144,7 @@ public class Room : Entity
 
     public override void Validate()
     {
-        ValidateId();
+        ValidateBase();
 
         foreach(Seat seat in Seats)
         {
@@ -147,6 +163,15 @@ public class Room : Entity
                 Name,
                 $"{Id}.{nameof(Name)}",
                 string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
+            )
+            .IsLowerOrEqualsThan
+            (
+                Name.Length,
+                MAX_NAME_LENGTH,
+                $"{Id}.{nameof(Name)}",
+                string.Format(ValidationResource.SMALLER_MESSAGE,
+                nameof(Name), MAX_NAME_LENGTH
+                )
             )
             .AreNotEquals
             (

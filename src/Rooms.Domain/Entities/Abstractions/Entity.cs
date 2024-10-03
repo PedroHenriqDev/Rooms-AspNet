@@ -6,11 +6,18 @@ namespace Rooms.Domain.Entities.Abstractions;
 
 public abstract class Entity : Notifiable<Notification>
 {
-    public Guid Id { get; set; }
+    public Entity(Guid id, DateTime createdAt)
+    {
+        Id = id;
+        CreatedAt = createdAt;
+    }
+
+    public Guid Id { get; private set; }
+    public DateTime CreatedAt {get; private set;}
 
     public abstract void Validate();
 
-    public void ValidateId()
+    public virtual void ValidateBase()
     {
         AddNotifications
         (
@@ -22,6 +29,13 @@ public abstract class Entity : Notifiable<Notification>
                 Guid.Empty,
                 nameof(Id),
                 string.Format(ValidationResource.EMPTY_MESSAGE, nameof(Id))
+            )
+            .IsLowerOrEqualsThan
+            (
+                CreatedAt,
+                DateTime.Now, 
+                $"{Id}.{nameof(CreatedAt)}",
+                string.Format(ValidationResource.CANNOT_BE_FUTURE_MESSAGE, nameof(CreatedAt))
             )
         );
     }

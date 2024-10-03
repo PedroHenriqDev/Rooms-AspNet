@@ -7,9 +7,8 @@ namespace Rooms.Domain.Entities;
 
 public class Person : Entity
 {
-    public Person(Name name, Age age,  Guid seatId)
+    public Person(Name name, Age age,  Guid seatId) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Age = age;
         SeatId = seatId;
@@ -17,9 +16,8 @@ public class Person : Entity
         Validate();
     }
 
-    public Person(Name name, Age age, Seat seat)
+    public Person(Name name, Age age, Seat seat) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Age = age;
         SeatId = seat.Id;
@@ -35,7 +33,7 @@ public class Person : Entity
 
     public override void Validate()
     {
-        ValidateId();
+        ValidateBase();
         
         if(Seat != null)
             AddNotifications(Seat?.Notifications);
@@ -45,7 +43,7 @@ public class Person : Entity
 
         AddNotifications
         (
-            new Contract<Person>()
+            new Contract<Room>()
             .Requires()
             .IsNotNull
             (

@@ -1,0 +1,12 @@
+CREATE TABLE [Rooms]
+(
+    [Id] UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
+    [CreatedAt] DATETIME2 NOT NULL,
+    [Name] NVARCHAR(100) NOT NULL,
+    [Capacity] INT NOT NULL,
+    [RoomTypeId] UNIQUEIDENTIFIER NOT NULL,
+    [StartDate] DATETIME2 NOT NULL,
+    [EndDate] DATETIME2 NOT NULL,
+    [SoldOut] BIT NOT NULL,
+    FOREIGN KEY([RoomTypeId]) REFERENCES [RoomTypes]([Id])
+);

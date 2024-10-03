@@ -1,3 +1,4 @@
+using System.Data;
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
 using Rooms.Domain.Resources;
@@ -6,35 +7,35 @@ namespace Rooms.Domain.Entities;
 
 public class Seat : Entity
 {
-    public Seat(string name, Guid personId)
+    private const short EQUAL_NAME_LENGTH = 3;
+
+    public Seat(string name, Guid roomId) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
-        PersonId = personId;
+        RoomId = roomId;
 
         Validate();
     }
 
-    public Seat(string name, Person person)
+    public Seat(string name, Room room) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
-        Id = Guid.NewGuid();
         Name = name;
-        PersonId = person.Id;
-        Person = person;
+        RoomId = room.Id;
+        Room = room;
 
         Validate();
     }
 
     public string Name { get; private set; }
-    public Guid PersonId {get; private set;}
-    public Person? Person {get; private set;}
+    public Guid RoomId {get; private set;}
+    public Room? Room {get; private set;}
 
     public override void Validate()
     {
-        ValidateId();
+        ValidateBase();
 
-        if(Person != null)
-          AddNotifications(Person?.Notifications);
+        if(Room != null)
+          AddNotifications(Room?.Notifications);
 
         AddNotifications    
         (
@@ -44,14 +45,21 @@ public class Seat : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE,nameof(Name))
+                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
+            )
+            .AreEquals 
+            (
+                Name.Length,
+                EQUAL_NAME_LENGTH,
+                $"{Id}.{nameof(Name)}",
+                string.Format(ValidationResource.EQUAL_LENGTH_MESSAGE, nameof(Name), EQUAL_NAME_LENGTH)
             )
             .AreNotEquals
             (
-                PersonId,
+                RoomId,
                 Guid.Empty,
-                $"{Id}.{nameof(PersonId)}",
-                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(PersonId))
+                $"{Id}.{nameof(RoomId)}",
+                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(RoomId))
             )
         );
     }
