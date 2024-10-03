@@ -22,14 +22,14 @@ namespace Rooms.Domain.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class DomainResource {
+    public class ValidationResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DomainResource() {
+        internal ValidationResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Rooms.Domain.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rooms.Domain.Resources.DomainResource", typeof(DomainResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rooms.Domain.Resources.ValidationResource", typeof(ValidationResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -138,6 +138,15 @@ namespace Rooms.Domain.Resources {
         public static string SMALLER_MESSAGE {
             get {
                 return ResourceManager.GetString("SMALLER_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The start date must be earlier than the end date..
+        /// </summary>
+        public static string START_DATE_EARLIER_MESSAGE {
+            get {
+                return ResourceManager.GetString("START_DATE_EARLIER_MESSAGE", resourceCulture);
             }
         }
     }

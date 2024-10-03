@@ -36,7 +36,7 @@ public class Seat : Entity
         if(Person != null)
           AddNotifications(Person?.Notifications);
 
-        AddNotifications
+        AddNotifications    
         (
             new Contract<Seat>()
             .Requires()
@@ -44,14 +44,14 @@ public class Seat : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, Name)
+                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE,nameof(Name))
             )
             .AreNotEquals
             (
                 PersonId,
                 Guid.Empty,
                 $"{Id}.{nameof(PersonId)}",
-                string.Format(DomainResource.EMPTY_MESSAGE, nameof(PersonId))
+                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(PersonId))
             )
         );
     }

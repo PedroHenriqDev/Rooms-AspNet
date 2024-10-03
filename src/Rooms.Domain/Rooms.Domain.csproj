@@ -16,10 +16,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\DomainResource.Designer.cs">
+    <Compile Update="Resources\ValidationResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DomainResource.resx</DependentUpon>
+      <DependentUpon>ValidationResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -28,9 +28,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\DomainResource.resx">
+    <EmbeddedResource Update="Resources\ValidationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DomainResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>ValidationResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

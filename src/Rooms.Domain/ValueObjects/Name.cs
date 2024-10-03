@@ -21,41 +21,41 @@ public class Name : Notifiable<Notification>
             (
                 FirstName,
                 nameof(FirstName),
-                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, nameof(FirstName))
+                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(FirstName))
             )
             .IsNotNullOrEmpty
             (
                 LastName,
                 nameof(LastName),
-                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, nameof(LastName))
+                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(LastName))
             )
             .IsGreaterThan
             (
                 FirstName.Length,
                 MIN_NAME_LENGTH,
                 nameof(FirstName),
-                string.Format(DomainResource.GREATER_MESSAGE, nameof(FirstName), MIN_NAME_LENGTH)
+                string.Format(ValidationResource.GREATER_MESSAGE, nameof(FirstName), MIN_NAME_LENGTH)
             )
             .IsLowerThan
             (
                 FirstName.Length,
                 MAX_NAME_LENGTH,
                 nameof(FirstName),
-                string.Format(DomainResource.SMALLER_MESSAGE, nameof(FirstName), MAX_NAME_LENGTH)
+                string.Format(ValidationResource.SMALLER_MESSAGE, nameof(FirstName), MAX_NAME_LENGTH)
             )
             .IsGreaterThan
             (
                 LastName.Length,
                 MIN_NAME_LENGTH,
                 nameof(LastName),
-                string.Format(DomainResource.GREATER_MESSAGE, nameof(LastName), MIN_NAME_LENGTH)
+                string.Format(ValidationResource.GREATER_MESSAGE, nameof(LastName), MIN_NAME_LENGTH)
             )
             .IsLowerThan
             (
                 LastName.Length,
                 MAX_NAME_LENGTH,
                 nameof(LastName),
-                string.Format(DomainResource.SMALLER_MESSAGE, nameof(LastName), MAX_NAME_LENGTH)
+                string.Format(ValidationResource.SMALLER_MESSAGE, nameof(LastName), MAX_NAME_LENGTH)
             )
         );
     }

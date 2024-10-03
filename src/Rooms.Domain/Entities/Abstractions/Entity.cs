@@ -21,7 +21,7 @@ public abstract class Entity : Notifiable<Notification>
                 Id,
                 Guid.Empty,
                 nameof(Id),
-                string.Format(DomainResource.EMPTY_MESSAGE, nameof(Id))
+                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(Id))
             )
         );
     }

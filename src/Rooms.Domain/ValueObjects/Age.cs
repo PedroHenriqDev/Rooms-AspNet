@@ -26,21 +26,21 @@ public class Age : Notifiable<Notification>
                 YearsOld,
                 MIN_YEARS_OLD,
                 nameof(YearsOld),
-                string.Format(DomainResource.AGE_LEAST_MESSAGE, MIN_YEARS_OLD)
+                string.Format(ValidationResource.AGE_LEAST_MESSAGE, MIN_YEARS_OLD)
             )
             .IsLowerThan
             (
                 YearsOld,
                 MAX_YEARS_OLD,
                 nameof(YearsOld),
-                string.Format(DomainResource.AGE_LESS_MESSAGE, MAX_YEARS_OLD)
+                string.Format(ValidationResource.AGE_LESS_MESSAGE, MAX_YEARS_OLD)
             )
             .AreNotEquals
             (
                 AgeGroup,
                 EAgeGroup.Undefined,
                 nameof(EAgeGroup),
-                DomainResource.AGE_UNDEFINED_MESSAGE
+                ValidationResource.AGE_UNDEFINED_MESSAGE
             )
         );
     }

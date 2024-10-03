@@ -51,20 +51,20 @@ public class Person : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                string.Format(DomainResource.NULL_MESSAGE, nameof(Name))
+                string.Format(ValidationResource.NULL_MESSAGE, nameof(Name))
             )
             .IsNotNull
             (
                 Age,
                 $"{Id}.{nameof(Age)}",
-                string.Format(DomainResource.NULL_MESSAGE, nameof(Age))
+                string.Format(ValidationResource.NULL_MESSAGE, nameof(Age))
             )
             .AreNotEquals
             (
                 SeatId,
                 Guid.Empty,
                 $"{Id}.{nameof(SeatId)}",
-                string.Format(DomainResource.EMPTY_MESSAGE, nameof(SeatId))
+                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(SeatId))
             )
         );
     }

@@ -40,7 +40,6 @@ public class PersonTests
         //Assert
         Assert.False(person.IsValid);
     }
-
     
     [Fact]
     public void IsValid_WhenAgeInFuture_ShouldFalse()
