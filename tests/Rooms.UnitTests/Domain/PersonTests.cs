@@ -5,13 +5,13 @@ namespace Rooms.UnitTests.Domain;
 
 public class PersonTests
 {
-    public readonly Name _Name;
-    public readonly Age _Age;
+    private readonly Name _name;
+    private readonly Age _age;
 
     public PersonTests()
     {
-        _Name = new Name("Pedro", "Henrique");
-        _Age = new Age(new DateTime(2000, 10, 2));
+        _name = new Name("Pedro", "Henrique");
+        _age = new Age(new DateTime(2000, 10, 2));
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public class PersonTests
         Guid seatId = Guid.NewGuid();
 
         //Act
-        var person = new Person(_Name, _Age, seatId);
+        var person = new Person(_name, _age, seatId);
 
         //Assert
         Assert.True(person.IsValid);
@@ -35,10 +35,11 @@ public class PersonTests
         var name = new Name("", "H");
 
         //Act
-        var person = new Person(name, _Age, seatId);
+        var person = new Person(name, _age, seatId);
 
         //Assert
         Assert.False(person.IsValid);
+        Assert.Equal(3, person?.Notifications.Count);
     }
     
     [Fact]
@@ -49,10 +50,11 @@ public class PersonTests
         var age = new Age(new DateTime(2888, 11, 22));
 
         //Act
-        var person = new Person(_Name, age, seatId);
+        var person = new Person(_name, age, seatId);
 
         //Assert
         Assert.False(age.IsValid);
+        Assert.Equal(2, person?.Notifications.Count);
     }
 
     [Fact]
@@ -63,10 +65,11 @@ public class PersonTests
         var age = new Age(DateTime.Now);
 
         //Act
-        var person = new Person(_Name, age, seatId);
+        var person = new Person(_name, age, seatId);
 
         //Assert
         Assert.False(age.IsValid);
+        Assert.Equal(1, person?.Notifications.Count);
     }
 
     [Fact]
@@ -76,10 +79,11 @@ public class PersonTests
         var seat = new Seat("", Guid.Empty); 
 
         //Act
-        var person = new Person(_Name, _Age, seat);
+        var person = new Person(_name, _age, seat);
         
         //Assert
         Assert.False(person.IsValid);
+        Assert.Equal(2, person?.Notifications.Count);
     }
 
     [Fact]
@@ -89,7 +93,7 @@ public class PersonTests
         var seat = new Seat("S1", Guid.NewGuid()); 
 
         //Act
-        var person = new Person(_Name, _Age, seat);
+        var person = new Person(_name, _age, seat);
         
         //Assert
         Assert.True(person.IsValid);
@@ -102,10 +106,11 @@ public class PersonTests
         Guid seatId = Guid.Empty;
 
         //Act
-        var person = new Person(_Name, _Age, seatId);
+        var person = new Person(_name, _age, seatId);
 
         //Assert
         Assert.False(person.IsValid);
+        Assert.Equal(1, person?.Notifications.Count);
     }
 
     [Fact]
@@ -115,7 +120,7 @@ public class PersonTests
         Guid seatId = Guid.NewGuid();
 
         //Act
-        var person = new Person(_Name, _Age, seatId);
+        var person = new Person(_name, _age, seatId);
         
         //Assert
         Assert.Equal(24, person.Age.YearsOld);

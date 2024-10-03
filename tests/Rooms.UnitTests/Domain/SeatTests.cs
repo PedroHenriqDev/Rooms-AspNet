@@ -5,14 +5,14 @@ namespace Rooms.UnitTests.Domain;
 
 public class SeatTests
 {
-    public readonly string _Name = "Seat1";
-    public readonly Guid _PersonId = Guid.NewGuid();
+    private readonly string _name = "Seat1";
+    private readonly Guid _personId = Guid.NewGuid();
 
     [Fact]
     public void IsValid_WhenParametersValid_ShouldTrue()
     {
         //Arrange & Act
-        var seat = new Seat(name: _Name, personId: _PersonId);
+        var seat = new Seat(name: _name, personId: _personId);
 
         //Assert
         Assert.True(seat.IsValid);
@@ -22,7 +22,7 @@ public class SeatTests
     public void IsValid_WhenNameInvalid_ShouldFalse()
     {
         //Arrange & Act
-        var seat = new Seat(name: "", _PersonId);
+        var seat = new Seat(name: "", _personId);
 
         //Assert
         Assert.False(seat.IsValid);
@@ -32,7 +32,7 @@ public class SeatTests
     public void IsValid_WhenPersonIdInvalid_ShouldFalse()
     {
         //Arrange & Act
-        var seat = new Seat(_Name, Guid.Empty);
+        var seat = new Seat(_name, Guid.Empty);
 
         //Assert
         Assert.False(seat.IsValid);
@@ -49,7 +49,7 @@ public class SeatTests
         var person = new Person(personName, age, seatId);
 
         //Act
-        var seat = new Seat(_Name, person);
+        var seat = new Seat(_name, person);
 
         //Assert
         Assert.True(seat.IsValid);
@@ -65,7 +65,7 @@ public class SeatTests
         var person = new Person(personName, age, id);
 
         //Act
-        var seat = new Seat(_Name, person: person);
+        var seat = new Seat(_name, person: person);
 
         //Assert
         Assert.False(seat.IsValid);
