@@ -11,3 +11,5 @@ C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.pdb
 C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\ref\Rooms.Domain.dll
 C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.sourcelink.json
 C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.csproj.AssemblyReference.cache
+C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.Resources.DomainResource.resources
+C:\Projects\dotnet\Rooms\src\Rooms.Domain\obj\Debug\net8.0\Rooms.Domain.csproj.GenerateResource.cache

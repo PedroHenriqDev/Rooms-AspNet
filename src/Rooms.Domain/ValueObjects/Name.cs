@@ -1,5 +1,6 @@
 using Flunt.Notifications;
 using Flunt.Validations;
+using Rooms.Domain.Resources;
 
 namespace Rooms.Domain.ValueObjects;
 public class Name : Notifiable<Notification>
@@ -20,41 +21,41 @@ public class Name : Notifiable<Notification>
             (
                 FirstName,
                 nameof(FirstName),
-                "First name cannot be null or empty."
+                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, nameof(FirstName))
             )
             .IsNotNullOrEmpty
             (
                 LastName,
                 nameof(LastName),
-                "Last name cannot be null or empty."
+                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, nameof(LastName))
             )
             .IsGreaterThan
             (
                 FirstName.Length,
                 MIN_NAME_LENGTH,
                 nameof(FirstName),
-                $"The {nameof(FirstName)}  length must be greater than {MIN_NAME_LENGTH}"
+                string.Format(DomainResource.GREATER_MESSAGE, nameof(FirstName), MIN_NAME_LENGTH)
             )
             .IsLowerThan
             (
                 FirstName.Length,
                 MAX_NAME_LENGTH,
                 nameof(FirstName),
-                $"The {nameof(FirstName)} length must be smaller than {MAX_NAME_LENGTH}"
+                string.Format(DomainResource.SMALLER_MESSAGE, nameof(FirstName), MAX_NAME_LENGTH)
             )
             .IsGreaterThan
             (
                 LastName.Length,
                 MIN_NAME_LENGTH,
                 nameof(LastName),
-                $"The {nameof(LastName)}  length must be greater than {MIN_NAME_LENGTH}"
+                string.Format(DomainResource.GREATER_MESSAGE, nameof(LastName), MIN_NAME_LENGTH)
             )
             .IsLowerThan
             (
                 LastName.Length,
                 MAX_NAME_LENGTH,
                 nameof(LastName),
-                $"The {nameof(LastName)} length must be smaller than {MAX_NAME_LENGTH}"
+                string.Format(DomainResource.SMALLER_MESSAGE, nameof(LastName), MAX_NAME_LENGTH)
             )
         );
     }

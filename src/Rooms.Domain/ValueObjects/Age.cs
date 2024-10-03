@@ -1,6 +1,7 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 using Rooms.Domain.Enums;
+using Rooms.Domain.Resources;
 
 namespace Rooms.Domain.ValueObjects;
 
@@ -25,21 +26,21 @@ public class Age : Notifiable<Notification>
                 YearsOld,
                 MIN_YEARS_OLD,
                 nameof(YearsOld),
-                $"Age must be at least {MIN_YEARS_OLD} years old."
+                string.Format(DomainResource.AGE_LEAST_MESSAGE, MIN_YEARS_OLD)
             )
             .IsLowerThan
             (
                 YearsOld,
                 MAX_YEARS_OLD,
                 nameof(YearsOld),
-                $"Age must be less than {MAX_YEARS_OLD} years old."
+                string.Format(DomainResource.AGE_LESS_MESSAGE, MAX_YEARS_OLD)
             )
             .AreNotEquals
             (
                 AgeGroup,
                 EAgeGroup.Undefined,
                 nameof(EAgeGroup),
-                "The age group cannot be undefined."
+                DomainResource.AGE_UNDEFINED_MESSAGE
             )
         );
     }

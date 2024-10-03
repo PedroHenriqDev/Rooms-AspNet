@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rooms.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43c6d9da1edea975e4c76a93d67034662b77f780")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40e298c5bfcecf5cb2e5bd71614e4b081db505b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rooms.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rooms.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

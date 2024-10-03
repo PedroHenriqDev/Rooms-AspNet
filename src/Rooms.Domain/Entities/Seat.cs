@@ -1,5 +1,6 @@
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
+using Rooms.Domain.Resources;
 
 namespace Rooms.Domain.Entities;
 
@@ -30,6 +31,8 @@ public class Seat : Entity
 
     public override void Validate()
     {
+        ValidateId();
+
         if(Person != null)
           AddNotifications(Person?.Notifications);
 
@@ -41,14 +44,14 @@ public class Seat : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                $"{nameof(Name)} cannot be null or empty"
+                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, Name)
             )
             .AreNotEquals
             (
                 PersonId,
                 Guid.Empty,
                 $"{Id}.{nameof(PersonId)}",
-                $"The {nameof(PersonId)} cannot be empty"
+                string.Format(DomainResource.EMPTY_MESSAGE, nameof(PersonId))
             )
         );
     }

@@ -1,6 +1,7 @@
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
 using Rooms.Domain.Enums;
+using Rooms.Domain.Resources;
 
 namespace Rooms.Domain.Entities;
 
@@ -59,10 +60,13 @@ public class Room : Entity
 
     public override void Validate()
     {
+        ValidateId();
+
         foreach(Seat seat in Seats)
         {
             AddNotifications(seat.Notifications);
         }
+
 
         AddNotifications
         (
@@ -72,28 +76,28 @@ public class Room : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                $"The {Name} cannot be null or empty."
+                string.Format(DomainResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .IsGreaterThan
             (
                 Capacity,
                 MIN_CAPACITY,
                 $"{Id}.{nameof(Capacity)}",
-                $"The {nameof(Capacity)} must be greater than {MIN_CAPACITY}"
+                string.Format(DomainResource.GREATER_MESSAGE, nameof(Capacity), MIN_CAPACITY)
             )
             .IsLowerThan
             (
                 Capacity,
                 MAX_CAPACITY,
                 $"{Id}.{nameof(Capacity)}",
-                $"The {nameof(Capacity)} must be smaller than {MIN_CAPACITY}"
+                string.Format(DomainResource.SMALLER_MESSAGE, nameof(Capacity), MAX_CAPACITY)
             )
             .IsLowerOrEqualsThan
             (
                 Seats.Count,
                 Capacity,
                 $"{Id}.{nameof(Capacity)}",
-                $"The number of seats ({Seats.Count}) cannot exceed the room's capacity of {Capacity}."
+                string.Format(DomainResource.SEAT_CAPACITY_EXCEED_MESSAGE, Seats.Count, Capacity)
             )
         );
     }
