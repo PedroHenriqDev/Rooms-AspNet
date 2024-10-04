@@ -7,7 +7,7 @@ namespace Rooms.Infra.Repositories.Abstractions;
 
 public abstract class Repository<T> : IRepository<T> where T : Entity
 {
-    private readonly IDbConnection _connection;
+    protected readonly IDbConnection _connection;
 
     public Repository(IDbConnection connection)
     {
