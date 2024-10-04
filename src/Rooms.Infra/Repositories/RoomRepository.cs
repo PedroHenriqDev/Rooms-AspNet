@@ -1,13 +1,89 @@
 using System.Data;
+using Dapper;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Repositories;
-using Rooms.Infra.Repositories.Abstractions;
 
 namespace Rooms.Infra.Repositories;
 
-public class RoomRepository : Repository<Room>, IRoomRepository
+public sealed class RoomRepository : IRoomRepository
 {
-    public RoomRepository(IDbConnection connection) : base(connection)
+    private readonly IDbConnection _connection;
+
+    public RoomRepository(IDbConnection connection)
     {
+        _connection = connection;
+    }
+    
+    public async Task<IEnumerable<Room>> GetAllAsync()
+    {
+        return await _connection.QueryAsync<Room>(
+            sql: "SP_Rooms_Get_All",
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task<Room?> GetByIdAsync(Guid id)
+    {
+        return await _connection.QueryFirstOrDefaultAsync(
+            sql: "SP_Rooms_Get_By_Id",
+            param: new { Id = id },
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task<bool> CreateAsync(Room entity)
+    {
+        object param = new
+        {
+            Id = entity.Id,
+            CreatedAt = entity.CreatedAt,
+            Name = entity.Name,
+            Capacity = entity.Capacity,
+            RoomTypeId = entity.TypeId,
+            StartDate = entity.StartDate,
+            EndDate = entity.EndDate,
+            SoldOut = entity.SoldOut
+        };
+
+        int rowsAffected = await _connection.ExecuteAsync(
+            sql: "SP_Rooms_Create",
+            param: param,
+            commandType: CommandType.StoredProcedure
+        );
+
+        return rowsAffected > 0;
+    }
+
+    public async Task<bool> DeleteAsync(Guid id)
+    {
+        int rowsAffected = await _connection.ExecuteAsync(
+            sql: "SP_Rooms_Delete",
+            param: new { Id = id},
+            commandType: CommandType.StoredProcedure
+        );
+
+        return rowsAffected > 0;
+    }
+
+    public async Task<bool> UpdateAsync(Room entity)
+    {
+        object param = new
+        {
+            Id = entity.Id,
+            Name = entity.Name,
+            Capacity = entity.Capacity,
+            RoomTypeId = entity.TypeId,
+            StartDate = entity.StartDate,
+            EndDate = entity.EndDate,
+            SoldOut = entity.SoldOut
+        };
+
+        int rowsAffected = await _connection.ExecuteAsync(
+            sql: "SP_Rooms_Update",
+            param: param,
+            commandType: CommandType.StoredProcedure
+        );
+
+        return rowsAffected > 0;
     }
 }

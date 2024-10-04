@@ -9,7 +9,6 @@
       "Rooms.Infra/1.0.0": {
         "dependencies": {
           "Dapper": "2.1.35",
-          "Dapper.Contrib": "2.0.78",
           "Rooms.Domain": "1.0.0"
         },
         "runtime": {
@@ -21,17 +20,6 @@
           "lib/net7.0/Dapper.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.1.35.13827"
-          }
-        }
-      },
-      "Dapper.Contrib/2.0.78": {
-        "dependencies": {
-          "Dapper": "2.1.35"
-        },
-        "runtime": {
-          "lib/net5.0/Dapper.Contrib.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.78.45418"
           }
         }
       },
@@ -94,13 +82,6 @@
       "sha512": "sha512-YKRwjVfrG7GYOovlGyQoMvr1/IJdn+7QzNXJxyMh0YfFF5yvDmTYaJOVYWsckreNjGsGSEtrMTpnzxTUq/tZQw==",
       "path": "dapper/2.1.35",
       "hashPath": "dapper.2.1.35.nupkg.sha512"
-    },
-    "Dapper.Contrib/2.0.78": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sUfDVIf8LlHNiz3MfUFodeyRiemfN1JFkPxYjCxFWlwNPg1iQ49mB+0E89TkywWs4X8fiRWOVDQgtH5FtzK5Kw==",
-      "path": "dapper.contrib/2.0.78",
-      "hashPath": "dapper.contrib.2.0.78.nupkg.sha512"
     },
     "Flunt/2.0.5": {
       "type": "package",

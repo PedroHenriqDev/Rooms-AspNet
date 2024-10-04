@@ -15,22 +15,6 @@
           }
         }
       },
-      "Dapper.Contrib/2.0.78": {
-        "type": "package",
-        "dependencies": {
-          "Dapper": "2.0.78"
-        },
-        "compile": {
-          "lib/net5.0/Dapper.Contrib.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/Dapper.Contrib.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Flunt/2.0.5": {
         "type": "package",
         "compile": {
@@ -124,23 +108,6 @@
         "readme.md"
       ]
     },
-    "Dapper.Contrib/2.0.78": {
-      "sha512": "sUfDVIf8LlHNiz3MfUFodeyRiemfN1JFkPxYjCxFWlwNPg1iQ49mB+0E89TkywWs4X8fiRWOVDQgtH5FtzK5Kw==",
-      "type": "package",
-      "path": "dapper.contrib/2.0.78",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dapper.contrib.2.0.78.nupkg.sha512",
-        "dapper.contrib.nuspec",
-        "lib/net461/Dapper.Contrib.dll",
-        "lib/net461/Dapper.Contrib.xml",
-        "lib/net5.0/Dapper.Contrib.dll",
-        "lib/net5.0/Dapper.Contrib.xml",
-        "lib/netstandard2.0/Dapper.Contrib.dll",
-        "lib/netstandard2.0/Dapper.Contrib.xml"
-      ]
-    },
     "Flunt/2.0.5": {
       "sha512": "CMgq8FUYjkHzyZT3PhkUwZyy79mudON+EL4b0SAT7BfIOJ2CNypwnbdA0cPHAM2CYQfO2L8ubNJCiBHQOIv2pA==",
       "type": "package",
@@ -226,7 +193,6 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Dapper >= 2.1.35",
-      "Dapper.Contrib >= 2.0.78",
       "Rooms.Domain >= 1.0.0"
     ]
   },
@@ -289,10 +255,6 @@
           "Dapper": {
             "target": "Package",
             "version": "[2.1.35, )"
-          },
-          "Dapper.Contrib": {
-            "target": "Package",
-            "version": "[2.0.78, )"
           }
         },
         "imports": [

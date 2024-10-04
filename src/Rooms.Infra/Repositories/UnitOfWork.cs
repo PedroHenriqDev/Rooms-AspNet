@@ -3,7 +3,7 @@ using Rooms.Domain.Repositories;
 
 namespace Rooms.Infra.Repositories;
 
-public class UnitOfWork : IUnitOfWork
+public sealed class UnitOfWork : IUnitOfWork
 {
     private readonly IDbConnection _connection;
     private readonly IPersonRepository _personRepository;
