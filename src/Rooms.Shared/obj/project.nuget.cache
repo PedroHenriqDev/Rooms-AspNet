@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "9ei2hlbXCTZbyXVIJ3qyqtryZgFsqRBZwiANhPw/NgMFKm3ioK59ITx7edXB5l4UFWjhvlofw+8epMO78dH/4A==",
+  "dgSpecHash": "bO3xUhZ6en969xR5nBI3g6MwtRTmov/o/7raJpkJn/ej88m2X6Pg9nFizp4hIPber0OLQJsOdOqVIe/RQ0nYjw==",
   "success": true,
   "projectFilePath": "C:\\Projects\\dotnet\\Rooms\\src\\Rooms.Shared\\Rooms.Shared.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512"
+    "C:\\Users\\herop\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

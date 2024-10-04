@@ -1,7 +1,6 @@
-using System.Data;
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
-using Rooms.Domain.Resources;
+using Rooms.Domain.Validations;
 
 namespace Rooms.Domain.Entities;
 
@@ -45,21 +44,21 @@ public class Seat : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
+                string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .AreEquals 
             (
                 Name.Length,
                 EQUAL_NAME_LENGTH,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.EQUAL_LENGTH_MESSAGE, nameof(Name), EQUAL_NAME_LENGTH)
+                string.Format(ValidationMessagesResource.EQUAL_LENGTH_MESSAGE, nameof(Name), EQUAL_NAME_LENGTH)
             )
             .AreNotEquals
             (
                 RoomId,
                 Guid.Empty,
                 $"{Id}.{nameof(RoomId)}",
-                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(RoomId))
+                string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(RoomId))
             )
         );
     }

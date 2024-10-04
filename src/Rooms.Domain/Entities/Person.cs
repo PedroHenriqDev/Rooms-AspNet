@@ -1,6 +1,6 @@
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
-using Rooms.Domain.Resources;
+using Rooms.Domain.Validations;
 using Rooms.Domain.ValueObjects;
 
 namespace Rooms.Domain.Entities;
@@ -49,20 +49,20 @@ public class Person : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.NULL_MESSAGE, nameof(Name))
+                string.Format(ValidationMessagesResource.NULL_MESSAGE, nameof(Name))
             )
             .IsNotNull
             (
                 Age,
                 $"{Id}.{nameof(Age)}",
-                string.Format(ValidationResource.NULL_MESSAGE, nameof(Age))
+                string.Format(ValidationMessagesResource.NULL_MESSAGE, nameof(Age))
             )
             .AreNotEquals
             (
                 SeatId,
                 Guid.Empty,
                 $"{Id}.{nameof(SeatId)}",
-                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(SeatId))
+                string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(SeatId))
             )
         );
     }

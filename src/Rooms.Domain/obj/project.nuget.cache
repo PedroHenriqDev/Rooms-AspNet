@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LW0IOmajGIEM/02q2hF/kOAYL7NdcPD37stYBJ6KoIFS+qrtXMppWiopP+mjNsyStfcGAu40lK6cKaG8OiOJeQ==",
+  "dgSpecHash": "qdK10WaM6wlFMGFgaLMZ17e3uozTdr+ZHmnWNDCRs77/idkaz1qL99Zo7Ir8LOo0+domH8ES1DmjqSQzsg+Wpw==",
   "success": true,
   "projectFilePath": "C:\\Projects\\dotnet\\Rooms\\src\\Rooms.Domain\\Rooms.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512"
+    "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

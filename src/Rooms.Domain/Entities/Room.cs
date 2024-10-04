@@ -1,16 +1,11 @@
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
-using Rooms.Domain.Resources;
+using Rooms.Domain.Validations;
 
 namespace Rooms.Domain.Entities;
 
 public class Room : Entity
 {
-    private DateTime MIN_START_DATE = DateTime.Now;
-    private const short MIN_CAPACITY = 0;
-    private const int MAX_CAPACITY = int.MaxValue;
-    private const int MAX_NAME_LENGTH = 100;
-
     private readonly IList<Seat> _seats;
 
     public Room
@@ -162,15 +157,15 @@ public class Room : Entity
             (
                 Name,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
+                string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .IsLowerOrEqualsThan
             (
                 Name.Length,
-                MAX_NAME_LENGTH,
+                ValidationsRules.MAX_ROOM_NAME_LENGTH,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.SMALLER_MESSAGE,
-                nameof(Name), MAX_NAME_LENGTH
+                string.Format(ValidationMessagesResource.SMALLER_MESSAGE,
+                nameof(Name), ValidationsRules.MAX_ROOM_NAME_LENGTH
                 )
             )
             .AreNotEquals
@@ -178,42 +173,42 @@ public class Room : Entity
                 TypeId,
                 Guid.Empty,
                 $"{Id}.{TypeId}",
-                string.Format(ValidationResource.EMPTY_MESSAGE, nameof(TypeId))
+                string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(TypeId))
             )
             .IsGreaterThan
             (
                 Capacity,
-                MIN_CAPACITY,
+                ValidationsRules.MIN_CAPACITY,
                 $"{Id}.{nameof(Capacity)}",
-                string.Format(ValidationResource.GREATER_MESSAGE, nameof(Capacity), MIN_CAPACITY)
+                string.Format(ValidationMessagesResource.GREATER_MESSAGE, nameof(Capacity), ValidationsRules.MIN_CAPACITY)
             )
             .IsLowerThan
             (
                 Capacity,
-                MAX_CAPACITY,
+                ValidationsRules.MAX_CAPACITY,
                 $"{Id}.{nameof(Capacity)}",
-                string.Format(ValidationResource.SMALLER_MESSAGE, nameof(Capacity), MAX_CAPACITY)
+                string.Format(ValidationMessagesResource.SMALLER_MESSAGE, nameof(Capacity), ValidationsRules.MAX_CAPACITY)
             )
             .IsLowerOrEqualsThan
             (
                 _seats.Count,
                 Capacity,
                 $"{Id}.{nameof(Capacity)}",
-                string.Format(ValidationResource.SEAT_CAPACITY_EXCEED_MESSAGE, _seats.Count, Capacity)
+                string.Format(ValidationMessagesResource.SEAT_CAPACITY_EXCEED_MESSAGE, _seats.Count, Capacity)
             )
             .IsLowerOrEqualsThan
             (
                 StartDate, 
                 EndDate,
                  $"{Id}.{StartDate}&{EndDate}",
-                  ValidationResource.START_DATE_EARLIER_MESSAGE
+                  ValidationMessagesResource.START_DATE_EARLIER_MESSAGE
             )
             .IsGreaterOrEqualsThan
             (
                 StartDate,
-                MIN_START_DATE,
+                ValidationsRules.MIN_START_DATE,
                 $"{Id}.{nameof(StartDate)}",
-                string.Format(ValidationResource.GREATER_MESSAGE, nameof(StartDate), MIN_START_DATE)
+                string.Format(ValidationMessagesResource.GREATER_MESSAGE, nameof(StartDate), ValidationsRules.MIN_START_DATE)
             )
         );
     }

@@ -1,13 +1,11 @@
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
-using Rooms.Domain.Resources;
+using Rooms.Domain.Validations;
 
 namespace Rooms.Domain.Entities;
 
 public class RoomType : Entity
 {
-    private const short MAX_NAME_LENGTH = 50;
-
     public RoomType(string name) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
         Name = name;
@@ -28,15 +26,15 @@ public class RoomType : Entity
             (
                 Name,
                 $"{Id}{nameof(Name)}",
-                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
+                string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .IsLowerOrEqualsThan
             (
                 Name.Length,
-                MAX_NAME_LENGTH,
+                ValidationsRules.MAX_NAME_LENGTH,
                 $"{Id}.{nameof(Name)}",
-                string.Format(ValidationResource.SMALLER_MESSAGE,
-                nameof(Name), MAX_NAME_LENGTH
+                string.Format(ValidationMessagesResource.SMALLER_MESSAGE,
+                nameof(Name), ValidationsRules.MAX_NAME_LENGTH
                 )
             )
         );

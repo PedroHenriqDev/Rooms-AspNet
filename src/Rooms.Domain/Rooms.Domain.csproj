@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Flunt" Version="2.0.5" />
+    <PackageReference Include="mediatr" Version="12.4.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,10 +17,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\ValidationResource.Designer.cs">
+    <Compile Update="Validations\ValidationMessagesResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ValidationResource.resx</DependentUpon>
+      <DependentUpon>ValidationMessagesResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -28,9 +29,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\ValidationResource.resx">
+    <EmbeddedResource Update="Validations\ValidationMessagesResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ValidationResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>ValidationMessagesResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

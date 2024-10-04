@@ -1,5 +1,7 @@
+using Rooms.Domain.Entities;
+
 namespace Rooms.Domain.Repositories;
 
-public interface IRoomRepository
+public interface IRoomRepository : IRepository<Room>
 {
 }

@@ -1,15 +1,12 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 using Rooms.Domain.Enums;
-using Rooms.Domain.Resources;
+using Rooms.Domain.Validations;
 
 namespace Rooms.Domain.ValueObjects;
 
 public class Age : Notifiable<Notification>
 {
-    private const long MIN_YEARS_OLD = 0;
-    private const long MAX_YEARS_OLD = 120;
-
     public Age(DateTime birthDate)
     {
         BirthDate = birthDate;
@@ -24,23 +21,23 @@ public class Age : Notifiable<Notification>
             .IsGreaterThan
             (
                 YearsOld,
-                MIN_YEARS_OLD,
+                ValidationsRules.MIN_YEARS_OLD,
                 nameof(YearsOld),
-                string.Format(ValidationResource.AGE_LEAST_MESSAGE, MIN_YEARS_OLD)
+                string.Format(ValidationMessagesResource.AGE_LEAST_MESSAGE, ValidationsRules.MIN_YEARS_OLD)
             )
             .IsLowerThan
             (
                 YearsOld,
-                MAX_YEARS_OLD,
+                ValidationsRules.MAX_YEARS_OLD,
                 nameof(YearsOld),
-                string.Format(ValidationResource.AGE_LESS_MESSAGE, MAX_YEARS_OLD)
+                string.Format(ValidationMessagesResource.AGE_LESS_MESSAGE, ValidationsRules.MAX_YEARS_OLD)
             )
             .AreNotEquals
             (
                 AgeGroup,
                 EAgeGroup.Undefined,
                 nameof(EAgeGroup),
-                ValidationResource.AGE_UNDEFINED_MESSAGE
+                ValidationMessagesResource.AGE_UNDEFINED_MESSAGE
             )
         );
     }
@@ -62,7 +59,7 @@ public class Age : Notifiable<Notification>
 
     public void DefineAgeGroup()
     {
-        if(YearsOld >= MIN_YEARS_OLD && YearsOld <= 17)
+        if(YearsOld >= ValidationsRules.MIN_YEARS_OLD && YearsOld <= 17)
         {
             AgeGroup = EAgeGroup.Child;
         }
@@ -70,7 +67,7 @@ public class Age : Notifiable<Notification>
         {
             AgeGroup = EAgeGroup.Child; 
         }
-        else if(YearsOld >= 65 && YearsOld <= MAX_YEARS_OLD)
+        else if(YearsOld >= 65 && YearsOld <= ValidationsRules.MAX_YEARS_OLD)
         {
             AgeGroup = EAgeGroup.Elderly;
         }

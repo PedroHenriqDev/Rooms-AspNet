@@ -1,13 +1,10 @@
 using Flunt.Notifications;
 using Flunt.Validations;
-using Rooms.Domain.Resources;
+using Rooms.Domain.Validations;
 
 namespace Rooms.Domain.ValueObjects;
 public class Name : Notifiable<Notification>
 {
-    public const short MAX_NAME_LENGTH = 50;
-    public const short MIN_NAME_LENGTH = 2;
-
     public Name(string firstName, string lastName)
     {
         FirstName = firstName;
@@ -21,41 +18,41 @@ public class Name : Notifiable<Notification>
             (
                 FirstName,
                 nameof(FirstName),
-                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(FirstName))
+                string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(FirstName))
             )
             .IsNotNullOrEmpty
             (
                 LastName,
                 nameof(LastName),
-                string.Format(ValidationResource.NULL_OR_EMPTY_MESSAGE, nameof(LastName))
+                string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(LastName))
             )
             .IsGreaterThan
             (
                 FirstName.Length,
-                MIN_NAME_LENGTH,
+                ValidationsRules.MIN_NAME_LENGTH,
                 nameof(FirstName),
-                string.Format(ValidationResource.GREATER_MESSAGE, nameof(FirstName), MIN_NAME_LENGTH)
+                string.Format(ValidationMessagesResource.GREATER_MESSAGE, nameof(FirstName), ValidationsRules.MIN_NAME_LENGTH)
             )
             .IsLowerThan
             (
                 FirstName.Length,
-                MAX_NAME_LENGTH,
+                ValidationsRules.MAX_NAME_LENGTH,
                 nameof(FirstName),
-                string.Format(ValidationResource.SMALLER_MESSAGE, nameof(FirstName), MAX_NAME_LENGTH)
+                string.Format(ValidationMessagesResource.SMALLER_MESSAGE, nameof(FirstName), ValidationsRules.MAX_NAME_LENGTH)
             )
             .IsGreaterThan
             (
                 LastName.Length,
-                MIN_NAME_LENGTH,
+                ValidationsRules.MIN_NAME_LENGTH,
                 nameof(LastName),
-                string.Format(ValidationResource.GREATER_MESSAGE, nameof(LastName), MIN_NAME_LENGTH)
+                string.Format(ValidationMessagesResource.GREATER_MESSAGE, nameof(LastName), ValidationsRules.MIN_NAME_LENGTH)
             )
             .IsLowerThan
             (
                 LastName.Length,
-                MAX_NAME_LENGTH,
+                ValidationsRules.MAX_NAME_LENGTH,
                 nameof(LastName),
-                string.Format(ValidationResource.SMALLER_MESSAGE, nameof(LastName), MAX_NAME_LENGTH)
+                string.Format(ValidationMessagesResource.SMALLER_MESSAGE, nameof(LastName), ValidationsRules.MAX_NAME_LENGTH)
             )
         );
     }

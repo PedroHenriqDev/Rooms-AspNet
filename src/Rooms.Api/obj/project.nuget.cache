@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Jifoj8doLYO6aiUf4GHt6wHxvJDSlkwAlFwgJqMVU8qDgvpNkWMOGxySUkjNvpaNX8Ia03s87JTohWSpSU04RA==",
+  "dgSpecHash": "hMxXvO5wlPyvNHHARSet9jpxktISo0DQ8nllwO4hTgLWPnVz25d1FFO1i7CN5KwOenJo+rHFJEAxLmkwDvkX0A==",
   "success": true,
   "projectFilePath": "C:\\Projects\\dotnet\\Rooms\\src\\Rooms.Api\\Rooms.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\herop\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\herop\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\herop\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
