@@ -1,4 +1,8 @@
 CREATE PROCEDURE SP_Seats_Get_All
+(
+    @OffSet INT,
+    @Size INT
+)
 AS
 BEGIN
     SELECT 
@@ -8,4 +12,9 @@ BEGIN
         [RoomId]
     FROM 
         [Seats]
-END
+    ORDER BY [Name] 
+    OFFSET @OffSet ROWS
+    FETCH NEXT @Size ROWS ONLY;
+END;
+
+DROP PROC SP_RoomTypes_Get_All

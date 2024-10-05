@@ -14,10 +14,17 @@ public sealed class SeatRepository : ISeatRepository
         _connection = connection;
     }
 
-    public Task<IEnumerable<Seat>> GetAllAsync()
+    public Task<IEnumerable<Seat>> GetAllAsync(int offSet, int size)
     {
+        object param = new
+        {
+            OffSet = offSet,
+            Size = size 
+        };
+
         return _connection.QueryAsync<Seat>(
             sql: "SP_Seats_Get_All",
+            param: param,
             commandType: CommandType.StoredProcedure
         );
     }

@@ -14,10 +14,17 @@ public sealed class RoomRepository : IRoomRepository
         _connection = connection;
     }
     
-    public async Task<IEnumerable<Room>> GetAllAsync()
+    public async Task<IEnumerable<Room>> GetAllAsync(int offSet, int size)
     {
+        object param = new
+        {
+            OffSet = offSet,
+            Size = size 
+        };
+
         return await _connection.QueryAsync<Room>(
             sql: "SP_Rooms_Get_All",
+            param: param,
             commandType: CommandType.StoredProcedure
         );
     }

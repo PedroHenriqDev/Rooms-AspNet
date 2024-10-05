@@ -14,10 +14,17 @@ public sealed class PersonRepository : IPersonRepository
         _connection = connection;
     }
 
-    public async Task<IEnumerable<Person>> GetAllAsync()
+    public async Task<IEnumerable<Person>> GetAllAsync(int offSet, int size)
     {
+        object param = new
+        {
+            OffSet = offSet,
+            Size = size 
+        };
+
         return await _connection.QueryAsync<Person>(
             sql: "SP_Persons_Get_All",
+            param: param,
             commandType: CommandType.StoredProcedure
         );
     }
