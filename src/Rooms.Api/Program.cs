@@ -8,6 +8,7 @@ builder.Services.AddLogging();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddInfra(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddDefaultCors();
 builder.Services.AddGlobalExceptionMiddleware();
 
 WebApplication app = builder.Build();
@@ -20,6 +21,7 @@ if(app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 app.MapControllers();
 app.UseGlobalExceptionMiddleware();
 

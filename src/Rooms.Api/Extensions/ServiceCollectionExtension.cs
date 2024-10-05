@@ -8,4 +8,17 @@ public static class ServiceCollectionExtension
     {
         services.AddSingleton<ExceptionMiddleware>();
     }
+
+    public static void AddDefaultCors(this IServiceCollection services)
+    {
+        services.AddCors(options =>
+        {
+             options.AddDefaultPolicy(policy =>
+             {
+                policy.AllowAnyHeader()
+                      .AllowAnyOrigin()
+                      .AllowAnyMethod();
+             });
+        });
+    }
 }
