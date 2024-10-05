@@ -1,5 +1,5 @@
 using Rooms.Api.Extensions;
-using Rooms.Shared.Ioc.InfraDepedencies;
+using Rooms.Shared.Ioc;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +8,7 @@ builder.Services.AddLogging();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddInfra(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddAppServices();
 builder.Services.AddGzipResponseCompression();
 builder.Services.AddCors();
 builder.Services.AddGlobalExceptionMiddleware();

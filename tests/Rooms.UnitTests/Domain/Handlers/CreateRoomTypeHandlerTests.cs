@@ -3,10 +3,9 @@ using Flunt.Notifications;
 using Moq;
 using Rooms.Domain.Commands.Handlers;
 using Rooms.Domain.Commands.Requests;
-using Rooms.Domain.Commands.Responses;
-using Rooms.Domain.Commands.Responses.Interfaces;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Repositories;
+using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.UnitTests.Domain.Handlers;
 
@@ -36,11 +35,11 @@ public class CreateRoomTypeHandlerTests
         var handler = new CreateRoomTypeHandler(_unitOfWorkMock!.Object);
 
         //Act
-        ICommandResponse commandResponse =  await handler.Handle(commandRequest, CancellationToken.None);
+        IResponse commandResponse =  await handler.Handle(commandRequest, CancellationToken.None);
 
         //Assert
         Assert.True(commandResponse.Success);
-        Assert.IsType<RoomTypeValue>(commandResponse.Value);
+        Assert.IsType<RoomType>(commandResponse.Value);
         Assert.Equal(HttpStatusCode.Created, commandResponse.StatusCode);
         Assert.NotNull(commandResponse.Message);
     }
@@ -54,7 +53,7 @@ public class CreateRoomTypeHandlerTests
         var handler = new CreateRoomTypeHandler(_unitOfWorkMock!.Object);
 
         //Act
-        ICommandResponse commandResponse =  await handler.Handle(commandRequest, CancellationToken.None);
+        IResponse commandResponse =  await handler.Handle(commandRequest, CancellationToken.None);
 
         //Assert
         Assert.False(commandResponse.Success);
@@ -76,7 +75,7 @@ public class CreateRoomTypeHandlerTests
         var handler = new CreateRoomTypeHandler(_unitOfWorkMock!.Object);
 
         //Act
-        ICommandResponse commandResponse =  await handler.Handle(commandRequest, CancellationToken.None);
+        IResponse commandResponse =  await handler.Handle(commandRequest, CancellationToken.None);
 
         //Assert
         Assert.False(commandResponse.Success);

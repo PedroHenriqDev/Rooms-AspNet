@@ -24,10 +24,10 @@ public class RoomTests
         long seatAmount = 3;
         for(short index = 0; index <= seatAmount; index++)
         {
-          _seats.Add(new Seat($"Prod{index}", Guid.NewGuid()));
+          _seats.Add(new Seat($"S1{index}", Guid.NewGuid()));
         }
 
-        _seat = new Seat("Prod x", Guid.NewGuid());
+        _seat = new Seat("S11", Guid.NewGuid());
 
         _capacity = 10;
         _startDate = DateTime.Now.AddDays(1);
@@ -159,7 +159,7 @@ public class RoomTests
         int capacity = 1;
         var room = new Room(_name, capacity, _roomType.Id, _startDate, _endDate);
         Guid personId = Guid.NewGuid();
-        var seat = new Seat("S1", personId);
+        var seat = new Seat("S13", personId);
         room.AddSeat(seat);
 
         //Act

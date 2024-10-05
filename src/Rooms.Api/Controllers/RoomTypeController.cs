@@ -1,7 +1,7 @@
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Rooms.App.Services.Interfaces;
 using Rooms.Domain.Commands.Requests;
-using Rooms.Domain.Commands.Responses.Interfaces;
+using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Api.Controllers;
 
@@ -10,19 +10,19 @@ namespace Rooms.Api.Controllers;
 [Produces("application/json")]
 public class RoomTypeController : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly IRoomTypeService _service;
 
-    public RoomTypeController(IMediator mediator)
+    public RoomTypeController(IRoomTypeService service)
     {
-        _mediator = mediator;
+        _service = service;
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(ICommandResponse), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ICommandResponse), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ICommandResponse>> CreateAsync([FromBody] CreateRoomTypeRequest request)
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IResponse>> CreateAsync([FromBody] CreateRoomTypeRequest request)
     {
-        ICommandResponse response = await _mediator.Send(request);
+        IResponse response = await _service.CreateAsync(request);
         return StatusCode((int)response.StatusCode, response);
     }
 }

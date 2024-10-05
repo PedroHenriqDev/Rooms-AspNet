@@ -83,14 +83,14 @@ public class PersonTests
         
         //Assert
         Assert.False(person.IsValid);
-        Assert.Equal(2, person?.Notifications.Count);
+        Assert.Equal(3, person?.Notifications.Count);
     }
 
     [Fact]
     public void IsValid_WhenSeatValid_ShouldTrue()
     {
         //Arrange
-        var seat = new Seat("S1", Guid.NewGuid()); 
+        var seat = new Seat("S13", Guid.NewGuid()); 
 
         //Act
         var person = new Person(_name, _age, seat);

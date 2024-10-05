@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Rooms.Domain.Repositories;
 using Rooms.Infra.Repositories;
 
-namespace Rooms.Shared.Ioc.InfraDepedencies;
+namespace Rooms.Shared.Ioc;
 
 public static class ResolutionDependencies
 {

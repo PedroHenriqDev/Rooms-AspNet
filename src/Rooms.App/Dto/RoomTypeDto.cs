@@ -1,14 +1,14 @@
-namespace Rooms.Domain.Commands.Responses;
+namespace Rooms.App.Dto;
 
-public class RoomTypeValue
+public class RoomTypeDto
 {
-    public RoomTypeValue(Guid id, string name)
+    public RoomTypeDto(Guid id, string name)
     {
         Id = id;
         Name = name;
     }
 
-    public RoomTypeValue()
+    public RoomTypeDto()
     {
         Name = string.Empty;
     }

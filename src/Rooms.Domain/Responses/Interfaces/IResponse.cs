@@ -1,8 +1,8 @@
 using System.Net;
 
-namespace Rooms.Domain.Commands.Responses.Interfaces;
+namespace Rooms.Domain.Responses.Interfaces;
 
-public interface ICommandResponse
+public interface IResponse
 {
         
     bool Success {get; set;}

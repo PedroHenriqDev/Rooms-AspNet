@@ -6,7 +6,7 @@ namespace Rooms.UnitTests.Domain;
 
 public class SeatTests
 {
-    private readonly string _name = "Seat1";
+    private readonly string _name = "S12";
     private readonly Guid _roomId = Guid.NewGuid();
 
     [Fact]

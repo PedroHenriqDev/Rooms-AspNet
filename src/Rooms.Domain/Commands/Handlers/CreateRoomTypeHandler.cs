@@ -1,14 +1,13 @@
 using System.Net;
-using MediatR;
 using Rooms.Domain.Commands.Requests;
-using Rooms.Domain.Commands.Responses;
-using Rooms.Domain.Commands.Responses.Interfaces;
 using Rooms.Domain.Entities;
-using Rooms.Domain.Mappings;
+using Rooms.Domain.Interfaces;
 using Rooms.Domain.Repositories;
+using Rooms.Domain.Responses;
+using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Domain.Commands.Handlers;
-public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICommandResponse>
+public class CreateRoomTypeHandler : IHandler<CreateRoomTypeRequest>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -17,9 +16,9 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<ICommandResponse> Handle(CreateRoomTypeRequest request, CancellationToken cancellationToken)
+    public async Task<IResponse> Handle(CreateRoomTypeRequest request, CancellationToken cancellationToken)
     {
-        var invalidResponse = new CommandResponse
+        var invalidResponse = new Response
         (
             message: CommandResource.COMMAND_INVALID_MESSAGE,
             statusCode: HttpStatusCode.BadRequest, 
@@ -41,7 +40,7 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
 
         if(await _unitOfWork.RoomTypeRepository.ExistsNameAsync(request.Name))
         {
-            return new CommandResponse
+            return new Response
             (
                 message: string.Format(CommandResource.NAME_EXISTS_MESSAGE, request.Name),
                 statusCode: HttpStatusCode.BadRequest, 
@@ -52,11 +51,11 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
 
         await _unitOfWork.RoomTypeRepository.CreateAsync(roomType);
 
-        return new CommandResponse
+        return new Response
         (
             message: CommandResource.ROOM_TYPE_CREATED_MESSSAGE,
             statusCode: HttpStatusCode.Created, 
-            value:  roomType.ToRoomTypeValue()
+            value:  roomType
         );
     }
 }
