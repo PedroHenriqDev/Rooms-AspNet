@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.ResponseCompression;
 using Rooms.Api.Middlewares;
 
 namespace Rooms.Api.Extensions;
@@ -19,6 +20,16 @@ public static class ServiceCollectionExtension
                       .AllowAnyOrigin()
                       .AllowAnyMethod();
              });
+        });
+    }
+
+    public static void AddGzipResponseCompression(this IServiceCollection services)
+    {
+        services.AddResponseCompression(options => 
+        {
+            options.Providers.Add<GzipCompressionProvider>();
+            options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]{"application/json"});
+            options.EnableForHttps = true;
         });
     }
 }
