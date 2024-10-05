@@ -94,4 +94,13 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
             commandType: CommandType.StoredProcedure
         );
     }
+
+    public async Task<int> CountAsync()
+    {
+        return await _connection.ExecuteScalarAsync<int>
+        (
+            sql: "SP_RoomTypes_Count",
+            commandType: CommandType.StoredProcedure
+        );
+    }
 }

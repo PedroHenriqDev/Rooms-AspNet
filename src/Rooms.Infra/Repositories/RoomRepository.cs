@@ -93,4 +93,13 @@ public sealed class RoomRepository : IRoomRepository
 
         return rowsAffected > 0;
     }
+
+    public async Task<int> CountAsync()
+    {
+        return await _connection.ExecuteScalarAsync<int>
+        (
+            sql: "SP_Rooms_Count",
+            commandType: CommandType.StoredProcedure
+        );
+    }
 }

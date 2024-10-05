@@ -85,4 +85,14 @@ public sealed class SeatRepository : ISeatRepository
 
         return rowsAffected > 0;
     }
+
+    
+    public async Task<int> CountAsync()
+    {
+        return await _connection.ExecuteScalarAsync<int>
+        (
+            sql: "SP_Seats_Count",
+            commandType: CommandType.StoredProcedure
+        );
+    }
 }

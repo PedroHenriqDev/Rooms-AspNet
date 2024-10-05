@@ -89,4 +89,13 @@ public sealed class PersonRepository : IPersonRepository
 
         return rowsAffected > 0;
     }
+
+    public async Task<int> CountAsync()
+    {
+        return await _connection.ExecuteScalarAsync<int>
+        (
+            sql: "SP_Persons_Count",
+            commandType: CommandType.StoredProcedure
+        );
+    }
 }
