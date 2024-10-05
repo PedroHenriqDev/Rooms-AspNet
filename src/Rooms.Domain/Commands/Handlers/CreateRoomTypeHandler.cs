@@ -23,7 +23,7 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
         (
             message: "Room type is invalid.",
             statusCode: HttpStatusCode.BadRequest, 
-            value: request,
+            value: request.Notifications,
             success: false
         );
 

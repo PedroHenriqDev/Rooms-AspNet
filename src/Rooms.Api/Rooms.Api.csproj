@@ -15,4 +15,19 @@
     <ProjectReference Include="..\Rooms.Shared\Rooms.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\ApiMessagesResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiMessagesResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ApiMessagesResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApiMessagesResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
