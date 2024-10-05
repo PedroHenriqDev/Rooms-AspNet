@@ -21,7 +21,7 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
     {
         var invalidResponse = new CommandResponse
         (
-            message: "Room type is invalid.",
+            message: CommandResource.COMMAND_INVALID_MESSAGE,
             statusCode: HttpStatusCode.BadRequest, 
             value: request.Notifications,
             success: false
@@ -43,9 +43,9 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
         {
             return new CommandResponse
             (
-                message: $"This {request.Name} exists.",
+                message: string.Format(CommandResource.NAME_EXISTS_MESSAGE, request.Name),
                 statusCode: HttpStatusCode.BadRequest, 
-                value: request,
+                value: request.Name,
                 success: false
             );
         }
@@ -54,7 +54,7 @@ public class CreateRoomTypeHandler : IRequestHandler<CreateRoomTypeRequest, ICom
 
         return new CommandResponse
         (
-            message: "Room type created.",
+            message: CommandResource.ROOM_TYPE_CREATED_MESSSAGE,
             statusCode: HttpStatusCode.Created, 
             value:  roomType.ToRoomTypeValue()
         );

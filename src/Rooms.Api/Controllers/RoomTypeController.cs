@@ -18,7 +18,9 @@ public class RoomTypeController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<ICommandResponse>> Create([FromBody] CreateRoomTypeRequest request)
+    [ProducesResponseType(typeof(ICommandResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ICommandResponse), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ICommandResponse>> CreateAsync([FromBody] CreateRoomTypeRequest request)
     {
         ICommandResponse response = await _mediator.Send(request);
         return StatusCode((int)response.StatusCode, response);

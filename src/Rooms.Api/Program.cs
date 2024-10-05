@@ -8,7 +8,7 @@ builder.Services.AddLogging();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddInfra(builder.Configuration.GetConnectionString("DefaultConnection"));
-builder.Services.AddDefaultCors();
+builder.Services.AddCors();
 builder.Services.AddGlobalExceptionMiddleware();
 
 WebApplication app = builder.Build();

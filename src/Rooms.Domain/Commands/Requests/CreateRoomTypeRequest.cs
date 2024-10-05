@@ -6,7 +6,18 @@ namespace Rooms.Domain.Commands.Requests;
 
 public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
 {
-    public string Name { get; set;} = string.Empty;
+    public CreateRoomTypeRequest(string name)
+    {
+        Name = name;
+    }
+
+    public CreateRoomTypeRequest()
+    {
+        Name = string.Empty;
+    }
+
+
+    public string Name { get; set;}
 
     public override bool Valid()
     {
