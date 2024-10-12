@@ -1,5 +1,4 @@
 using MediatR;
-using Rooms.App.Mappings;
 using Rooms.App.Pagination;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
@@ -36,6 +35,15 @@ public class RoomTypeService : IRoomTypeService
 
             response.Value = new PagedList<RoomType>(parameters.PageSize, parameters.PageIndex, totalItems, (IEnumerable<RoomType>?)response.Value);
         }
+
+        return response;
+    }
+
+    public async Task<IResponse> GetByIdAsync(Guid id)
+    {
+        IResponse response = await _mediator.Send(new GetRoomTypeByIdRequest(id));
+
+        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
 
         return response;
     }

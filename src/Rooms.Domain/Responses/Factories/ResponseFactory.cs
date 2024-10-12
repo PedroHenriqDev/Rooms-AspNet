@@ -5,8 +5,13 @@ namespace Rooms.Domain.Responses.Factories;
 
 public static class ResponseFactory
 {
-    public static Response Success(string message, object value = null!)
+    public static Response Success(object value, string message = null!)
     {
+        if(message == null) 
+        {
+            message = ResponseResource.SUCCESSFUL_REQUEST_MESSAGE;
+        }
+
         return new Response
         (
             message: message,
@@ -26,7 +31,7 @@ public static class ResponseFactory
         (
            message: message,
            value: value,
-           statusCode: HttpStatusCode.OK,
+           statusCode: HttpStatusCode.NotFound,
            success: false
         );
     }
@@ -42,7 +47,7 @@ public static class ResponseFactory
         (
            message: message,
            value: value,
-           statusCode: HttpStatusCode.OK,
+           statusCode: HttpStatusCode.BadRequest,
            success: false
         );
     }

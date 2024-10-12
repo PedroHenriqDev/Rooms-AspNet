@@ -6,9 +6,11 @@ namespace Rooms.App.Services.Interfaces;
 
 public interface IRoomTypeService
 {
-    Task<IResponse> CreateAsync(CreateRoomTypeRequest request);
-
     Task<IResponse> GetAllAsync(PaginationParameters parameters);
+
+    Task<IResponse> GetByIdAsync(Guid id);
+
+    Task<IResponse> CreateAsync(CreateRoomTypeRequest request);
 
     Task<IResponse> UpdateAsync(UpdateRoomTypeRequest request);
 }

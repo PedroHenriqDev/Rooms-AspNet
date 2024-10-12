@@ -33,6 +33,17 @@ public class RoomTypeController : ControllerBase
         return StatusCode(statusCode: (int)response.StatusCode, value: response);
     }
 
+    [HttpGet]
+    [Route("{id:guid}")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> GetByIdAsync([FromRoute] Guid id) 
+    {
+        IResponse response = await _service.GetByIdAsync(id);
+        return StatusCode(statusCode:  (int)response.StatusCode, value:response);
+    }
+
     [HttpPost]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
