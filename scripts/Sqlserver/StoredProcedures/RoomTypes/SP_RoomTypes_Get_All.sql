@@ -15,5 +15,3 @@ BEGIN
     OFFSET @OffSet ROWS
     FETCH NEXT @Size ROWS ONLY;
 END;
-
-DROP PROC SP_RoomTypes_Get_All

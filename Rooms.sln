@@ -4,30 +4,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0AB3C90F-8EF8-455C-9FF8-132B7011CE23}"
-	ProjectSection(SolutionItems) = preProject
-	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.Api", "src\Rooms.Api\Rooms.Api.csproj", "{5F59B46F-A642-4A02-A2C7-9D8CBEA3F65B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rooms.Api", "src\Rooms.Api\Rooms.Api.csproj", "{5F59B46F-A642-4A02-A2C7-9D8CBEA3F65B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.App", "src\Rooms.App\Rooms.App.csproj", "{F4311940-91D8-4155-8EBD-ADA354AA8232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rooms.App", "src\Rooms.App\Rooms.App.csproj", "{F4311940-91D8-4155-8EBD-ADA354AA8232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.Domain", "src\Rooms.Domain\Rooms.Domain.csproj", "{2AFAA296-4D82-4B40-AF28-5D36DFDFBBD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rooms.Domain", "src\Rooms.Domain\Rooms.Domain.csproj", "{2AFAA296-4D82-4B40-AF28-5D36DFDFBBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.Infra", "src\Rooms.Infra\Rooms.Infra.csproj", "{26F728AF-1C62-4755-9822-9AFF2A60D76B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rooms.Infra", "src\Rooms.Infra\Rooms.Infra.csproj", "{26F728AF-1C62-4755-9822-9AFF2A60D76B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.Shared", "src\Rooms.Shared\Rooms.Shared.csproj", "{506A6BA5-734E-43B0-AF9C-1936CB1B4DB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rooms.Shared", "src\Rooms.Shared\Rooms.Shared.csproj", "{506A6BA5-734E-43B0-AF9C-1936CB1B4DB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C2284E6A-2910-4490-9273-97317A2364F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.UnitTests", "tests\Rooms.UnitTests\Rooms.UnitTests.csproj", "{05EFEAA9-8E98-4960-B80A-09031D7E6F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rooms.UnitTests", "tests\Rooms.UnitTests\Rooms.UnitTests.csproj", "{05EFEAA9-8E98-4960-B80A-09031D7E6F98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5F59B46F-A642-4A02-A2C7-9D8CBEA3F65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -55,6 +50,9 @@ Global
 		{05EFEAA9-8E98-4960-B80A-09031D7E6F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05EFEAA9-8E98-4960-B80A-09031D7E6F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5F59B46F-A642-4A02-A2C7-9D8CBEA3F65B} = {0AB3C90F-8EF8-455C-9FF8-132B7011CE23}
 		{F4311940-91D8-4155-8EBD-ADA354AA8232} = {0AB3C90F-8EF8-455C-9FF8-132B7011CE23}
@@ -62,5 +60,8 @@ Global
 		{26F728AF-1C62-4755-9822-9AFF2A60D76B} = {0AB3C90F-8EF8-455C-9FF8-132B7011CE23}
 		{506A6BA5-734E-43B0-AF9C-1936CB1B4DB8} = {0AB3C90F-8EF8-455C-9FF8-132B7011CE23}
 		{05EFEAA9-8E98-4960-B80A-09031D7E6F98} = {C2284E6A-2910-4490-9273-97317A2364F4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CFD8002-841E-49CD-A460-0C67377FC141}
 	EndGlobalSection
 EndGlobal

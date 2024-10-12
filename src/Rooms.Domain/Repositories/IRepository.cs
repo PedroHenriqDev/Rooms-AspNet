@@ -9,4 +9,5 @@ public interface IRepository<TEntity> where TEntity : Entity
     Task<bool> CreateAsync(TEntity entity);
     Task<bool> UpdateAsync(TEntity entity);
     Task<bool> DeleteAsync(Guid id);
+    Task<int> CountAsync();
 }

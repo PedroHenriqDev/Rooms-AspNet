@@ -9,7 +9,7 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
 {
     private readonly IDbConnection _connection;
 
-    public RoomTypeRepository(IDbConnection connection) 
+    public RoomTypeRepository(IDbConnection connection)
     {
         _connection = connection;
     }
@@ -19,7 +19,7 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
         object param = new
         {
             OffSet = offSet,
-            Size = size 
+            Size = size
         };
 
         return await _connection.QueryAsync<RoomType>(
@@ -31,9 +31,9 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
 
     public async Task<RoomType?> GetByIdAsync(Guid id)
     {
-        return await _connection.QueryFirstOrDefaultAsync(
+        return await _connection.QueryFirstOrDefaultAsync<RoomType>(
             sql: "SP_RoomTypes_Get_By_Id",
-            param: new { Id = id},
+            param: new { Id = id },
             commandType: CommandType.StoredProcedure
         );
     }

@@ -8,5 +8,8 @@ public abstract class RoomTypeCommandRequest :
     Notifiable<Notification>,
     IRequest<IResponse>
 {
-    public abstract bool Valid();
+    public virtual bool Valid()
+    {
+        return IsValid;
+    }
 }

@@ -4,6 +4,7 @@ using Rooms.Shared.Ioc;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDefaultCors();
 builder.Services.AddLogging();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();

@@ -1,22 +1,21 @@
 using Flunt.Validations;
 using Rooms.Domain.Commands.Requests.Abstractions;
 using Rooms.Domain.Validations;
+using System.Text.Json.Serialization;
 
 namespace Rooms.Domain.Commands.Requests;
 
-public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
+public sealed class UpdateRoomTypeRequest : RoomTypeCommandRequest
 {
-    public CreateRoomTypeRequest(string name)
+    public UpdateRoomTypeRequest(string name)
     {
         Name = name;
     }
 
-    public CreateRoomTypeRequest()
-    {
-        Name = string.Empty;
-    }
+    [JsonIgnore]
+    public Guid Id {get; set;}
 
-    public string Name { get; set;}
+    public string Name {get; set;}
 
     public override bool Valid()
     {
@@ -39,6 +38,6 @@ public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
             )
         );
 
-        return IsValid; 
+        return IsValid;
     }
 }

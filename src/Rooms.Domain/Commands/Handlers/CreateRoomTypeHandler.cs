@@ -4,6 +4,7 @@ using Rooms.Domain.Entities;
 using Rooms.Domain.Interfaces;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses;
+using Rooms.Domain.Responses.Factories;
 using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Domain.Commands.Handlers;
@@ -17,45 +18,22 @@ public class CreateRoomTypeHandler : IHandler<CreateRoomTypeRequest>
     }
 
     public async Task<IResponse> Handle(CreateRoomTypeRequest request, CancellationToken cancellationToken)
-    {
-        var invalidResponse = new Response
-        (
-            message: CommandResource.COMMAND_INVALID_MESSAGE,
-            statusCode: HttpStatusCode.BadRequest, 
-            value: request.Notifications,
-            success: false
-        );
-
+    { 
         if(!request.Valid())
-        {
-            return invalidResponse;
-        }
+            return ResponseFactory.BadRequest(request.Notifications);
         
         var roomType = new RoomType(request.Name);
 
         if(!roomType.IsValid)
-        {
-            return invalidResponse;
-        }
+            return ResponseFactory.BadRequest(request.Notifications);
 
         if(await _unitOfWork.RoomTypeRepository.ExistsNameAsync(request.Name))
         {
-            return new Response
-            (
-                message: string.Format(CommandResource.NAME_EXISTS_MESSAGE, request.Name),
-                statusCode: HttpStatusCode.BadRequest, 
-                value: request.Name,
-                success: false
-            );
+            return ResponseFactory.BadRequest(request, string.Format(ResponseResource.NAME_EXISTS_MESSAGE, request.Name));
         }
 
         await _unitOfWork.RoomTypeRepository.CreateAsync(roomType);
 
-        return new Response
-        (
-            message: CommandResource.ROOM_TYPE_CREATED_MESSSAGE,
-            statusCode: HttpStatusCode.Created, 
-            value:  roomType
-        );
+        return ResponseFactory.Success(ResponseResource.ROOM_TYPE_CREATED_MESSSAGE, roomType) ;
     }
 }

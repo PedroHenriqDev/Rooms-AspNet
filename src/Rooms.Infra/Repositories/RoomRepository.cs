@@ -31,7 +31,7 @@ public sealed class RoomRepository : IRoomRepository
 
     public async Task<Room?> GetByIdAsync(Guid id)
     {
-        return await _connection.QueryFirstOrDefaultAsync(
+        return await _connection.QueryFirstOrDefaultAsync<Room>(
             sql: "SP_Rooms_Get_By_Id",
             param: new { Id = id },
             commandType: CommandType.StoredProcedure

@@ -20,7 +20,7 @@ public class ExceptionMiddleware : IMiddleware
         }
         catch(Exception ex)
         {
-            _logger.LogError(ex.StackTrace);
+            _logger.LogError($"{ex.Message} - {ex.StackTrace}");
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 

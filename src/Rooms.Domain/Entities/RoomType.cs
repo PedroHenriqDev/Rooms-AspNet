@@ -1,3 +1,4 @@
+using System.Globalization;
 using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
 using Rooms.Domain.Validations;
@@ -6,6 +7,11 @@ namespace Rooms.Domain.Entities;
 
 public class RoomType : Entity
 {
+    public RoomType()
+    {
+        Name = string.Empty;
+    }
+
     public RoomType(string name) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
         Name = name;
@@ -14,6 +20,11 @@ public class RoomType : Entity
     }
 
     public string Name {get; private set;}
+
+    public void ChangeName(string name)
+    {
+        Name = name;
+    }
 
     public override void Validate()
     {

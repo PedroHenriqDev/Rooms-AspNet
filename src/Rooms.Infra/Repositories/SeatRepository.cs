@@ -85,7 +85,6 @@ public sealed class SeatRepository : ISeatRepository
 
         return rowsAffected > 0;
     }
-
     
     public async Task<int> CountAsync()
     {

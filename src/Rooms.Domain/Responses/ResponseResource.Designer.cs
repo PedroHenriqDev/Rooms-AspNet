@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rooms.Domain.Commands {
+namespace Rooms.Domain.Responses {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Rooms.Domain.Commands {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CommandResource {
+    public class ResponseResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CommandResource() {
+        internal ResponseResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Rooms.Domain.Commands {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rooms.Domain.Commands.CommandResource", typeof(CommandResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rooms.Domain.Responses.ResponseResource", typeof(ResponseResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace Rooms.Domain.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The command is invalid..
+        ///   Looks up a localized string similar to The request is invalid..
         /// </summary>
-        public static string COMMAND_INVALID_MESSAGE {
+        public static string BAD_REQUEST_MESSAGE {
             get {
-                return ResourceManager.GetString("COMMAND_INVALID_MESSAGE", resourceCulture);
+                return ResourceManager.GetString("BAD_REQUEST_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not found {0} in this index..
+        /// </summary>
+        public static string INVALID_INDEX_MESSAGE {
+            get {
+                return ResourceManager.GetString("INVALID_INDEX_MESSAGE", resourceCulture);
             }
         }
         
@@ -79,11 +88,38 @@ namespace Rooms.Domain.Commands {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id {0} not found..
+        /// </summary>
+        public static string NOT_FOUND_ID_MESSAGE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_ID_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not found..
+        /// </summary>
+        public static string NOT_FOUND_MESSAGE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Room type created successfully..
         /// </summary>
         public static string ROOM_TYPE_CREATED_MESSSAGE {
             get {
                 return ResourceManager.GetString("ROOM_TYPE_CREATED_MESSSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful request..
+        /// </summary>
+        public static string SUCCESSFUL_REQUEST_MESSAGE {
+            get {
+                return ResourceManager.GetString("SUCCESSFUL_REQUEST_MESSAGE", resourceCulture);
             }
         }
     }

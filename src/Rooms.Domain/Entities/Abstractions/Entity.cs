@@ -12,8 +12,12 @@ public abstract class Entity : Notifiable<Notification>
         CreatedAt = createdAt;
     }
 
-    public Guid Id { get; private set; }
-    public DateTime CreatedAt {get; private set;}
+    public Entity()
+    {
+    }
+
+    public Guid Id { get; protected set; }
+    public DateTime CreatedAt {get; protected set;}
 
     public abstract void Validate();
 
