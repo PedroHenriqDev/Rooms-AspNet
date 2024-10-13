@@ -3,9 +3,9 @@ using Rooms.Domain.Commands.Requests.Abstractions;
 using Rooms.Domain.Entities.Abstractions;
 using Rooms.Domain.Validations;
 
-namespace Rooms.Domain.Commands.Requests;
+namespace Rooms.Domain.Commands.Requests.RoomTypes;
 
-public class DeleteRoomTypeRequest : RoomTypeCommandRequest
+public class DeleteRoomTypeRequest : CommandRequest
 {
     public DeleteRoomTypeRequest(Guid id)
     {

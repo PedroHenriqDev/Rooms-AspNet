@@ -1,5 +1,5 @@
 using Rooms.App.QueryParameters;
-using Rooms.Domain.Commands.Requests;
+using Rooms.Domain.Commands.Requests.RoomTypes;
 using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.App.Services.Interfaces;

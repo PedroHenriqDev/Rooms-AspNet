@@ -2,9 +2,9 @@ using Flunt.Validations;
 using Rooms.Domain.Commands.Requests.Abstractions;
 using Rooms.Domain.Validations;
 
-namespace Rooms.Domain.Commands.Requests;
+namespace Rooms.Domain.Commands.Requests.RoomTypes;
 
-public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
+public sealed class CreateRoomTypeRequest : CommandRequest
 {
     public CreateRoomTypeRequest(string name)
     {
@@ -16,7 +16,7 @@ public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
         Name = string.Empty;
     }
 
-    public string Name { get; set;}
+    public string Name { get; set; }
 
     public override bool Valid()
     {
@@ -39,6 +39,6 @@ public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
             )
         );
 
-        return IsValid; 
+        return IsValid;
     }
 }

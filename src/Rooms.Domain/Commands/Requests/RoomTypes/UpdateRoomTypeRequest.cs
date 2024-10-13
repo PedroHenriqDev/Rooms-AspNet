@@ -3,9 +3,9 @@ using Rooms.Domain.Commands.Requests.Abstractions;
 using Rooms.Domain.Validations;
 using System.Text.Json.Serialization;
 
-namespace Rooms.Domain.Commands.Requests;
+namespace Rooms.Domain.Commands.Requests.RoomTypes;
 
-public sealed class UpdateRoomTypeRequest : RoomTypeCommandRequest
+public sealed class UpdateRoomTypeRequest : CommandRequest
 {
     public UpdateRoomTypeRequest(string name)
     {
@@ -13,9 +13,9 @@ public sealed class UpdateRoomTypeRequest : RoomTypeCommandRequest
     }
 
     [JsonIgnore]
-    public Guid Id {get; set;}
+    public Guid Id { get; set; }
 
-    public string Name {get; set;}
+    public string Name { get; set; }
 
     public override bool Valid()
     {

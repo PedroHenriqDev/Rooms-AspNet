@@ -4,7 +4,7 @@ using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Domain.Commands.Requests.Abstractions;
 
-public abstract class RoomTypeCommandRequest :
+public abstract class CommandRequest :
     Notifiable<Notification>,
     IRequest<IResponse>
 {

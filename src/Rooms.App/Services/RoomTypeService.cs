@@ -3,7 +3,7 @@ using Rooms.App.Pagination;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
 using Rooms.App.Utils;
-using Rooms.Domain.Commands.Requests;
+using Rooms.Domain.Commands.Requests.RoomTypes;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Queries.Requests;
 using Rooms.Domain.Repositories;

@@ -1,4 +1,4 @@
-﻿using Rooms.Domain.Commands.Requests;
+﻿using Rooms.Domain.Commands.Requests.RoomTypes;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Interfaces;
 using Rooms.Domain.Repositories;
@@ -6,7 +6,7 @@ using Rooms.Domain.Responses;
 using Rooms.Domain.Responses.Factories;
 using Rooms.Domain.Responses.Interfaces;
 
-namespace Rooms.Domain.Commands.Handlers;
+namespace Rooms.Domain.Commands.Handlers.RoomTypes;
 
 public class DeleteRoomTypeHandler : IHandler<DeleteRoomTypeRequest>
 {
@@ -19,11 +19,6 @@ public class DeleteRoomTypeHandler : IHandler<DeleteRoomTypeRequest>
 
     public async Task<IResponse> Handle(DeleteRoomTypeRequest request, CancellationToken cancellationToken)
     {
-        if (!request.IsValid) 
-        {
-            return ResponseFactory.BadRequest(value: request.Notifications);
-        }
-
         if (await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id) is RoomType roomType)
         {
             await _unitOfWork.RoomTypeRepository.DeleteAsync(roomType.Id);
