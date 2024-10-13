@@ -12,11 +12,11 @@ namespace Rooms.Api.Controllers;
 [ApiController]
 [Route("[controller]")]
 [Produces("application/json")]
-public class RoomTypeController : ControllerBase
+public class RoomTypesController : ControllerBase
 {
     private readonly IRoomTypeService _service;
 
-    public RoomTypeController(IRoomTypeService service)
+    public RoomTypesController(IRoomTypeService service)
     {
         _service = service;
     }

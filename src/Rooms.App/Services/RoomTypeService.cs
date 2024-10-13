@@ -25,15 +25,17 @@ public class RoomTypeService : IRoomTypeService
 
     public async Task<IResponse> GetAllAsync(PaginationParameters parameters)
     {
-        int offSet = PaginationUtils.CalculateOffSet(parameters.PageSize, parameters.PageIndex);
+        parameters.Deconstruct(out int pageIndex, out int pageSize);
 
-        IResponse response = await _mediator.Send(new GetRoomTypesRequest(parameters.PageSize, offSet));
+        int offSet = PaginationUtils.CalculateOffSet(pageSize, pageIndex);
+
+        IResponse response = await _mediator.Send(new GetRoomTypesRequest(pageSize, offSet));
 
         if (response.StatusCode == HttpStatusCode.OK)
         {
             int totalItems = await _unitOfWork.RoomTypeRepository.CountAsync();
 
-            response.Value = new PagedList<RoomType>(parameters.PageSize, parameters.PageIndex, totalItems, (IEnumerable<RoomType>?)response.Value);
+            response.Value = new PagedList<RoomType>(pageSize, pageIndex, totalItems, (IEnumerable<RoomType>?)response.Value);
         }
 
         return response;

@@ -24,10 +24,10 @@ public sealed class CreateRoomTypeRequest : RoomTypeCommandRequest
         (
             new Contract<CreateRoomTypeRequest>()
             .Requires()
-            .IsNotNullOrEmpty
+            .IsNotNullOrWhiteSpace
             (
                 Name,
-                nameof(Name),
+                $"{nameof(Name)}",
                 string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .IsLowerOrEqualsThan
