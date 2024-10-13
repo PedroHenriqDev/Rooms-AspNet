@@ -1,4 +1,3 @@
-using System.Net;
 using Rooms.Domain.Commands.Requests;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Interfaces;
@@ -30,9 +29,9 @@ public class UpdateRoomTypeHandler : IHandler<UpdateRoomTypeRequest>
             roomType.ChangeName(request.Name);
             await _unitOfWork.RoomTypeRepository.UpdateAsync(roomType);
 
-            return ResponseFactory.Success(value: roomType);
+            return ResponseFactory.Success(value: roomType, message: ResponseResource.UPDATED_SUCCESSFULLY_MESSAGE);
         }
 
         return ResponseFactory.NotFound(request, string.Format(ResponseResource.NOT_FOUND_ID_MESSAGE, request.Id));
     }
-}
+} 

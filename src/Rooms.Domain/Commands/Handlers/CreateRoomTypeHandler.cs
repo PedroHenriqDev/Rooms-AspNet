@@ -34,6 +34,6 @@ public class CreateRoomTypeHandler : IHandler<CreateRoomTypeRequest>
 
         await _unitOfWork.RoomTypeRepository.CreateAsync(roomType);
 
-        return ResponseFactory.Success(value: roomType) ;
+        return ResponseFactory.Created(value: roomType, message: ResponseResource.CREATED_SUCCESSFULLY_MESSAGE);
     }
 }

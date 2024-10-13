@@ -13,4 +13,6 @@ public interface IRoomTypeService
     Task<IResponse> CreateAsync(CreateRoomTypeRequest request);
 
     Task<IResponse> UpdateAsync(UpdateRoomTypeRequest request);
+
+    Task<IResponse> DeleteAsync(Guid id);
 }

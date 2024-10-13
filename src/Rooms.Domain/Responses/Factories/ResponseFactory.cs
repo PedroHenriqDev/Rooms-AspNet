@@ -20,6 +20,21 @@ public static class ResponseFactory
         );
     }
 
+    public static Response Created(object value, string message = null!)
+    {
+        if (message == null)
+        {
+            message = ResponseResource.SUCCESSFUL_REQUEST_MESSAGE;
+        }
+
+        return new Response
+        (
+            message: message,
+            value: value,
+            statusCode: HttpStatusCode.Created
+        );
+    }
+
     public static Response NotFound(object value, string message = null!)
     {
         if (message is null)

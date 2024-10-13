@@ -55,13 +55,24 @@ public class RoomTypeController : ControllerBase
 
     [HttpPut]
     [Route("{id:guid}")]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IResponse>> UpdateAsync([FromRoute] Guid id, [FromBody] UpdateRoomTypeRequest request) 
     {
         request.Id = id;
         IResponse response = await _service.UpdateAsync(request);
+        return StatusCode(statusCode: (int)response.StatusCode, value: response);
+    }
+
+    [HttpDelete]
+    [Route("{id:guid}")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> UpdateAsync([FromRoute] Guid id) 
+    {
+        IResponse response = await _service.DeleteAsync(id);
         return StatusCode(statusCode: (int)response.StatusCode, value: response);
     }
 }

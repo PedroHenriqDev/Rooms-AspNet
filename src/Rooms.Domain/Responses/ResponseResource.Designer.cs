@@ -70,6 +70,24 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully created..
+        /// </summary>
+        public static string CREATED_SUCCESSFULLY_MESSAGE {
+            get {
+                return ResourceManager.GetString("CREATED_SUCCESSFULLY_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted..
+        /// </summary>
+        public static string DELETED_SUCCESSFULLY_MESSAGE {
+            get {
+                return ResourceManager.GetString("DELETED_SUCCESSFULLY_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not found {0} in this index..
         /// </summary>
         public static string INVALID_INDEX_MESSAGE {
@@ -120,6 +138,15 @@ namespace Rooms.Domain.Responses {
         public static string SUCCESSFUL_REQUEST_MESSAGE {
             get {
                 return ResourceManager.GetString("SUCCESSFUL_REQUEST_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated..
+        /// </summary>
+        public static string UPDATED_SUCCESSFULLY_MESSAGE {
+            get {
+                return ResourceManager.GetString("UPDATED_SUCCESSFULLY_MESSAGE", resourceCulture);
             }
         }
     }

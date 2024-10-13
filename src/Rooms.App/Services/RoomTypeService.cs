@@ -65,4 +65,13 @@ public class RoomTypeService : IRoomTypeService
 
         return response;
     }
+
+    public async Task<IResponse> DeleteAsync(Guid id)
+    {
+        IResponse response = await _mediator.Send(new DeleteRoomTypeRequest(id));
+
+        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+
+        return response;
+    }
 }
