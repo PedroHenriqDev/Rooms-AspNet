@@ -7,7 +7,17 @@ public static class ResponseUtils
     {
         if (value is RoomType roomType)
         {
-            value = roomType.ToRoomTypeValue();
+            value = roomType.ToRoomTypeDto();
+        }
+
+        return value;
+    }
+
+    public static object? ConvertValueToPersonDto(object? value)
+    {
+        if (value is Person person)
+        {
+            value = person.ToPersonDto();
         }
 
         return value;

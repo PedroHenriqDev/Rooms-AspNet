@@ -9,6 +9,8 @@ public class RoomType : Entity
     public RoomType()
     {
         Name = string.Empty;
+
+        Validate();
     }
 
     public RoomType(string name) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)

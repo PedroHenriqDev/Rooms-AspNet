@@ -9,6 +9,7 @@ public static class AppDependencies
     public static IServiceCollection AddAppServices(this IServiceCollection services)
     {
         services.AddScoped<IRoomTypeService, RoomTypeService>();
+        services.AddScoped<IPersonService, PersonService>();
         return services;
     }
 }

@@ -43,18 +43,18 @@ public class Age : Notifiable<Notification>
     }
 
     public DateTime BirthDate { get; private set; }
-    public long YearsOld {get; private set;}
+    public short YearsOld {get; private set;}
     public EAgeGroup AgeGroup {get; private set;}
 
     public void DefineYearsOld()
     {
         DateTime today = DateTime.Now;
-        long yearsOld = today.Year - BirthDate.Year;
+        int yearsOld = today.Year - BirthDate.Year;
 
         if(BirthDate.Date > today.Date)
             yearsOld--;
 
-        YearsOld = yearsOld;
+        YearsOld = (short)yearsOld;
     }
 
     public void DefineAgeGroup()

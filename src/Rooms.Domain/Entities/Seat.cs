@@ -8,6 +8,13 @@ public class Seat : Entity
 {
     private const short EQUAL_NAME_LENGTH = 3;
 
+    protected Seat()
+    {
+        Name = string.Empty;
+
+        Validate();
+    }
+
     public Seat(string name, Guid roomId) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
         Name = name;

@@ -127,13 +127,13 @@
     <value>Successfully deleted.</value>
   </data>
   <data name="INVALID_INDEX_MESSAGE" xml:space="preserve">
-    <value>Not found {0} in this index.</value>
+    <value>Not found '{0}' in this index.</value>
   </data>
   <data name="NAME_EXISTS_MESSAGE" xml:space="preserve">
-    <value>The name {0} already exists.</value>
+    <value>The name '{0}' already exists.</value>
   </data>
   <data name="NOT_FOUND_ID_MESSAGE" xml:space="preserve">
-    <value>Id {0} not found.</value>
+    <value>Id '{0}' not found.</value>
   </data>
   <data name="NOT_FOUND_MESSAGE" xml:space="preserve">
     <value>Not found.</value>

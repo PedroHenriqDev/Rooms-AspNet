@@ -88,7 +88,7 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not found {0} in this index..
+        ///   Looks up a localized string similar to Not found &apos;{0}&apos; in this index..
         /// </summary>
         public static string INVALID_INDEX_MESSAGE {
             get {
@@ -97,7 +97,7 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name {0} already exists..
+        ///   Looks up a localized string similar to The name &apos;{0}&apos; already exists..
         /// </summary>
         public static string NAME_EXISTS_MESSAGE {
             get {
@@ -106,7 +106,7 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Id {0} not found..
+        ///   Looks up a localized string similar to Id &apos;{0}&apos; not found..
         /// </summary>
         public static string NOT_FOUND_ID_MESSAGE {
             get {

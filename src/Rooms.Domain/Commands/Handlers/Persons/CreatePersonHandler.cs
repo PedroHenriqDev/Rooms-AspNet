@@ -25,6 +25,9 @@ public sealed class CreatePersonHandler : IHandler<CreatePersonRequest>
         if (!person.IsValid) 
             return ResponseFactory.BadRequest(person.Notifications);
 
+        if(await _unitOfWork.SeatRepository.GetByIdAsync(person.SeatId) == null)
+            return ResponseFactory.NotFound(person, string.Format(ResponseResource.NOT_FOUND_ID_MESSAGE, request.SeatId));
+
         await _unitOfWork.PersonRepository.CreateAsync(person);
         return ResponseFactory.Created(person, ResponseResource.CREATED_SUCCESSFULLY_MESSAGE);
     }
