@@ -2,6 +2,7 @@ using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
 using Rooms.Domain.Validations;
 using Rooms.Domain.ValueObjects;
+using System.Diagnostics;
 
 namespace Rooms.Domain.Entities;
 

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Rooms.Api.Extensions;
+using Rooms.App.Dto;
 using Rooms.App.Pagination.Interfaces;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
@@ -28,7 +29,7 @@ public class RoomTypesController : ControllerBase
     {
         IResponse response = await _service.GetAllAsync(parameters);
 
-        HttpContext.AddPaginationHeader((IPagedList<RoomType>?)response.Value);
+        HttpContext.AddPaginationHeader((IPagedList<RoomTypeDto>?)response.Value);
 
         return StatusCode(statusCode: (int)response.StatusCode, value: response);
     }

@@ -7,7 +7,7 @@ public class PaginationParameters
 
     public void Deconstruct(out int pageIndex, out int pageSize) 
     {
-        pageSize = PageSize >= 1 ? PageSize : 10;
+        pageSize = PageSize >= 1 ? PageSize : int.MaxValue;
         pageIndex = PageIndex >= 1 ? PageIndex : 1;
     }
 }

@@ -1,6 +1,4 @@
-﻿using Rooms.Domain.ValueObjects;
-
-namespace Rooms.App.Dto
+﻿namespace Rooms.App.Dto
 {
     public class PersonDto
     {

@@ -1,4 +1,6 @@
 using MediatR;
+using Rooms.App.Dto;
+using Rooms.App.Mappings;
 using Rooms.App.Pagination;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
@@ -8,6 +10,7 @@ using Rooms.Domain.Entities;
 using Rooms.Domain.Queries.Requests;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses.Interfaces;
+using System.Linq;
 using System.Net;
 
 namespace Rooms.App.Services;
@@ -35,7 +38,9 @@ public class RoomTypeService : IRoomTypeService
         {
             int totalItems = await _unitOfWork.RoomTypeRepository.CountAsync();
 
-            response.Value = new PagedList<RoomType>(pageSize, pageIndex, totalItems, (IEnumerable<RoomType>?)response.Value);
+            var roomTypes = (IEnumerable<RoomType>?)response.Value;
+
+            response.Value = new PagedList<RoomTypeDto>(pageSize, pageIndex, totalItems, roomTypes?.Select(rt => rt.ToRoomTypeDto()));
         }
 
         return response;

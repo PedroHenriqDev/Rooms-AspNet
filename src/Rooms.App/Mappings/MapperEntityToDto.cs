@@ -7,7 +7,7 @@ public static class MapperEntityToDto
 {
     public static RoomTypeDto ToRoomTypeDto(this RoomType roomType)
     {
-        return new RoomTypeDto(id: roomType.Id, name: roomType.Name);
+        return new RoomTypeDto(id: roomType.Id, name: roomType.Name, createdAt: roomType.CreatedAt);
     }
 
     public static PersonDto ToPersonDto(this Person person) 

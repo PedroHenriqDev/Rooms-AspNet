@@ -1,8 +1,8 @@
 using System.Net;
 using Flunt.Notifications;
 using Moq;
-using Rooms.Domain.Commands.Handlers;
-using Rooms.Domain.Commands.Requests;
+using Rooms.Domain.Commands.Handlers.RoomTypes;
+using Rooms.Domain.Commands.Requests.RoomTypes;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses.Interfaces;

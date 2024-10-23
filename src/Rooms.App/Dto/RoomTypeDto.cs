@@ -2,10 +2,11 @@ namespace Rooms.App.Dto;
 
 public class RoomTypeDto
 {
-    public RoomTypeDto(Guid id, string name)
+    public RoomTypeDto(Guid id, string name, DateTime createdAt)
     {
         Id = id;
         Name = name;
+        CreatedAt = createdAt;
     }
 
     public RoomTypeDto()
@@ -15,4 +16,5 @@ public class RoomTypeDto
 
     public Guid Id {get; set;}
     public string Name {get; set;}
+    public DateTime CreatedAt { get; set; }
 }
