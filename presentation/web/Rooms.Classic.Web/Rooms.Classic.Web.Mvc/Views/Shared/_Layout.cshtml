@@ -4,9 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Rooms </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark navbar-custom">
@@ -19,7 +16,7 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="navbar-text nav-link mt-1">
-                         @Html.ActionLink("Create", "Create", "RoomTypes", null, new { @class = "nav-link small" }) 
+                        @Html.ActionLink("Create", "Create", "RoomTypes", null, new { @class = "nav-link small" })
                     </li>
                 </ul>
             </div>
@@ -37,8 +34,12 @@
     @Scripts.Render("~/bundles/vue")
     @Scripts.Render("~/bundles/axios")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/vue/layout.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="~/Scripts/vue/layout.js"></script>
+    <link rel="stylesheet" href="~/Content/Site.css" />
     @RenderSection("scripts", required: false)
 </body>
 </html>

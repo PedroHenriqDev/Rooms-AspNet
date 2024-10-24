@@ -1,54 +1,44 @@
 ﻿<div id="app">
-    <div class="center-content mt-4">
-        <div class="card shadow-lg">
-            <div class="card">
-                <div class="text-center">
-                    <h3 class="mt-2"> Create a Room Type <i class="ml-3 bi bi-plus-circle"></i> </h3>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <div class="center-content mt-4">
+                <div class="w-25">
+                    <div>
+                        <h3 class="mt-2 mb-4">Create a Room Type</h3>
+                        <hr />
+                        <form class="form-group">
+                            <div class="form-horizontal">
+                                <div class="text-center">
+                                    <div>
+                                        <label class="text-center">Name:</label>
+                                        <div>
+                                            <input v-model="name" class="form-control rounded-input" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li v-if="haveErrors" v-for="e in errors"></li>
+                                    </ul>
+                                </div>
+                                <hr />
+                                <div class="text-center">
+                                    <a title="Back" class="btn btn-primary" href="@Url.Action("Index", "RoomTypes")">
+                                        <i class="bi bi-caret-left"></i>
+                                    </a>
+                                    <button type="button" title="Create" v-on:click="register()" class="btn btn-success">
+                                        <i class="bi bi-plus-circle"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <form class="form-group">
-                    <label class="custom-control-label"> Name: </label>
-                    <input class="form-control" type="text" />
-                    <div class="text-center">
-                        <ul>
-                            <li v-for="e in errors"></li>
-                        </ul>
-                    </div>
-                    <div class="text-center">
-                        <a title="Back" class="btn btn-primary" href="@Url.Action("Index", "RoomTypes")"> <i class="bi bi-caret-left"></i> </a>
-                        <button title="Create" v-on:click="create()" class="btn btn-success" > <i class="bi bi-plus-lg"></i> </button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
 </div>
 
 @section Scripts{
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                name: '',
-                errors: [],
-                haveErrors: false
-            },
-            methods: {
-                register() {
-                    axios.post("https://localhost:7055/RoomTypes", { name: this.name })
-                        .then(response => {
-                        })
-                        .catch(error => {
-                            if (error.status === 400) {
-                                haveErrors = true;
-                                errors = error.data.value;
-                            }
-                            else {
-                                console.log(error);
-                            }
-                        });
-                }
-            }
-        });
-    </script>  
-}
-
+    <script src="~/Scripts/vue/create.js"></script>
+    }

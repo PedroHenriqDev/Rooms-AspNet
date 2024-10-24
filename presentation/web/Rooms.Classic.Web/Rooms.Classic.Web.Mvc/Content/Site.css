@@ -49,12 +49,18 @@ li{
     color: white;
 }
 
-    .navbar-custom .nav-link {
+.navbar-custom .nav-link {
         color: white;
-    }
+}
 
 .navbar-custom .nav-link:hover {
     color: #d4bfff;
+}
+
+input {
+    border-radius: 20px !important;
+    height: 30px !important;
+    width: 280px !important;
 }
 
 .center-content{
