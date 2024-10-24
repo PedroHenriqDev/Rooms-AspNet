@@ -5,7 +5,6 @@ using Rooms.App.Pagination.Interfaces;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
 using Rooms.Domain.Commands.Requests.RoomTypes;
-using Rooms.Domain.Entities;
 using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Api.Controllers;

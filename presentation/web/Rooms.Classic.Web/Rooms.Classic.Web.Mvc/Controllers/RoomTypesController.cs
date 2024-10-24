@@ -15,9 +15,15 @@ namespace Rooms.Classic.Web.Mvc.Controllers
             _service = service;
         }
 
-        public async Task<ActionResult> Index()
+        [HttpGet]
+        public ActionResult Index()
         {
-            IEnumerable<RoomTypeViewModel> roomTypes = await _service.GetAllAsync();
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
             return View();
         }
     }

@@ -1,1 +1,47 @@
-﻿<h1>Test</h1>
+﻿<div id="app">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h3 class="text-center mb-5"> Room Types <i class="bi bi-table"></i> </h3>
+            <div class="center-content">
+                <table class="table table-hover col-md-8">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Created At
+                            </th>
+                            <th>
+                                Operations
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="r in roomTypes">
+                            <td>
+                                {{ r.name }}
+                            </td>
+                            <td>
+                                {{ r.createdAt }}
+                            </td>
+                            <td>
+                                <a class="btn btn-danger">
+                                    <i class="bi bi-trash2"></i>
+                                </a>
+                                <a class="btn btn-warning">
+                                    <i class="bi bi-pen"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/vue/index.js"></script>
+}

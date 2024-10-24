@@ -18,3 +18,47 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.card{
+    border-radius: 20px;
+}
+
+.btn{
+    border-radius: 15px;
+}
+table {
+    border-radius: 20px;
+}
+
+body {
+    background-color: white;
+    color: black;
+    font-size: 15px;
+}
+
+body-content {
+    color: white;
+}
+
+li{
+    color: white;
+}
+
+.navbar-custom {
+    background-color: #101010;
+    color: white;
+}
+
+    .navbar-custom .nav-link {
+        color: white;
+    }
+
+.navbar-custom .nav-link:hover {
+    color: #d4bfff;
+}
+
+.center-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

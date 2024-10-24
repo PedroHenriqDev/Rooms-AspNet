@@ -1,0 +1,54 @@
+﻿<div id="app">
+    <div class="center-content mt-4">
+        <div class="card shadow-lg">
+            <div class="card">
+                <div class="text-center">
+                    <h3 class="mt-2"> Create a Room Type <i class="ml-3 bi bi-plus-circle"></i> </h3>
+                </div>
+                <form class="form-group">
+                    <label class="custom-control-label"> Name: </label>
+                    <input class="form-control" type="text" />
+                    <div class="text-center">
+                        <ul>
+                            <li v-for="e in errors"></li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <a title="Back" class="btn btn-primary" href="@Url.Action("Index", "RoomTypes")"> <i class="bi bi-caret-left"></i> </a>
+                        <button title="Create" v-on:click="create()" class="btn btn-success" > <i class="bi bi-plus-lg"></i> </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                errors: [],
+                haveErrors: false
+            },
+            methods: {
+                register() {
+                    axios.post("https://localhost:7055/RoomTypes", { name: this.name })
+                        .then(response => {
+                        })
+                        .catch(error => {
+                            if (error.status === 400) {
+                                haveErrors = true;
+                                errors = error.data.value;
+                            }
+                            else {
+                                console.log(error);
+                            }
+                        });
+                }
+            }
+        });
+    </script>  
+}
+

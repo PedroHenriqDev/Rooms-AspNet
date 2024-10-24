@@ -2,12 +2,9 @@
 using Rooms.Classic.Web.Mvc.Responses;
 using Rooms.Classic.Web.Mvc.Services.Interfaces;
 using Rooms.Classic.Web.Mvc.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace Rooms.Classic.Web.Mvc.Services
 {
