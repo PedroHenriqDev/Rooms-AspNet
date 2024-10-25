@@ -16,9 +16,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div v-if="haveErrors" div  class="mt-4 mb-4">
                                     <ul>
-                                        <li v-if="haveErrors" v-for="e in errors"></li>
+                                        <li  class="text-danger" v-for="e in errors"> {{e}} </li>
                                     </ul>
                                 </div>
                                 <hr />
@@ -41,4 +41,4 @@
 
 @section Scripts{
     <script src="~/Scripts/vue/create.js"></script>
-    }
+}

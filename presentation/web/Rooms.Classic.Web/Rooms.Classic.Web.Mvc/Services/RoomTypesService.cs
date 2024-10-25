@@ -2,6 +2,7 @@
 using Rooms.Classic.Web.Mvc.Responses;
 using Rooms.Classic.Web.Mvc.Services.Interfaces;
 using Rooms.Classic.Web.Mvc.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Rooms.Classic.Web.Mvc.Services
     public class RoomTypesService : IRoomTypeService
     {
         private readonly HttpClient _httpClient;
-        private const string API_URL = "roomtypes";
+        private const string API_URL = "roomtypes/";
 
         public RoomTypesService(HttpClient httpClient)
         {

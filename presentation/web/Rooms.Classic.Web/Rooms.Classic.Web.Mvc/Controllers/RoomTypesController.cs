@@ -1,7 +1,5 @@
 ﻿using Rooms.Classic.Web.Mvc.Services.Interfaces;
-using Rooms.Classic.Web.Mvc.ViewModels;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 using System.Web.Mvc;
 
 namespace Rooms.Classic.Web.Mvc.Controllers
@@ -25,6 +23,13 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public ActionResult Delete(Guid id)
+        {
+            return RedirectToAction("Index");
         }
     }
 }

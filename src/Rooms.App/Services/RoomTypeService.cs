@@ -10,7 +10,6 @@ using Rooms.Domain.Entities;
 using Rooms.Domain.Queries.Requests;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses.Interfaces;
-using System.Linq;
 using System.Net;
 
 namespace Rooms.App.Services;

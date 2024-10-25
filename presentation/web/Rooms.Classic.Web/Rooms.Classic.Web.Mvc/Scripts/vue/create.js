@@ -13,14 +13,26 @@
                     window.location.href = "/RoomTypes/Index";
                 })
                 .catch(error => {
-                    if (error.status === 400) {
-                        haveErrors = true;
-                        errors = error.data.value;
+                    console.log(error.response.data);
+                    if (error.response.status === 400) {
+                        this.haveErrors = true;
+                        this.errors = this.getUniqueKeysErrors(error.response.data.value);
                     }
                     else {
                         console.log(error);
                     }
                 });
+        },
+        getUniqueKeysErrors(errors) {
+            let uniqueErrors = [];
+
+            errors.forEach(err => {
+                if (!uniqueErrors[err.key]) {
+                    uniqueErrors[err.key] = err.message;
+                }
+            });
+
+            return Object.values(uniqueErrors);
         }
     }
 });
