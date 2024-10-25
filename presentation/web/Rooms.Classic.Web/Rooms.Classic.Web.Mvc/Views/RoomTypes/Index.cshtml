@@ -1,5 +1,8 @@
 ﻿<div id="app">
-    <div class="card shadow-lg">
+    <div v-if="isLoading" class="loading-overlay">
+        <loader></loader>
+    </div>
+    <div v-if="!isLoading" class="card shadow-lg">
         <div class="card-body">
             <h3 class="text-center mb-5"> Room Types <i class="bi bi-table"></i> </h3>
             <div class="center-content">
@@ -43,5 +46,6 @@
 
 
 @section Scripts{
+    <script src="~/Scripts/vue/components/loader.js"></script>
     <script src="~/Scripts/vue/index.js"></script>
 }

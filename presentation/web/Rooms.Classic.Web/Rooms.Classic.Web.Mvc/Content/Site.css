@@ -63,6 +63,25 @@ input {
     width: 280px !important;
 }
 
+.loading-overlay .spinner-border {
+    width: 5rem;
+    height: 5rem;
+    border-width: 0.4rem;
+    color: black;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
 .center-content{
     display: flex;
     justify-content: center;

@@ -24,5 +24,11 @@ namespace Rooms.Classic.Web.Mvc.Services
            HttpResponseMessage response = await _httpClient.GetAsync(API_URL);
            return JsonConvert.DeserializeObject<Response<IEnumerable<RoomTypeViewModel>>>(await response.Content.ReadAsStringAsync()).Value;
         }
+
+        public async Task<RoomTypeViewModel> GetByIdAsync(Guid id) 
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(API_URL + id);
+            return JsonConvert.DeserializeObject<Response<RoomTypeViewModel>>(await response.Content.ReadAsStringAsync()).Value;
+        }
     }
 }

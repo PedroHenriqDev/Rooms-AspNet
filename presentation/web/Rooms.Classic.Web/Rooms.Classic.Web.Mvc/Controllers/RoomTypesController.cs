@@ -1,5 +1,6 @@
 ﻿using Rooms.Classic.Web.Mvc.Services.Interfaces;
 using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Rooms.Classic.Web.Mvc.Controllers
@@ -27,9 +28,9 @@ namespace Rooms.Classic.Web.Mvc.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
-        public ActionResult Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
-            return RedirectToAction("Index");
+            return View(await _service.GetByIdAsync(id));
         }
     }
 }
