@@ -1,0 +1,84 @@
+﻿@using Rooms.Classic.Web.App.ViewModels;
+
+@model RoomTypeViewModel
+
+<div id="app">
+    <div v-if="isLoading">
+        <div class="loading-overlay">
+            <loader></loader>
+        </div>
+    </div>
+    <div v-if="!isLoading">
+        <div class="align-content-center">
+            <div class="center-content">
+                <div class="card shadow-lg mt-4">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="text-center">
+                                <h3 class="text-danger mb-4"> <i class="bi bi-trash2-fill"></i> </h3>
+                                <dl>
+                                    <dt> Id </dt>
+                                    <dd class="form-control rounded-pill">
+                                        {{ id }}
+                                    </dd>
+                                    <dt> Name </dt>
+                                    <dd class="form-control rounded-pill">
+                                        {{ name }}
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="text-center">
+                                <a href="~/RoomTypes/Index" class="btn btn-primary"> Back </a>
+                                <button v-on:click="deleteRoomType()" class="btn btn-danger"> Delete </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/vue/components/loader.js"></script>
+    <script>
+         Vue.use(Toasted);
+
+          var app = new Vue({
+              el: '#app',
+              data: {
+                  name: '',
+                  id: '',
+                  isLoading: false
+              },
+              created() {
+                  this.loadRoomType();
+              },
+              methods: {
+                  loadRoomType() {
+                      this.id= '@Model.Id';
+                      this.name = '@Model.Name';
+                  },
+                  deleteRoomType() {
+                      this.isLoading = true;
+                      axios.delete(`https://localhost:7055/RoomTypes/${this.id}`)
+                      .then(response => {
+                          if (response.data.success)
+                              this.setNotification();
+
+                          window.location.href = "@Url.Action("Index", "RoomTypes")";
+                      }).catch(error => {
+                          console.log(error);
+                          this.notifyInvalid();
+                      }).finally(() => this.isLoading = false);
+                  },
+                  notifyInvalid() {
+                      this.$toasted.error("Error in delete");
+                  },
+                  setNotification() {
+                      localStorage.setItem("success", `Room type ${this.name} deleted`);
+                  }
+              }
+          });
+    </script>
+}

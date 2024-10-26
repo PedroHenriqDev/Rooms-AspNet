@@ -40,6 +40,9 @@ var app = new Vue({
         },
         formatDate(date) {
             return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        },
+        redirectToDelete(roomType) {
+            window.location.href = `/roomtypes/delete/${roomType.id}`;
         }
     }
 });

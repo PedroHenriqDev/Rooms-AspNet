@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.Classic.Web.Mvc", "Rooms.Classic.Web.Mvc\Rooms.Classic.Web.Mvc.csproj", "{DE7D2D97-8A5B-45FA-B2EF-D6BA97A98699}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rooms.Classic.Web.App", "Rooms.Classic.Web.App\Rooms.Classic.Web.App.csproj", "{9504C996-44DC-4BB3-897B-5BA08ED967BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DE7D2D97-8A5B-45FA-B2EF-D6BA97A98699}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE7D2D97-8A5B-45FA-B2EF-D6BA97A98699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE7D2D97-8A5B-45FA-B2EF-D6BA97A98699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9504C996-44DC-4BB3-897B-5BA08ED967BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9504C996-44DC-4BB3-897B-5BA08ED967BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9504C996-44DC-4BB3-897B-5BA08ED967BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9504C996-44DC-4BB3-897B-5BA08ED967BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

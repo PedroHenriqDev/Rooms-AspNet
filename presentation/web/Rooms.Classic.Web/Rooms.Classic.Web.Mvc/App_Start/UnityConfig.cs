@@ -1,5 +1,5 @@
-using Rooms.Classic.Web.Mvc.Services;
-using Rooms.Classic.Web.Mvc.Services.Interfaces;
+using Rooms.Classic.Web.App.Services;
+using Rooms.Classic.Web.App.Services.Interfaces;
 using System;
 using System.Configuration;
 using System.Net.Http;

@@ -1,7 +1,9 @@
-﻿using Rooms.Classic.Web.Mvc.Services.Interfaces;
+﻿using Rooms.Classic.Web.Mvc.Responses;
+using Rooms.Classic.Web.App.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Rooms.Classic.Web.App.ViewModels;
 
 namespace Rooms.Classic.Web.Mvc.Controllers
 {
@@ -30,7 +32,14 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         [Route("{id:guid}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            return View(await _service.GetByIdAsync(id));
+            ApiResponse<RoomTypeViewModel> response = await _service.GetByIdAsync(id);
+
+            if (response.HttpResponse.IsSuccessStatusCode && response.Value != null)
+            {
+                return View(response.Value);
+            }
+
+            return RedirectToAction("NotFound", "Shared", new { model = "Room Type"});
         }
     }
 }

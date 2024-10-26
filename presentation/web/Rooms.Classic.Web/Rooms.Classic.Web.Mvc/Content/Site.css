@@ -45,6 +45,7 @@ li{
 }
 
 .navbar-custom {
+    border-radius: 0 0 15px 15px;
     background-color: #101010;
     color: white;
 }

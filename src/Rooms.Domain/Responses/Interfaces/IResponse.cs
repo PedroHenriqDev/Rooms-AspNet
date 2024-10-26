@@ -4,7 +4,6 @@ namespace Rooms.Domain.Responses.Interfaces;
 
 public interface IResponse
 {
-        
     bool Success {get; set;}
     string Message {get; set;}
     HttpStatusCode StatusCode {get; set;}

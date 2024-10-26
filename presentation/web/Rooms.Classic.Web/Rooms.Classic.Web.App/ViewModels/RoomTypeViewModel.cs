@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rooms.Classic.Web.Mvc.ViewModels
+namespace Rooms.Classic.Web.App.ViewModels
 {
     public class RoomTypeViewModel
     {

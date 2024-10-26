@@ -29,9 +29,9 @@
                                 {{ r.createdAt }}
                             </td>
                             <td>
-                                <a class="btn btn-danger">
+                                <button type="button" v-on:click="redirectToDelete(r)" class="btn btn-danger">
                                     <i class="bi bi-trash2"></i>
-                                </a>
+                                </button>
                                 <a class="btn btn-warning">
                                     <i class="bi bi-pen"></i>
                                 </a>
@@ -43,7 +43,6 @@
         </div>
     </div>
 </div>
-
 
 @section Scripts{
     <script src="~/Scripts/vue/components/loader.js"></script>
