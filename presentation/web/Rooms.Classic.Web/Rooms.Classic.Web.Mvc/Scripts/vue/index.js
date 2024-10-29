@@ -43,6 +43,9 @@ var app = new Vue({
         },
         redirectToDelete(roomType) {
             window.location.href = `/roomtypes/delete/${roomType.id}`;
+        },
+        redirectToEdit(roomType) {
+            window.location.href = `/roomtypes/edit/${roomType.id}`;
         }
     }
 });

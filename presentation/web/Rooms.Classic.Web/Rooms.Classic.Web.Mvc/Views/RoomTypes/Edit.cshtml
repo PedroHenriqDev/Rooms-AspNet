@@ -1,0 +1,69 @@
+﻿@using Rooms.Classic.Web.App.ViewModels;
+
+@model RoomTypeViewModel
+
+<div id="app">
+    <div v-if="isLoading" class="loading-overlay">
+        <loader></loader>
+    </div>
+    <div v-else class="align-items-center">
+        <div class="center-content">
+            <div class="form-group">
+                <div class="form-horizontal">
+                    <div class="card shadow-lg">
+                        <div class="text-center">
+                            <h4 class="mb-3 mt-4 text-warning"> <i class="bi bi-pen-fill"></i> </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <label> Name </label>
+                                <div>
+                                    <input class="form-control" type="text" v-model="roomType.name" />
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="@Url.Action("Index", "RoomTypes")" class="btn btn-primary"> Back </a>
+                                    <button v-on:click="edit()" class="btn btn-warning"> Edit </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/vue/components/loader.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                roomType: { id: '', name: '' },
+                isLoading: false
+            },
+            created() {
+                this.loadRoomType();
+            },
+            methods: {
+                loadRoomType() {
+                    this.roomType.id = '@Model.Id';
+                    this.roomType.name = '@Model.Name';
+                },
+                edit() {
+                    this.isLoading = true;
+                    axios.put(`https://localhost:7055/RoomTypes/${this.roomType.id}`, { name: this.roomType.name })
+                        .then(response => {
+                            localStorage.setItem('success', `Room type ${this.roomType.name} updated.`);
+                            window.location.href = '@Url.Action("Index", "RoomTypes")';
+                        }).catch(error =>{
+                            console.log(error);
+                        }).finally(() => {
+                            this.isLoading = false;
+                        });
+                }
+            }
+        });
+    </script>
+} 

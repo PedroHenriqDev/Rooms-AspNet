@@ -28,10 +28,6 @@ public class UpdateRoomTypeHandler : IHandler<UpdateRoomTypeRequest>
             return ResponseFactory.NotFound(request, string.Format(ResponseResource.NOT_FOUND_ID_MESSAGE, request.Id));
 
         roomType.ChangeName(request.Name);
-        roomType.Validate();
-
-        if(!roomType.IsValid)
-            return ResponseFactory.BadRequest(request.Notifications);
 
         await _unitOfWork.RoomTypeRepository.UpdateAsync(roomType);
 

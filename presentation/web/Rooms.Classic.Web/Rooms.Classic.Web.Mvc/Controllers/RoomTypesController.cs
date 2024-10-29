@@ -10,7 +10,7 @@ namespace Rooms.Classic.Web.Mvc.Controllers
     public class RoomTypesController : Controller
     {
         private readonly IRoomTypeService _service;
-
+        
         public RoomTypesController(IRoomTypeService service)
         {
             _service = service;
@@ -30,6 +30,20 @@ namespace Rooms.Classic.Web.Mvc.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
+        public async Task<ActionResult> Edit(Guid id)
+        {
+            ApiResponse<RoomTypeViewModel> response = await _service.GetByIdAsync(id);
+
+            if (response.HttpResponse.IsSuccessStatusCode && response.Value != null)
+            {
+                return View(response.Value);
+            }
+
+            return RedirectToNotFound();
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
         public async Task<ActionResult> Delete(Guid id)
         {
             ApiResponse<RoomTypeViewModel> response = await _service.GetByIdAsync(id);
@@ -39,7 +53,13 @@ namespace Rooms.Classic.Web.Mvc.Controllers
                 return View(response.Value);
             }
 
-            return RedirectToAction("NotFound", "Shared", new { model = "Room Type"});
+            return RedirectToNotFound();
+        }
+
+        [NonAction]
+        public ActionResult RedirectToNotFound()
+        {
+            return RedirectToAction("NotFound", "Shared", new { model = "Room Type" });
         }
     }
 }

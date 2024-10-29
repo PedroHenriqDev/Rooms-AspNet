@@ -1,5 +1,10 @@
 ﻿<div id="app">
-    <div class="card shadow-lg">
+    <div v-if="isLoading">
+        <div class="loading-overlay">
+            <loader></loader>
+        </div>
+    </div>
+    <div v-else class="card shadow-lg">
         <div class="card-body">
             <div class="center-content mt-4">
                 <div class="w-25">
@@ -16,9 +21,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="haveErrors" div  class="mt-4 mb-4">
+                                <div v-if="haveErrors" div class="mt-4 mb-4">
                                     <ul>
-                                        <li  class="text-danger" v-for="e in errors"> {{e}} </li>
+                                        <li class="text-danger" v-for="e in errors"> {{e}} </li>
                                     </ul>
                                 </div>
                                 <hr />

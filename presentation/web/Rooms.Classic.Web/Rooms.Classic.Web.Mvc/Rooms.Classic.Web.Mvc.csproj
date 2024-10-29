@@ -295,6 +295,7 @@
     <Content Include="Views\RoomTypes\Create.cshtml" />
     <Content Include="Views\RoomTypes\Delete.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\RoomTypes\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

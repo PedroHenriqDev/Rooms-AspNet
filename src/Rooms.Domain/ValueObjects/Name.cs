@@ -3,6 +3,7 @@ using Flunt.Validations;
 using Rooms.Domain.Validations;
 
 namespace Rooms.Domain.ValueObjects;
+
 public class Name : Notifiable<Notification>
 {
     public Name(string firstName, string lastName)

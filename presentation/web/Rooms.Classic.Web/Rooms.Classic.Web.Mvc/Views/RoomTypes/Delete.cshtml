@@ -8,7 +8,7 @@
             <loader></loader>
         </div>
     </div>
-    <div v-if="!isLoading">
+    <div v-else>
         <div class="align-content-center">
             <div class="center-content">
                 <div class="card shadow-lg mt-4">
@@ -28,7 +28,7 @@
                                 </dl>
                             </div>
                             <div class="text-center">
-                                <a href="~/RoomTypes/Index" class="btn btn-primary"> Back </a>
+                                <a href="@Url.Action("Index", "RoomTypes")" class="btn btn-primary"> Back </a>
                                 <button v-on:click="deleteRoomType()" class="btn btn-danger"> Delete </button>
                             </div>
                         </div>

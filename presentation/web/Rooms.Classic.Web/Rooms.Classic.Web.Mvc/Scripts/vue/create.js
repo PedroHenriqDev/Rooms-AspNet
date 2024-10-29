@@ -3,10 +3,12 @@
     data: {
         name: '',
         errors: [],
+        isLoading: false,
         haveErrors: false
     },
     methods: {
         register() {
+            this.isLoading = true;
             axios.post("https://localhost:7055/RoomTypes", {  Name: this.name } )
                 .then(response => {
                     localStorage.setItem('success', `Success in create room type with name: ${this.name}`);
@@ -21,6 +23,8 @@
                     else {
                         console.log(error);
                     }
+                }).finally(() => {
+                    this.isLoading = false;
                 });
         },
         getUniqueKeysErrors(errors) {

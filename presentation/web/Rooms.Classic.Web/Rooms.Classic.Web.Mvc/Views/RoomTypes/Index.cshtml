@@ -2,7 +2,7 @@
     <div v-if="isLoading" class="loading-overlay">
         <loader></loader>
     </div>
-    <div v-if="!isLoading" class="card shadow-lg">
+    <div v-else class="card shadow-lg">
         <div class="card-body">
             <h3 class="text-center mb-5"> Room Types <i class="bi bi-table"></i> </h3>
             <div class="center-content">
@@ -32,9 +32,9 @@
                                 <button type="button" v-on:click="redirectToDelete(r)" class="btn btn-danger">
                                     <i class="bi bi-trash2"></i>
                                 </button>
-                                <a class="btn btn-warning">
+                                <button v-on:click="redirectToEdit(r)"  class="btn btn-warning">
                                     <i class="bi bi-pen"></i>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
