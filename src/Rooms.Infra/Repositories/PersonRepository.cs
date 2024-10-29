@@ -1,6 +1,7 @@
 using System.Data;
 using Dapper;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Filters.Abstractions;
 using Rooms.Domain.Repositories;
 
 namespace Rooms.Infra.Repositories;
@@ -97,5 +98,10 @@ public sealed class PersonRepository : IPersonRepository
             sql: "SP_Persons_Count",
             commandType: CommandType.StoredProcedure
         );
+    }
+
+    public Task<IEnumerable<Person>> GetByFilterAsync(Filter filter)
+    {
+        throw new NotImplementedException();
     }
 }

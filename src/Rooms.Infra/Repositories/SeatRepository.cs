@@ -1,6 +1,7 @@
 using System.Data;
 using Dapper;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Filters.Abstractions;
 using Rooms.Domain.Repositories;
 
 namespace Rooms.Infra.Repositories;
@@ -93,5 +94,15 @@ public sealed class SeatRepository : ISeatRepository
             sql: "SP_Seats_Count",
             commandType: CommandType.StoredProcedure
         );
+    }
+
+    public Task<IEnumerable<Seat>> GetByFilterAsync<TFilter>(TFilter filter) where TFilter : Filter
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<Seat>> GetByFilterAsync(Filter filter)
+    {
+        throw new NotImplementedException();
     }
 }

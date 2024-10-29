@@ -1,8 +1,8 @@
 ﻿using Rooms.Domain.Queries.Requests.Abstractions;
 
-namespace Rooms.Domain.Queries.Requests;
+namespace Rooms.Domain.Queries.Requests.RoomTypes;
 
-public sealed class GetRoomTypeByIdRequest : RoomTypeQueryRequest
+public sealed class GetRoomTypeByIdRequest : QueryRequest
 {
     public GetRoomTypeByIdRequest(Guid id)
     {

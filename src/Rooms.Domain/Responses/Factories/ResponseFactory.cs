@@ -1,5 +1,4 @@
-﻿using Rooms.Domain.Responses;
-using System.Net;
+﻿using System.Net;
 
 namespace Rooms.Domain.Responses.Factories;
 
@@ -17,6 +16,21 @@ public static class ResponseFactory
             message: message,
             value: value,
             statusCode: HttpStatusCode.OK
+        );
+    }
+
+    public static Response Conflict(object value, string message = null!) 
+    {
+        if(message == null) 
+        {
+            message = ResponseResource.CONFLICT_MESSAGE;
+        }
+
+        return new Response 
+        (
+            message: message, 
+            value: value,
+            statusCode: HttpStatusCode.Conflict
         );
     }
 

@@ -1,7 +1,10 @@
 using System.Data;
 using Dapper;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Filters;
+using Rooms.Domain.Filters.Abstractions;
 using Rooms.Domain.Repositories;
+using Rooms.Infra.Utils;
 
 namespace Rooms.Infra.Repositories;
 
@@ -34,6 +37,38 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
         return await _connection.QueryFirstOrDefaultAsync<RoomType>(
             sql: "SP_RoomTypes_Get_By_Id",
             param: new { Id = id },
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task<IEnumerable<RoomType>> GetByFilterAsync(RoomTypeFilter filter)
+    {
+        filter.Sanitize();
+  
+        return await _connection.QueryAsync<RoomType>
+        (
+            sql: "SP_RoomTypes_Get_By_Filters",
+            param: filter,
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task<bool> ExistsNameAsync(string name)
+    {
+        object parameters = new { Name = name };
+
+        return await _connection.QueryFirstOrDefaultAsync<bool>(
+            sql: "SP_RoomTypes_Exists_Name",
+            param: parameters,
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task<int> CountAsync()
+    {
+        return await _connection.ExecuteScalarAsync<int>
+        (
+            sql: "SP_RoomTypes_Count",
             commandType: CommandType.StoredProcedure
         );
     }
@@ -82,25 +117,5 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
         );
 
         return rowsAffected > 0;
-    }
-
-    public async Task<bool> ExistsNameAsync(string name)
-    {
-        var parameters = new { Name = name };
-
-        return await _connection.QueryFirstOrDefaultAsync<bool>(
-            sql: "SP_RoomTypes_Exists_Name",
-            param: parameters,
-            commandType: CommandType.StoredProcedure
-        );
-    }
-
-    public async Task<int> CountAsync()
-    {
-        return await _connection.ExecuteScalarAsync<int>
-        (
-            sql: "SP_RoomTypes_Count",
-            commandType: CommandType.StoredProcedure
-        );
     }
 }

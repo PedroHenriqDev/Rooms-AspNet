@@ -24,7 +24,7 @@ public class CreateRoomTypeHandler : IHandler<CreateRoomTypeRequest>
             return ResponseFactory.BadRequest(roomType.Notifications);
 
         if (await _unitOfWork.RoomTypeRepository.ExistsNameAsync(request.Name))
-            return ResponseFactory.BadRequest(request, string.Format(ResponseResource.NAME_EXISTS_MESSAGE, request.Name));
+            return ResponseFactory.Conflict(request, string.Format(ResponseResource.CONFLICT_NAME_MESSAGE, request.Name));
 
         await _unitOfWork.RoomTypeRepository.CreateAsync(roomType);
 

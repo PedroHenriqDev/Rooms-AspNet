@@ -7,7 +7,8 @@ using Rooms.App.Services.Interfaces;
 using Rooms.App.Utils;
 using Rooms.Domain.Commands.Requests.RoomTypes;
 using Rooms.Domain.Entities;
-using Rooms.Domain.Queries.Requests;
+using Rooms.Domain.Filters;
+using Rooms.Domain.Queries.Requests.RoomTypes;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses.Interfaces;
 using System.Net;
@@ -50,6 +51,20 @@ public class RoomTypeService : IRoomTypeService
         IResponse response = await _mediator.Send(new GetRoomTypeByIdRequest(id));
 
         response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+
+        return response;
+    }
+
+    public async Task<IResponse> GetByFiltersAsync(RoomTypeFilter filter)
+    {
+        IResponse response = await _mediator.Send(new GetRoomTypesByFilterRequest(filter));
+
+        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+
+        if(response.StatusCode == HttpStatusCode.OK) 
+        {
+            response.Value = ((IEnumerable<RoomType>)response.Value!).Select(r => r.ToRoomTypeDto());
+        }
 
         return response;
     }

@@ -1,6 +1,6 @@
 ﻿using Rooms.Domain.Entities;
 using Rooms.Domain.Interfaces;
-using Rooms.Domain.Queries.Requests;
+using Rooms.Domain.Queries.Requests.RoomTypes;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses;
 using Rooms.Domain.Responses.Factories;

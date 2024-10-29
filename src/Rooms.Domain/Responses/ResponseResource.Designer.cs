@@ -70,6 +70,24 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Some value of this object already exists..
+        /// </summary>
+        public static string CONFLICT_MESSAGE {
+            get {
+                return ResourceManager.GetString("CONFLICT_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name {0} already exists..
+        /// </summary>
+        public static string CONFLICT_NAME_MESSAGE {
+            get {
+                return ResourceManager.GetString("CONFLICT_NAME_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully created..
         /// </summary>
         public static string CREATED_SUCCESSFULLY_MESSAGE {
@@ -102,6 +120,15 @@ namespace Rooms.Domain.Responses {
         public static string NAME_EXISTS_MESSAGE {
             get {
                 return ResourceManager.GetString("NAME_EXISTS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not found {0} these filters..
+        /// </summary>
+        public static string NOT_FOUND_BY_FILTER_MESSAGE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_BY_FILTER_MESSAGE", resourceCulture);
             }
         }
         

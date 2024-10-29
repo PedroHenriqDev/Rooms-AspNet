@@ -5,6 +5,7 @@ using Rooms.App.Pagination.Interfaces;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
 using Rooms.Domain.Commands.Requests.RoomTypes;
+using Rooms.Domain.Filters;
 using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Api.Controllers;
@@ -42,6 +43,16 @@ public class RoomTypesController : ControllerBase
     {
         IResponse response = await _service.GetByIdAsync(id);
         return StatusCode(statusCode:  (int)response.StatusCode, value:response);
+    }
+
+    [HttpGet]
+    [Route("search")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> GetByFilterAsync([FromQuery] RoomTypeFilter filter)
+    {
+        IResponse response = await _service.GetByFiltersAsync(filter);
+        return StatusCode(statusCode: (int)response.StatusCode, value: response);
     }
 
     [HttpPost]
