@@ -18,7 +18,8 @@ public static class ServiceCollectionExtension
              {
                 policy.AllowAnyHeader()
                       .AllowAnyOrigin()
-                      .AllowAnyMethod();
+                      .AllowAnyMethod()
+                      .WithExposedHeaders("x-pagination");
              });
         });
     }

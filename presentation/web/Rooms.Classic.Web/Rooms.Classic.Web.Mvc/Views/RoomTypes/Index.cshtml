@@ -4,7 +4,12 @@
     </div>
     <div v-else class="card shadow-lg">
         <div class="card-body">
-            <h3 class="text-center mb-5"> Room Types <i class="bi bi-table"></i> </h3>
+            <h3 class="text-center"> Room Types </h3>
+            <h4 class="text-center mt-1 mb-2 text-black-50"> Total: {{ totalItems }} </h4>
+            <hr/>
+            <div class="text-center d-flex align-items-center center-content mb-4">
+                <button type="button" v-on:click="openModal()" class="btn btn-primary mt-2 text-center"> <i class="bi bi-search"></i></button>
+            </div>
             <div class="center-content">
                 <table class="table table-hover col-md-8">
                     <thead>
@@ -32,13 +37,46 @@
                                 <button type="button" v-on:click="redirectToDelete(r)" class="btn btn-danger">
                                     <i class="bi bi-trash2"></i>
                                 </button>
-                                <button v-on:click="redirectToEdit(r)"  class="btn btn-warning">
+                                <button v-on:click="redirectToEdit(r)" class="btn btn-warning">
                                     <i class="bi bi-pen"></i>
                                 </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div ref="modalSearch" class="modal fade rounded-pill" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <div class="text-center">
+                        <h3 class="modal-title"> Search Room Types </h3>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group d-flex flex-column align-items-center">
+                        <div class="form-horizontal">
+                            <div class="text-center justify-content-center">
+                                <label> Name </label>
+                                <input class="form-control text-center mb-3" v-model="nameFilter" type="text" placeholder="Enter name" />
+
+                                <label> Min Date </label>
+                                <input class="form-control text-center mb-3" type="date" v-model="minFilter" />
+
+                                <label> Max Date </label>
+                                <input class="form-control text-center mb-3" type="date" v-model="maxFilter" />
+                            </div>
+                            <hr />
+                            <div class="text-center mt-2">
+                                <button type="button" class="btn btn-primary" v-on:click="search()"> <i class="bi bi-search"></i></button>
+                                <button class="btn btn-danger " v-on:click="closeModal()">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
