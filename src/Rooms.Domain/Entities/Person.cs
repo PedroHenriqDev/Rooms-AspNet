@@ -2,12 +2,23 @@ using Flunt.Validations;
 using Rooms.Domain.Entities.Abstractions;
 using Rooms.Domain.Validations;
 using Rooms.Domain.ValueObjects;
-using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace Rooms.Domain.Entities;
 
 public class Person : Entity
 {
+    public Person(Guid id, DateTime createdAt, Name name, Age age, Guid seatId)
+    {
+        Id = id;
+        CreatedAt = createdAt;
+        Name = name;
+        Age = age;
+        SeatId = seatId;
+
+        Validate();
+    }
+
     public Person(Name name, Age age,  Guid seatId) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)
     {
         Name = name;
@@ -27,8 +38,12 @@ public class Person : Entity
         Validate();
     }
 
-    public Name Name { get; private set; }
-    public Age Age { get; private set; }  
+    protected Person()
+    {
+    }
+
+    public Name Name { get; private set; } = new Name(string.Empty, string.Empty);
+    public Age Age { get; private set; } = new Age(DateTime.MinValue);
     public Guid SeatId { get; private set; }
     public Seat? Seat {get; private set; }
 

@@ -30,11 +30,11 @@ public class RoomTypeService : IRoomTypeService
     {
         parameters.Deconstruct(out int pageIndex, out int pageSize);
 
-        int offSet = PaginationUtils.CalculateOffSet(pageSize, pageIndex);
+        int offSet = PaginationUtils.CalculateOffSet(pageIndex, pageSize);
 
         IResponse response = await _mediator.Send(new GetRoomTypesRequest(pageSize, offSet));
 
-        if (response.StatusCode == HttpStatusCode.OK)
+        if (response.StatusCode == HttpStatusCode.OK && response.Success)
         {
             int totalItems = await _unitOfWork.RoomTypeRepository.CountAsync();
 

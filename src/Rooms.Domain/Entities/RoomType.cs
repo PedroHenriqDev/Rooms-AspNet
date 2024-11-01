@@ -6,11 +6,9 @@ namespace Rooms.Domain.Entities;
 
 public class RoomType : Entity
 {
-    public RoomType()
+    protected RoomType()
     {
         Name = string.Empty;
-
-        Validate();
     }
 
     public RoomType(string name) : base(id: Guid.NewGuid(), createdAt: DateTime.Now)

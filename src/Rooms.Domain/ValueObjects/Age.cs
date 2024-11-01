@@ -42,6 +42,10 @@ public class Age : Notifiable<Notification>
         );
     }
 
+    protected Age()
+    {
+    }
+
     public DateTime BirthDate { get; private set; }
     public short YearsOld {get; private set;}
     public EAgeGroup AgeGroup {get; private set;}

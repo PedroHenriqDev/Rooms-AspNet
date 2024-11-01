@@ -28,7 +28,6 @@ public class Room : Entity
 
         Validate();
     }
-
     
     public Room
     (

@@ -3,12 +3,18 @@ using Dapper;
 using Rooms.Domain.Entities;
 using Rooms.Domain.Filters.Abstractions;
 using Rooms.Domain.Repositories;
+using Rooms.Domain.ValueObjects;
 
 namespace Rooms.Infra.Repositories;
 
 public sealed class PersonRepository : IPersonRepository
 {
     private readonly IDbConnection _connection;
+
+    private Func<Guid, DateTime, string, string, DateTime, Guid, Person> mapPerson => (id, createdAt, firstName, lastName, birthDate, seatId) =>
+    {
+        return new Person(id, createdAt, new Name(firstName, lastName), new Age(birthDate), seatId);
+    };
 
     public PersonRepository(IDbConnection connection)
     {
@@ -23,11 +29,27 @@ public sealed class PersonRepository : IPersonRepository
             Size = size 
         };
 
-        return await _connection.QueryAsync<Person>(
+        var personsDict = new Dictionary<Guid, Person>();
+
+        var persons = await _connection.QueryAsync<Person, Name, Age, Guid, Person>(
             sql: "SP_Persons_Get_All",
             param: param,
-            commandType: CommandType.StoredProcedure
+            commandType: CommandType.StoredProcedure,
+            map: (person, name, age, seatId) =>
+            {
+                var personEntry = new Person(person.Id, person.CreatedAt, name, age, seatId);
+
+                if (!personsDict.TryGetValue(person.Id, out _))
+                {
+                    personsDict.Add(personEntry.Id, personEntry);
+                }
+
+                return personEntry;
+            },
+            splitOn: "FirstName,BirthDate,SeatId"
         );
+
+        return personsDict.Values;
     }
 
     public async Task<Person?> GetByIdAsync(Guid id)

@@ -104,11 +104,6 @@ public sealed class RoomRepository : IRoomRepository
         );
     }
 
-    public Task<IEnumerable<Room>> GetByFilterAsync<TFilter>(TFilter filter) where TFilter : Filter
-    {
-        throw new NotImplementedException();
-    }
-
     public Task<IEnumerable<Room>> GetByFilterAsync(Filter filter)
     {
         throw new NotImplementedException();
