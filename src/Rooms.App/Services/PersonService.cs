@@ -25,15 +25,6 @@ public class PersonService : IPersonService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IResponse> CreateAsync(CreatePersonRequest request)
-    {
-        IResponse response = await _mediator.Send(request);
-
-        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
-
-        return response;
-    }
-
     public async Task<IResponse> GetAllAsync(PaginationParameters parameters)
     {
         parameters.Deconstruct(out int pageIndex, out int pageSize);
@@ -50,6 +41,24 @@ public class PersonService : IPersonService
 
             response.Value = new PagedList<PersonDto>(pageSize, pageIndex, totalItems, persons?.Select(p => p.ToPersonDto()));
         }
+
+        return response;
+    }
+
+    public async Task<IResponse> GetByIdAsync(Guid id)
+    {
+        IResponse response = await _mediator.Send(new GetPersonByIdRequest(id));
+
+        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+
+        return response;
+    }
+
+    public async Task<IResponse> CreateAsync(CreatePersonRequest request)
+    {
+        IResponse response = await _mediator.Send(request);
+
+        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
 
         return response;
     }

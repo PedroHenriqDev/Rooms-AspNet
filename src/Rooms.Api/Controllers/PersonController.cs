@@ -21,7 +21,7 @@ public class PersonController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IResponse>> CreateAsync([FromBody] CreatePersonRequest request) 
+    public async Task<ActionResult<IResponse>> CreateAsync([FromBody] CreatePersonRequest request)
     {
         IResponse response = await _service.CreateAsync(request);
         return StatusCode((int)response.StatusCode, response);
@@ -34,5 +34,15 @@ public class PersonController : ControllerBase
     {
         IResponse response = await _service.GetAllAsync(parameters);
         return StatusCode((int)response.StatusCode, response);
+    }
+
+    [HttpGet]
+    [Route("{id:guid}")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> GetByIdAsync([FromRoute] Guid id)
+    {
+       IResponse response = await _service.GetByIdAsync(id);
+       return StatusCode((int)response.StatusCode, response);
     }
 }

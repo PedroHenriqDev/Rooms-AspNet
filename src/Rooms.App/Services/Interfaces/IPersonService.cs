@@ -6,7 +6,10 @@ namespace Rooms.App.Services.Interfaces;
 
 public interface IPersonService
 {
-    Task<IResponse> CreateAsync(CreatePersonRequest request);
 
     Task<IResponse> GetAllAsync(PaginationParameters parameters);
+
+    Task<IResponse> GetByIdAsync(Guid id);
+
+    Task<IResponse> CreateAsync(CreatePersonRequest request);
 }

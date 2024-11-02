@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Interfaces;
 using Rooms.Domain.Queries.Requests.Persons;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses.Factories;
@@ -7,7 +8,7 @@ using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Domain.Queries.Handlers.Persons;
 
-public class GetPersonsHandler : IRequestHandler<GetPersonsRequest, IResponse>
+public sealed class GetPersonsHandler : IHandler<GetPersonsRequest>
 {
     private readonly IUnitOfWork _unitOfWork;
 

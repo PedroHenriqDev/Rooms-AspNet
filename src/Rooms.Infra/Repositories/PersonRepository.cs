@@ -11,9 +11,18 @@ public sealed class PersonRepository : IPersonRepository
 {
     private readonly IDbConnection _connection;
 
-    private Func<Guid, DateTime, string, string, DateTime, Guid, Person> mapPerson => (id, createdAt, firstName, lastName, birthDate, seatId) =>
+    private const string SPLIT_ON = "FirstName,BirthDate,SeatId";
+
+    private Func<Person, Name, Age, Guid, Person> mapPersons(Dictionary<Guid, Person> personsDict) => (person, name, age, seatId) =>
     {
-        return new Person(id, createdAt, new Name(firstName, lastName), new Age(birthDate), seatId);
+        var personEntry = new Person(person.Id, person.CreatedAt, name, age, seatId);
+
+        if (!personsDict.TryGetValue(personEntry.Id, out _))
+        {
+            personsDict.Add(personEntry.Id, personEntry);
+        }
+
+        return personEntry;
     };
 
     public PersonRepository(IDbConnection connection)
@@ -23,30 +32,20 @@ public sealed class PersonRepository : IPersonRepository
 
     public async Task<IEnumerable<Person>> GetAllAsync(int offSet, int size)
     {
+        var personsDict = new Dictionary<Guid, Person>();
+
         object param = new
         {
             OffSet = offSet,
-            Size = size 
+            Size = size
         };
 
-        var personsDict = new Dictionary<Guid, Person>();
-
-        var persons = await _connection.QueryAsync<Person, Name, Age, Guid, Person>(
+        _ = await _connection.QueryAsync<Person, Name, Age, Guid, Person>(
             sql: "SP_Persons_Get_All",
             param: param,
             commandType: CommandType.StoredProcedure,
-            map: (person, name, age, seatId) =>
-            {
-                var personEntry = new Person(person.Id, person.CreatedAt, name, age, seatId);
-
-                if (!personsDict.TryGetValue(person.Id, out _))
-                {
-                    personsDict.Add(personEntry.Id, personEntry);
-                }
-
-                return personEntry;
-            },
-            splitOn: "FirstName,BirthDate,SeatId"
+            map: mapPersons(personsDict),
+            splitOn: SPLIT_ON
         );
 
         return personsDict.Values;
@@ -54,11 +53,17 @@ public sealed class PersonRepository : IPersonRepository
 
     public async Task<Person?> GetByIdAsync(Guid id)
     {
-        return await _connection.QueryFirstOrDefaultAsync<Person>(
+        var personsDict = new Dictionary<Guid, Person>();
+
+        _ = await _connection.QueryAsync<Person, Name, Age, Guid, Person>(
             sql: "SP_Persons_Get_By_Id",
             param: new { Id = id },
-            commandType: CommandType.StoredProcedure
+            commandType: CommandType.StoredProcedure,
+            map: mapPersons(personsDict),
+            splitOn: SPLIT_ON
         );
+
+        return personsDict?.FirstOrDefault().Value;
     }
 
     public async Task<bool> CreateAsync(Person entity)
