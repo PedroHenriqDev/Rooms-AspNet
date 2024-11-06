@@ -62,11 +62,11 @@ public sealed class RoomRepository : IRoomRepository
         return rowsAffected > 0;
     }
 
-    public async Task<bool> DeleteAsync(Guid id)
+    public async Task<bool> DeleteAsync(Room entity)
     {
         int rowsAffected = await _connection.ExecuteAsync(
             sql: "SP_Rooms_Delete",
-            param: new { Id = id},
+            param: new { Id = entity.Id},
             commandType: CommandType.StoredProcedure
         );
 

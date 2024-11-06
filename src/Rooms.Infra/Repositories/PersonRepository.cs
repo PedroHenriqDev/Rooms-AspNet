@@ -87,11 +87,11 @@ public sealed class PersonRepository : IPersonRepository
         return rowsAffected > 0;
     }
 
-    public async Task<bool> DeleteAsync(Guid id)
+    public async Task<bool> DeleteAsync(Person entity)
     {
         int rowsAffected = await _connection.ExecuteAsync(
             sql: "SP_Persons_Delete",
-            param: new { Id = id},
+            param: new { Id = entity.Id},
             commandType: CommandType.StoredProcedure
         );
 

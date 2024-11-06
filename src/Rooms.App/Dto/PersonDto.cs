@@ -2,8 +2,9 @@
 {
     public class PersonDto
     {
-        public PersonDto(string firstName, string lastName, DateTime birthDate, short yearsOld, Guid seatId)
+        public PersonDto(Guid id, string firstName, string lastName, DateTime birthDate, short yearsOld, Guid seatId)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
@@ -12,6 +13,7 @@
             SeatId = seatId;
         }
 
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

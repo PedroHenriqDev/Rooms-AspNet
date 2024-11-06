@@ -58,11 +58,11 @@ public sealed class SeatRepository : ISeatRepository
         return rowsAffected > 0;
     }
 
-    public async Task<bool> DeleteAsync(Guid id)
+    public async Task<bool> DeleteAsync(Seat entity)
     {
         int rowsAffected = await _connection.ExecuteAsync(
             sql: "SP_Seats_Delete",
-            param: new { Id = id },
+            param: new { Id = entity.Id },
             commandType: CommandType.StoredProcedure
         ); 
         

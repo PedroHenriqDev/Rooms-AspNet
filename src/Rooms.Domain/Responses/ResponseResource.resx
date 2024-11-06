@@ -132,6 +132,9 @@
   <data name="DELETED_SUCCESSFULLY_MESSAGE" xml:space="preserve">
     <value>Successfully deleted.</value>
   </data>
+  <data name="INTERNAL_ERROR" xml:space="preserve">
+    <value>Some internal error has occurred.</value>
+  </data>
   <data name="INVALID_INDEX_MESSAGE" xml:space="preserve">
     <value>Not found '{0}' in this index.</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="NOT_FOUND_MESSAGE" xml:space="preserve">
     <value>Not found.</value>
+  </data>
+  <data name="NOT_FOUND_SEAT" xml:space="preserve">
+    <value>Not found seat id: {0}</value>
   </data>
   <data name="ROOM_TYPE_CREATED_MESSSAGE" xml:space="preserve">
     <value>Room type created successfully.</value>

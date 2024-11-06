@@ -20,7 +20,7 @@ public class RoomType : Entity
 
     public string Name {get; private set;}
 
-    public void ChangeName(string name)
+    internal void ChangeName(string name)
     {
         Name = name;
     }

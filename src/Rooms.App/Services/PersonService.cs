@@ -62,4 +62,22 @@ public class PersonService : IPersonService
 
         return response;
     }
+
+    public async Task<IResponse> UpdateAsync(UpdatePersonRequest request)
+    {
+        IResponse response = await _mediator.Send(request);
+
+        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+
+        return response;
+    }
+
+    public async Task<IResponse> DeleteAsync(Guid id)
+    {
+        IResponse response = await _mediator.Send(new DeletePersonRequest(id));
+
+        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+
+        return response;
+    }
 }

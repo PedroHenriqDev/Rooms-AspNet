@@ -45,4 +45,26 @@ public class PersonController : ControllerBase
        IResponse response = await _service.GetByIdAsync(id);
        return StatusCode((int)response.StatusCode, response);
     }
+
+    [HttpPut]
+    [Route("{id:guid}")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> UpdateAsync([FromRoute] Guid id, [FromBody] UpdatePersonRequest request)
+    {
+        request.Id = id;
+        IResponse response = await _service.UpdateAsync(request);
+        return StatusCode((int)response.StatusCode, response);
+    }
+
+    [HttpDelete]
+    [Route("{id:guid}")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> DeleteAsync([FromRoute] Guid id)
+    {
+        IResponse response = await _service.DeleteAsync(id);
+        return StatusCode((int)response.StatusCode, response);
+    }
 }

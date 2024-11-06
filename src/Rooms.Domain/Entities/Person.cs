@@ -47,6 +47,11 @@ public class Person : Entity
     public Guid SeatId { get; private set; }
     public Seat? Seat {get; private set; }
 
+    internal void ChangeCreatedAt(DateTime createdAt)
+    {
+        CreatedAt = createdAt;
+    }
+
     public override void Validate()
     {
         ValidateBase();
@@ -61,18 +66,6 @@ public class Person : Entity
         (
             new Contract<Room>()
             .Requires()
-            .IsNotNull
-            (
-                Name,
-                $"{Id}.{nameof(Name)}",
-                string.Format(ValidationMessagesResource.NULL_MESSAGE, nameof(Name))
-            )
-            .IsNotNull
-            (
-                Age,
-                $"{Id}.{nameof(Age)}",
-                string.Format(ValidationMessagesResource.NULL_MESSAGE, nameof(Age))
-            )
             .AreNotEquals
             (
                 SeatId,

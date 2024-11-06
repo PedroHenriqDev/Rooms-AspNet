@@ -80,4 +80,20 @@ public static class ResponseFactory
            success: false
         );
     }
+
+    public static Response InternalError(object value, string message = null!)
+    {
+        if (message is null)
+        {
+            message = ResponseResource.INTERNAL_ERROR;
+        }
+
+        return new Response 
+        (
+            message: message,
+            value: value,
+            statusCode: HttpStatusCode.InternalServerError,
+            success: false
+        );
+    }
 }

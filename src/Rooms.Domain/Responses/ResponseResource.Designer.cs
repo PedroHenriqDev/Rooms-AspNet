@@ -106,6 +106,15 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Some internal error has occurred..
+        /// </summary>
+        public static string INTERNAL_ERROR {
+            get {
+                return ResourceManager.GetString("INTERNAL_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not found &apos;{0}&apos; in this index..
         /// </summary>
         public static string INVALID_INDEX_MESSAGE {
@@ -147,6 +156,15 @@ namespace Rooms.Domain.Responses {
         public static string NOT_FOUND_MESSAGE {
             get {
                 return ResourceManager.GetString("NOT_FOUND_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not found seat id: {0}.
+        /// </summary>
+        public static string NOT_FOUND_SEAT {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_SEAT", resourceCulture);
             }
         }
         

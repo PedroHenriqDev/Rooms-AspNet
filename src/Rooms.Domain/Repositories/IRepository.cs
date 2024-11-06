@@ -12,6 +12,6 @@ public interface IRepository<TEntity, TFilter>
     Task<IEnumerable<TEntity>> GetByFilterAsync(TFilter filter);
     Task<bool> CreateAsync(TEntity entity);
     Task<bool> UpdateAsync(TEntity entity);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(TEntity entity);
     Task<int> CountAsync();
 }

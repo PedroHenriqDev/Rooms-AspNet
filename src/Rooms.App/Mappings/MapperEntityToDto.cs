@@ -12,6 +12,6 @@ public static class MapperEntityToDto
 
     public static PersonDto ToPersonDto(this Person person) 
     {
-        return new PersonDto(firstName: person.Name.FirstName, lastName: person.Name.LastName, birthDate: person.Age.BirthDate, yearsOld: person.Age.YearsOld, person.SeatId);
+        return new PersonDto(id: person.Id, firstName: person.Name.FirstName, lastName: person.Name.LastName, birthDate: person.Age.BirthDate, yearsOld: person.Age.YearsOld, person.SeatId);
     }
 }

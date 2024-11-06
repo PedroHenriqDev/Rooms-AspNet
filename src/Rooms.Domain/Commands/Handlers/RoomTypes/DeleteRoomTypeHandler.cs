@@ -21,8 +21,8 @@ public class DeleteRoomTypeHandler : IHandler<DeleteRoomTypeRequest>
     {
         if (await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id) is RoomType roomType)
         {
-            await _unitOfWork.RoomTypeRepository.DeleteAsync(roomType.Id);
-            return ResponseFactory.Success(value: roomType, message: ResponseResource.DELETED_SUCCESSFULLY_MESSAGE);
+            bool success = await _unitOfWork.RoomTypeRepository.DeleteAsync(roomType);
+            return success ? ResponseFactory.Success(value: roomType, message: ResponseResource.DELETED_SUCCESSFULLY_MESSAGE) : ResponseFactory.InternalError(request);
         }
 
         return ResponseFactory.NotFound(value: request, message: string.Format(ResponseResource.NOT_FOUND_ID_MESSAGE, request.Id));

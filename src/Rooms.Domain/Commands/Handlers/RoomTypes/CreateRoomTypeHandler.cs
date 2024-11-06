@@ -26,8 +26,8 @@ public class CreateRoomTypeHandler : IHandler<CreateRoomTypeRequest>
         if (await _unitOfWork.RoomTypeRepository.ExistsNameAsync(request.Name))
             return ResponseFactory.Conflict(request, string.Format(ResponseResource.CONFLICT_NAME_MESSAGE, request.Name));
 
-        await _unitOfWork.RoomTypeRepository.CreateAsync(roomType);
+        bool success = await _unitOfWork.RoomTypeRepository.CreateAsync(roomType);
 
-        return ResponseFactory.Created(value: roomType, message: ResponseResource.CREATED_SUCCESSFULLY_MESSAGE);
+        return success ? ResponseFactory.Created(value: roomType, message: ResponseResource.CREATED_SUCCESSFULLY_MESSAGE) : ResponseFactory.InternalError(request);
     }
 }

@@ -12,4 +12,8 @@ public interface IPersonService
     Task<IResponse> GetByIdAsync(Guid id);
 
     Task<IResponse> CreateAsync(CreatePersonRequest request);
+
+    Task<IResponse> UpdateAsync(UpdatePersonRequest request);
+
+    Task<IResponse> DeleteAsync(Guid id);
 }

@@ -29,8 +29,8 @@ public class UpdateRoomTypeHandler : IHandler<UpdateRoomTypeRequest>
 
         roomType.ChangeName(request.Name);
 
-        await _unitOfWork.RoomTypeRepository.UpdateAsync(roomType);
+        bool success = await _unitOfWork.RoomTypeRepository.UpdateAsync(roomType);
 
-        return ResponseFactory.Success(value: roomType, message: ResponseResource.UPDATED_SUCCESSFULLY_MESSAGE);
+        return success ? ResponseFactory.Success(value: roomType, message: ResponseResource.UPDATED_SUCCESSFULLY_MESSAGE) : ResponseFactory.InternalError(value: roomType);
     }
 }
