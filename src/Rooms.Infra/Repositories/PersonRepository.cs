@@ -1,6 +1,7 @@
 using System.Data;
 using Dapper;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Filters;
 using Rooms.Domain.Filters.Abstractions;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.ValueObjects;
@@ -66,6 +67,31 @@ public sealed class PersonRepository : IPersonRepository
         return personsDict?.FirstOrDefault().Value;
     }
 
+    public async Task<IEnumerable<Person>> GetByFilterAsync(PersonFilter filter)
+    {
+        object parameters = new
+        {
+            FirstName = filter.FirstName,
+            LastName = filter.LastName,
+            CreatedAtMin = filter.MinDate,
+            CreatedAtMax = filter.MaxDate,
+            BirthDateMin = filter.BirthDateMin,
+            BirthDateMax = filter.BirthDateMax,
+            SeatName = filter.SeatName
+        };
+
+        var personsDict = new Dictionary<Guid, Person>();
+
+        _ = await _connection.QueryAsync<Person, Name, Age, Guid, Person>(
+            sql: "SP_Persons_Get_By_Filters",
+            param: parameters,
+            commandType: CommandType.StoredProcedure,
+            map: mapPersons(personsDict),
+            splitOn: SPLIT_ON);
+
+        return personsDict.Values;
+    }
+
     public async Task<bool> CreateAsync(Person entity)
     {
         object param = new
@@ -125,10 +151,5 @@ public sealed class PersonRepository : IPersonRepository
             sql: "SP_Persons_Count",
             commandType: CommandType.StoredProcedure
         );
-    }
-
-    public Task<IEnumerable<Person>> GetByFilterAsync(Filter filter)
-    {
-        throw new NotImplementedException();
     }
 }

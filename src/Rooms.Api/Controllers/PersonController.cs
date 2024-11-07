@@ -2,6 +2,7 @@
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
 using Rooms.Domain.Commands.Requests.Persons;
+using Rooms.Domain.Filters;
 using Rooms.Domain.Responses.Interfaces;
 
 namespace Rooms.Api.Controllers;
@@ -44,6 +45,16 @@ public class PersonController : ControllerBase
     {
        IResponse response = await _service.GetByIdAsync(id);
        return StatusCode((int)response.StatusCode, response);
+    }
+
+    [HttpGet]
+    [Route("search")]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IResponse>> GetByFilterAsync([FromQuery] PersonFilter filter)
+    {
+        IResponse response = await _service.GetByFilterAsync(filter);
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpPut]

@@ -49,7 +49,7 @@ public class RoomTypesController : ControllerBase
     [Route("search")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IResponse>> GetByFilterAsync([FromQuery] RoomTypeFilter filter)
+    public async Task<ActionResult<IResponse>> GetByFilterAsync([FromQuery] RoomFilter filter)
     {
         IResponse response = await _service.GetByFiltersAsync(filter);
         return StatusCode(statusCode: (int)response.StatusCode, value: response);

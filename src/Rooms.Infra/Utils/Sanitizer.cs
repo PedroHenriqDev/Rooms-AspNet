@@ -5,7 +5,7 @@ namespace Rooms.Infra.Utils;
 
 public static class Sanitizer
 {
-    public static void Sanitize(this RoomTypeFilter filter)
+    public static void Sanitize(this RoomFilter filter)
     {
         filter.Name = filter.Name.ToLower();
         SanitizeDates(filter);

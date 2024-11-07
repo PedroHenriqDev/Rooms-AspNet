@@ -3,7 +3,7 @@ using Rooms.Domain.Filters;
 
 namespace Rooms.Domain.Repositories;
 
-public interface IRoomTypeRepository : IRepository<RoomType, RoomTypeFilter>
+public interface IRoomTypeRepository : IRepository<RoomType, RoomFilter>
 {
     Task<bool> ExistsNameAsync(string name);
 }

@@ -5,10 +5,10 @@ namespace Rooms.Domain.Queries.Requests.RoomTypes;
 
 public sealed class GetRoomTypesByFilterRequest : QueryRequest
 {
-    public GetRoomTypesByFilterRequest(RoomTypeFilter filter)
+    public GetRoomTypesByFilterRequest(RoomFilter filter)
     {
         Filter = filter;
     }
 
-    public RoomTypeFilter Filter { get; set; }
+    public RoomFilter Filter { get; set; }
 }

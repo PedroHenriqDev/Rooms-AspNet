@@ -11,7 +11,7 @@ public interface IRoomTypeService
 
     Task<IResponse> GetByIdAsync(Guid id);
 
-    Task<IResponse> GetByFiltersAsync(RoomTypeFilter filter);
+    Task<IResponse> GetByFiltersAsync(RoomFilter filter);
 
     Task<IResponse> CreateAsync(CreateRoomTypeRequest request);
 

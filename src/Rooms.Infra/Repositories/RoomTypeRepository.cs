@@ -41,7 +41,7 @@ public sealed class RoomTypeRepository : IRoomTypeRepository
         );
     }
 
-    public async Task<IEnumerable<RoomType>> GetByFilterAsync(RoomTypeFilter filter)
+    public async Task<IEnumerable<RoomType>> GetByFilterAsync(RoomFilter filter)
     {
         filter.Sanitize();
   

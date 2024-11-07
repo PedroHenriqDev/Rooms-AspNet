@@ -7,6 +7,7 @@ using Rooms.App.Services.Interfaces;
 using Rooms.App.Utils;
 using Rooms.Domain.Commands.Requests.Persons;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Filters;
 using Rooms.Domain.Queries.Requests.Persons;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.Responses.Interfaces;
@@ -50,6 +51,18 @@ public class PersonService : IPersonService
         IResponse response = await _mediator.Send(new GetPersonByIdRequest(id));
 
         response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+
+        return response;
+    }
+
+    public async Task<IResponse> GetByFilterAsync(PersonFilter filter)
+    {
+        IResponse response = await _mediator.Send(new GetPersonsByFilterRequest(filter));
+
+        if(response.StatusCode == HttpStatusCode.OK)
+        {
+            response.Value = ((IEnumerable<Person>)response.Value!).Select(p => p.ToPersonDto());
+        }
 
         return response;
     }

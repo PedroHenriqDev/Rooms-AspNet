@@ -55,7 +55,7 @@ public class RoomTypeService : IRoomTypeService
         return response;
     }
 
-    public async Task<IResponse> GetByFiltersAsync(RoomTypeFilter filter)
+    public async Task<IResponse> GetByFiltersAsync(RoomFilter filter)
     {
         IResponse response = await _mediator.Send(new GetRoomTypesByFilterRequest(filter));
 
