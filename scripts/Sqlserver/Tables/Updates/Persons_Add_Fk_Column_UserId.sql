@@ -1,0 +1,5 @@
+ALTER TABLE [Persons]
+ADD UserId UNIQUEIDENTIFIER;
+
+ALTER TABLE [Persons]
+ADD CONSTRAINT FK_Persons_Users_UserId FOREIGN KEY ([UserId]) REFERENCES [Users]([Id]);

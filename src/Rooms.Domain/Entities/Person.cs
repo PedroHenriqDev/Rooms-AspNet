@@ -46,6 +46,8 @@ public class Person : Entity
     public Age Age { get; private set; } = new Age(DateTime.MinValue);
     public Guid SeatId { get; private set; }
     public Seat? Seat {get; private set; }
+    public Guid UserId { get; private set; }
+    public User? User { get; private set; }
 
     internal void ChangeCreatedAt(DateTime createdAt)
     {
