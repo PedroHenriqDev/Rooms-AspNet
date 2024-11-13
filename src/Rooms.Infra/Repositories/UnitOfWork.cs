@@ -10,6 +10,7 @@ public sealed class UnitOfWork : IUnitOfWork
     private readonly IRoomRepository _roomRepository;
     private readonly IRoomTypeRepository _roomTypeRepository;
     private readonly ISeatRepository _seatRepository;
+    private readonly IUserRepository _userRepository;
 
     public UnitOfWork(IDbConnection connection)
     {
@@ -18,6 +19,7 @@ public sealed class UnitOfWork : IUnitOfWork
         _roomRepository = new RoomRepository(connection);
         _roomTypeRepository = new RoomTypeRepository(connection);
         _seatRepository = new SeatRepository(connection);
+        _userRepository = new UserRepository(connection);
     }
 
     public IPersonRepository PersonRepository => _personRepository ?? new PersonRepository(_connection); 
@@ -27,6 +29,8 @@ public sealed class UnitOfWork : IUnitOfWork
     public IRoomTypeRepository RoomTypeRepository => _roomTypeRepository ?? new RoomTypeRepository(_connection);
 
     public ISeatRepository SeatRepository => _seatRepository ?? new SeatRepository(_connection);
+
+    public IUserRepository UserRepository => _userRepository ?? new UserRepository(_connection);
 
     public void Dispose()
     {

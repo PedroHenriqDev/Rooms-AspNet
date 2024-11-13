@@ -15,7 +15,7 @@ public static class ResolutionDependencies
 
         services.AddScoped<IDbConnection>(_ => 
         {
-            return new SqlConnection(connectionString);
+            return new SqlConnection(connectionString); 
         });
 
         Assembly? myHandlers = AppDomain.CurrentDomain.Load("Rooms.Domain");

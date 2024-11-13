@@ -6,4 +6,5 @@ public interface IUnitOfWork : IDisposable
     public IRoomRepository RoomRepository {get;}
     public IRoomTypeRepository RoomTypeRepository {get;}
     public ISeatRepository SeatRepository {get;}
+    public IUserRepository UserRepository { get; }
 }

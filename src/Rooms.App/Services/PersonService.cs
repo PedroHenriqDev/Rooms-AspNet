@@ -50,7 +50,7 @@ public class PersonService : IPersonService
     {
         IResponse response = await _mediator.Send(new GetPersonByIdRequest(id));
 
-        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+        response.Value = DtoConverter.ValueToPersonDto(response.Value);
 
         return response;
     }
@@ -71,7 +71,8 @@ public class PersonService : IPersonService
     {
         IResponse response = await _mediator.Send(request);
 
-        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+        response.Value = DtoConverter.ValueToPersonDto(response.Value);
+
 
         return response;
     }
@@ -80,7 +81,7 @@ public class PersonService : IPersonService
     {
         IResponse response = await _mediator.Send(request);
 
-        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+        response.Value = DtoConverter.ValueToPersonDto(response.Value);
 
         return response;
     }
@@ -89,7 +90,7 @@ public class PersonService : IPersonService
     {
         IResponse response = await _mediator.Send(new DeletePersonRequest(id));
 
-        response.Value = ResponseUtils.ConvertValueToPersonDto(response.Value);
+        response.Value = DtoConverter.ValueToPersonDto(response.Value);
 
         return response;
     }

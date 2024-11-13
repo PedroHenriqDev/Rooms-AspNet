@@ -5,11 +5,12 @@ CREATE PROCEDURE SP_Persons_Create
     @FirstName NVARCHAR(50),
     @LastName NVARCHAR(50),
     @BirthDate DATETIME2,
-    @SeatId UNIQUEIDENTIFIER
+    @SeatId UNIQUEIDENTIFIER,
+    @UserId UNIQUEIDENTIFIER
 )
 AS
 BEGIN
     INSERT INTO
-         [Persons] ([Id], [CreatedAt], [FirstName], [LastName], [BirthDate], [SeatId])
-    VALUES(@Id, @CreatedAt, @FirstName, @LastName, @BirthDate, @SeatId)
+         [Persons] ([Id], [CreatedAt], [FirstName], [LastName], [BirthDate], [SeatId], [UserId])
+    VALUES(@Id, @CreatedAt, @FirstName, @LastName, @BirthDate, @SeatId, @UserId)
 END;

@@ -2,10 +2,9 @@ CREATE TABLE [Users]
 (
     [Id] UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
     [CreatedAt] DATETIME2 NOT NULL,
-    [FirstName] NVARCHAR(50) NOT NULL,
-    [LastName] NVARCHAR(50) NOT NULL, 
+    [Name] NVARCHAR(50) NOT NULL,
     [Password] NVARCHAR(600) NOT NULL,
     [Email] NVARCHAR(256) NOT NULL, 
     [BirthDate] DATETIME2 NOT NULL,
     [Role] INT NOT NULL
-);
+); 

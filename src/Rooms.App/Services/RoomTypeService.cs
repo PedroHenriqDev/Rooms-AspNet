@@ -50,7 +50,7 @@ public class RoomTypeService : IRoomTypeService
     {
         IResponse response = await _mediator.Send(new GetRoomTypeByIdRequest(id));
 
-        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+        response.Value = DtoConverter.ValueToRoomTypeDto(response.Value);
 
         return response;
     }
@@ -59,7 +59,7 @@ public class RoomTypeService : IRoomTypeService
     {
         IResponse response = await _mediator.Send(new GetRoomTypesByFilterRequest(filter));
 
-        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+        response.Value = DtoConverter.ValueToRoomTypeDto(response.Value);
 
         if(response.StatusCode == HttpStatusCode.OK) 
         {
@@ -73,7 +73,7 @@ public class RoomTypeService : IRoomTypeService
     {
         IResponse response = await _mediator.Send(request);
 
-        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+        response.Value = DtoConverter.ValueToRoomTypeDto(response.Value);
 
         return response;
     }
@@ -82,7 +82,7 @@ public class RoomTypeService : IRoomTypeService
     {
         IResponse response = await _mediator.Send(request);
 
-        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+        response.Value = DtoConverter.ValueToRoomTypeDto(response.Value);
 
         return response;
     }
@@ -91,7 +91,7 @@ public class RoomTypeService : IRoomTypeService
     {
         IResponse response = await _mediator.Send(new DeleteRoomTypeRequest(id));
 
-        response.Value = ResponseUtils.ConvertValueToRoomTypeDto(response.Value);
+        response.Value = DtoConverter.ValueToRoomTypeDto(response.Value);
 
         return response;
     }

@@ -10,6 +10,8 @@ public static class AppDependencies
     {
         services.AddScoped<IRoomTypeService, RoomTypeService>();
         services.AddScoped<IPersonService, PersonService>();
+        services.AddScoped<ICryptoService, CryptoService>();
+        services.AddScoped<IUserService, UserService>();
         return services;
     }
 }
