@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Rooms.App.Dto;
 using Rooms.App.Services.Interfaces;
-using Rooms.Domain.Commands.Requests.Users;
-using Rooms.Domain.Entities;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -15,8 +12,8 @@ public class CryptoService : ICryptoService
 
     public CryptoService(IConfiguration configuration)
     {
-        string? keyString = configuration["crypto:cryptKey"];
-        string? ivString = configuration["crypto:cryptIv"];
+        string? keyString = configuration["Crypto:cryptKey"];
+        string? ivString = configuration["Crypto:CryptIv"];
 
         if (string.IsNullOrEmpty(keyString) || string.IsNullOrEmpty(ivString))
             throw new InvalidOperationException();
