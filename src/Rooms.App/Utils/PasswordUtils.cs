@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Rooms.App.Utils;
+﻿namespace Rooms.App.Utils;
 
 public static class PasswordUtils
 {

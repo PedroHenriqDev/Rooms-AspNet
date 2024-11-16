@@ -120,6 +120,9 @@
   <data name="BAD_REQUEST_MESSAGE" xml:space="preserve">
     <value>The request is invalid.</value>
   </data>
+  <data name="CONFLICT_EMAIL_MESSAGE" xml:space="preserve">
+    <value>The {0} email already exists.</value>
+  </data>
   <data name="CONFLICT_MESSAGE" xml:space="preserve">
     <value>Some value of this object already exists.</value>
   </data>
@@ -144,11 +147,17 @@
   <data name="NOT_FOUND_BY_FILTER_MESSAGE" xml:space="preserve">
     <value>Not found {0} these filters.</value>
   </data>
+  <data name="NOT_FOUND_EMAIL_MESSAGE" xml:space="preserve">
+    <value>Email {0} not found.</value>
+  </data>
   <data name="NOT_FOUND_ID_MESSAGE" xml:space="preserve">
     <value>Id '{0}' not found.</value>
   </data>
   <data name="NOT_FOUND_MESSAGE" xml:space="preserve">
     <value>Not found.</value>
+  </data>
+  <data name="NOT_FOUND_NAME_MESSAGE" xml:space="preserve">
+    <value>Name '{0} not found.</value>
   </data>
   <data name="NOT_FOUND_SEAT" xml:space="preserve">
     <value>Not found seat id: {0}</value>
@@ -158,6 +167,9 @@
   </data>
   <data name="SUCCESSFUL_REQUEST_MESSAGE" xml:space="preserve">
     <value>Successful request.</value>
+  </data>
+  <data name="UNAUTHORIZED_MESSAGE" xml:space="preserve">
+    <value>Unauthorized</value>
   </data>
   <data name="UPDATED_SUCCESSFULLY_MESSAGE" xml:space="preserve">
     <value>Successfully updated.</value>

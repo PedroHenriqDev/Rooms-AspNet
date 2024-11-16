@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Rooms.Domain.Entities;
+using Rooms.Domain.Enums;
 using Rooms.Domain.Filters.Abstractions;
 using Rooms.Domain.Repositories;
 using Rooms.Domain.ValueObjects;
@@ -10,15 +11,15 @@ namespace Rooms.Infra.Repositories;
 public class UserRepository : IUserRepository
 {
     private readonly IDbConnection _connection;
-    private const string SPLIT_ON = "BirthDate";
+    private const string SPLIT_ON = "BirthDate,Role,Salt";
 
-    private Func<User, Age, User> mapUsers(Dictionary<Guid, User> usersDict) => (user, age) =>
+    private Func<User, Age, int, string, User> mapUsers(Dictionary<Guid, User> usersDict) => (user, age, role, salt) =>
     {
-        var userEntry = new User(user.Id, user.CreatedAt, user.Name, user.Age, user.Email, user.Password, user.Salt, user.Role);
+        var userEntry = new User(user.Id, user.CreatedAt, user.Name, user.Age, user.Email, user.Password, salt, (EUserRole)role);
     
         if (!usersDict.TryGetValue(userEntry.Id, out _))
         {
-            usersDict.Add(user.Id, user);
+            usersDict.Add(user.Id, userEntry);
         }
 
         return user;
@@ -39,7 +40,7 @@ public class UserRepository : IUserRepository
 
         var usersDict = new Dictionary<Guid, User>();
 
-        _ = await _connection.QueryAsync<User, Age, User>(
+        _ = await _connection.QueryAsync<User, Age, int, string, User>(
             sql: "SP_Users_Get_All",
             commandType: CommandType.StoredProcedure,
             map: mapUsers(usersDict),
@@ -57,8 +58,8 @@ public class UserRepository : IUserRepository
 
         var usersDict = new Dictionary<Guid, User>();
 
-        _ = await _connection.QueryAsync<User, Age, User>(
-            sql: "SP_Users_Exists_Name",
+        _ = await _connection.QueryAsync<User, Age, int, string, User>(
+            sql: "SP_Users_Get_By_Name",
             commandType: CommandType.StoredProcedure,
             param: parameters,
             map: mapUsers(usersDict),
@@ -67,9 +68,23 @@ public class UserRepository : IUserRepository
         return usersDict.Values.FirstOrDefault();
     }
 
-    public Task<User?> GetByEmailAsync(string name)
+    public async Task<User?> GetByEmailAsync(string email)
     {
-        throw new NotImplementedException();
+        object parameters = new
+        {
+            Email = email
+        };
+
+        var usersDict = new Dictionary<Guid, User>();
+
+        _ = await _connection.QueryAsync<User, Age,int, string, User>(
+            sql: "SP_Users_Get_By_Email",
+            commandType: CommandType.StoredProcedure,
+            param: parameters,
+            map: mapUsers(usersDict),
+            splitOn: SPLIT_ON);
+
+        return usersDict?.Values.FirstOrDefault();
     }
 
     public Task<IEnumerable<User>> GetByFilterAsync(Filter filter)
@@ -125,6 +140,14 @@ public class UserRepository : IUserRepository
         return await _connection.QueryFirstOrDefaultAsync<bool>(
             sql: "SP_Users_Exists_Name",
             param: new { Name = name },
+            commandType: CommandType.StoredProcedure);
+    }
+
+    public async Task<bool> ExistsEmailAsync(string email)
+    {
+        return await _connection.QueryFirstOrDefaultAsync<bool>(
+            sql: "SP_Users_Exists_Email",
+            param: new { Email = email},
             commandType: CommandType.StoredProcedure);
     }
 }

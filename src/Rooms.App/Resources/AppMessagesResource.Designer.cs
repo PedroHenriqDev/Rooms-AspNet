@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rooms.Api.Resources {
+namespace Rooms.App.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Rooms.Api.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ApiMessagesResource {
+    public class AppMessagesResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ApiMessagesResource() {
+        internal AppMessagesResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Rooms.Api.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rooms.Api.Resources.ApiMessagesResource", typeof(ApiMessagesResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rooms.App.Resources.AppMessagesResource", typeof(AppMessagesResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,24 @@ namespace Rooms.Api.Resources {
         public static string INTERNAL_SERVER_ERROR {
             get {
                 return ResourceManager.GetString("INTERNAL_SERVER_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login invalid..
+        /// </summary>
+        public static string LOGIN_INVALID_MESSAGE {
+            get {
+                return ResourceManager.GetString("LOGIN_INVALID_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logged in successfully..
+        /// </summary>
+        public static string LOGIN_SUCCESSFULLY_MESSAGE {
+            get {
+                return ResourceManager.GetString("LOGIN_SUCCESSFULLY_MESSAGE", resourceCulture);
             }
         }
     }

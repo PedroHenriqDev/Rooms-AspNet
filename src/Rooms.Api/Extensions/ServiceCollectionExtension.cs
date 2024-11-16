@@ -40,6 +40,8 @@ public static class ServiceCollectionExtension
     public static void AddAuthenticationBearer(this IServiceCollection services, IConfiguration configuration) 
     {
         string? key = configuration["Jwt:Key"] ?? throw new ArgumentNullException(nameof(key));
+        string? issuer = configuration["Jwt:Issuer"];
+        string? audience = configuration["Jwt:Audience"];
 
         services.AddAuthentication(opt =>
         {
@@ -51,10 +53,20 @@ public static class ServiceCollectionExtension
             opt.SaveToken = true;
             opt.TokenValidationParameters = new TokenValidationParameters()
             {
-                ValidateIssuer = false,
-                ValidateAudience = false,
+                ValidIssuer = issuer,
+                ValidAudience = audience,
+                ValidateIssuer = true,
+                ValidateAudience = true,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key))
+            };
+            opt.Events = new JwtBearerEvents
+            {
+                OnAuthenticationFailed = context =>
+                {
+                    Console.WriteLine($"Authentication failed: {context.Exception}");
+                    return Task.CompletedTask;
+                }
             };
         });
     }

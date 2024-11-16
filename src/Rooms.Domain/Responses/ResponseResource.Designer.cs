@@ -70,6 +70,15 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} email already exists..
+        /// </summary>
+        public static string CONFLICT_EMAIL_MESSAGE {
+            get {
+                return ResourceManager.GetString("CONFLICT_EMAIL_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Some value of this object already exists..
         /// </summary>
         public static string CONFLICT_MESSAGE {
@@ -142,6 +151,15 @@ namespace Rooms.Domain.Responses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email {0} not found..
+        /// </summary>
+        public static string NOT_FOUND_EMAIL_MESSAGE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_EMAIL_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id &apos;{0}&apos; not found..
         /// </summary>
         public static string NOT_FOUND_ID_MESSAGE {
@@ -156,6 +174,15 @@ namespace Rooms.Domain.Responses {
         public static string NOT_FOUND_MESSAGE {
             get {
                 return ResourceManager.GetString("NOT_FOUND_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name &apos;{0} not found..
+        /// </summary>
+        public static string NOT_FOUND_NAME_MESSAGE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_NAME_MESSAGE", resourceCulture);
             }
         }
         
@@ -183,6 +210,15 @@ namespace Rooms.Domain.Responses {
         public static string SUCCESSFUL_REQUEST_MESSAGE {
             get {
                 return ResourceManager.GetString("SUCCESSFUL_REQUEST_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unauthorized.
+        /// </summary>
+        public static string UNAUTHORIZED_MESSAGE {
+            get {
+                return ResourceManager.GetString("UNAUTHORIZED_MESSAGE", resourceCulture);
             }
         }
         

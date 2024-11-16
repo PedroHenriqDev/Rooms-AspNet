@@ -6,6 +6,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDefaultCors();
 builder.Services.AddLogging();
+builder.Services.AddAuthenticationBearer(builder.Configuration);
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddInfra(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -26,6 +27,7 @@ if(app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors();
 app.UseAuthentication();
+app.UseAuthorization();
 app.UseResponseCompression();
 app.MapControllers();
 app.UseGlobalExceptionMiddleware();

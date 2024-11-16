@@ -1,5 +1,5 @@
 using System.Net;
-using Rooms.Api.Resources;
+using Rooms.App.Resources;
 
 namespace Rooms.Api.Middlewares;
 
@@ -26,7 +26,7 @@ public class ExceptionMiddleware : IMiddleware
 
             object response = new
             {
-                Message = ApiMessagesResource.INTERNAL_SERVER_ERROR
+                Message = AppMessagesResource.INTERNAL_SERVER_ERROR
             }; 
 
             await context.Response.WriteAsJsonAsync(response);

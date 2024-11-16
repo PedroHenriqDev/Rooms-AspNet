@@ -19,10 +19,12 @@ public class AuthService : IAuthService
 
     public AuthenticationDto Authenticate(IList<Claim> claims)
     {
-        (DateTime expireDate, string key) = GetTokenConfig();
+        (DateTime expireDate, string key, string audience, string issuer) = GetTokenConfig();
 
         var tokenDescriptor = new SecurityTokenDescriptor()
         {
+            Audience = audience,
+            Issuer = issuer,
             Expires = expireDate,
             Subject = new ClaimsIdentity(claims),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(
@@ -31,15 +33,18 @@ public class AuthService : IAuthService
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        return new AuthenticationDto(tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor)), DateTime.Now, expireDate);
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return new AuthenticationDto(tokenHandler.WriteToken(token), DateTime.Now, expireDate);
     }
      
-    private (DateTime expireDate, string key) GetTokenConfig()
+    private (DateTime expireDate, string key, string audience, string issuer) GetTokenConfig()
     {
         string hoursToExpire = _configuration["Jwt:Expire"] ?? throw new ArgumentNullException(nameof(hoursToExpire));
-        var expireDate = DateTime.Now.AddHours(Convert.ToInt32(hoursToExpire));
+        var expireDate = DateTime.UtcNow.AddHours(Convert.ToInt32(hoursToExpire));
         string key = _configuration["Jwt:Key"] ?? throw new ArgumentNullException(nameof(key));
+        string? audience = _configuration["Jwt:Audience"] ?? throw new ArgumentNullException(nameof(audience));
+        string? issuer = _configuration["Jwt:Issuer"] ?? throw new ArgumentNullException(nameof(issuer));
 
-        return (expireDate, key);
+        return (expireDate, key, audience, issuer);
     }
 }

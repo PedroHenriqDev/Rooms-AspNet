@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Rooms.App.QueryParameters;
 using Rooms.App.Services.Interfaces;
 using Rooms.Domain.Commands.Requests.Persons;
@@ -19,16 +20,8 @@ public class PersonController : ControllerBase
         _service = service;
     }
 
-    [HttpPost]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IResponse>> CreateAsync([FromBody] CreatePersonRequest request)
-    {
-        IResponse response = await _service.CreateAsync(request);
-        return StatusCode((int)response.StatusCode, response);
-    }
-
     [HttpGet]
+    [Authorize]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IResponse>> GetAllAsync([FromQuery] PaginationParameters parameters)
@@ -43,8 +36,8 @@ public class PersonController : ControllerBase
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IResponse>> GetByIdAsync([FromRoute] Guid id)
     {
-       IResponse response = await _service.GetByIdAsync(id);
-       return StatusCode((int)response.StatusCode, response);
+        IResponse response = await _service.GetByIdAsync(id);
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpGet]
@@ -54,6 +47,15 @@ public class PersonController : ControllerBase
     public async Task<ActionResult<IResponse>> GetByFilterAsync([FromQuery] PersonFilter filter)
     {
         IResponse response = await _service.GetByFilterAsync(filter);
+        return StatusCode((int)response.StatusCode, response);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IResponse>> CreateAsync([FromBody] CreatePersonRequest request)
+    {
+        IResponse response = await _service.CreateAsync(request);
         return StatusCode((int)response.StatusCode, response);
     }
 

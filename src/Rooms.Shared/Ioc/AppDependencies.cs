@@ -12,6 +12,8 @@ public static class AppDependencies
         services.AddScoped<IPersonService, PersonService>();
         services.AddScoped<ICryptoService, CryptoService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IClaimService, ClaimService>();
         return services;
     }
 }

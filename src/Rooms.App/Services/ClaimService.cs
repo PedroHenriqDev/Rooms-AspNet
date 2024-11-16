@@ -16,7 +16,6 @@ public class ClaimService : IClaimService
             claims.AddRange(new List<Claim>()
             {
                new Claim(ClaimTypes.Name, user.Name),
-               new Claim(ClaimTypes.Email, user.Email),
                new Claim(ClaimTypes.Role, user.Role),
                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             });

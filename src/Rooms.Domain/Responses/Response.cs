@@ -5,6 +5,10 @@ namespace Rooms.Domain.Responses;
 
 public class Response : IResponse
 {
+    public Response()
+    {
+    }
+
     public Response(string message, HttpStatusCode statusCode, object value, bool success = true)
     {
         Message = message;

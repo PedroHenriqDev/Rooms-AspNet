@@ -9,6 +9,21 @@
     <ProjectReference Include="..\Rooms.Infra\Rooms.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\AppMessagesResource.Designer.cs">
+      <DependentUpon>AppMessagesResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AppMessagesResource.resx">
+      <LastGenOutput>AppMessagesResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

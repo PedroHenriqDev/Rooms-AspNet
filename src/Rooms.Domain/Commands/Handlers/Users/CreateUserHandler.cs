@@ -20,17 +20,22 @@ public sealed class CreateUserHandler : IHandler<CreateUserRequest>
 
     public async Task<IResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
     {
+        var response = new Response();
         var user = new User(request.Name, request.Email, request.Password, new Age(request.BirthDate), new List<Person>());
         user.Validate();
 
         if (!user.IsValid)
-            return ResponseFactory.BadRequest(user.Notifications);
+            response = ResponseFactory.BadRequest(user.Notifications);
 
         if(await _unitOfWork.UserRepository.ExistsNameAsync(request.Name)) 
-            return ResponseFactory.Conflict(string.Format(ResponseResource.CONFLICT_NAME_MESSAGE, request.Name));
+            response = ResponseFactory.Conflict(request, message: string.Format(ResponseResource.CONFLICT_NAME_MESSAGE, request.Name));
+
+        if (await _unitOfWork.UserRepository.ExistsEmailAsync(request.Email))
+            response = ResponseFactory.Conflict(request, message: string.Format(ResponseResource.CONFLICT_EMAIL_MESSAGE, request.Email));
 
         bool success = await _unitOfWork.UserRepository.CreateAsync(user);
 
-        return success ? ResponseFactory.Success(user) : ResponseFactory.InternalError(request);
+        response = success ? ResponseFactory.Success(user) : ResponseFactory.InternalError(request);
+        return response;
     }
 }
