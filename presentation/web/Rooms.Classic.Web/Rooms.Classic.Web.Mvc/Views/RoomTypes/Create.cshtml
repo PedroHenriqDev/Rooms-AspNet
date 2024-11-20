@@ -45,5 +45,49 @@
 </div>
 
 @section Scripts{
-    <script src="~/Scripts/vue/create.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                errors: [],
+                isLoading: false,
+                haveErrors: false
+            },
+            methods: {
+                register() {
+                    this.isLoading = true;
+                    axios.post("@Url.Action("Create", "RoomTypes")", { Name: this.name }).then(response => {
+                              localStorage.setItem('success', `Success in create room type with name: ${this.name}`);
+                              window.location.href = "/RoomTypes/Index";
+                          })
+                        .catch(error => {
+
+                            if (error.response.status === 400) {
+                                console.log(error.response);
+                                this.haveErrors = true;
+                                this.errors = Object.entries(error.response.data.Errors).flatMap(([key, messages]) => messages);
+                                console.log(this.erros);
+                            }
+                            else {
+                                  console.log(error);
+                            }
+                          }).finally(() => {
+                              this.isLoading = false;
+                          });
+                },
+                getUniqueKeysErrors(errors) {
+                    let uniqueErrors = [];
+
+                    errors.forEach(err => {
+                        if (!uniqueErrors[err.key]) {
+                            uniqueErrors[err.key] = err.message;
+                        }
+                    });
+
+                    return Object.values(uniqueErrors);
+                }
+            }
+        });
+    </script>
 }

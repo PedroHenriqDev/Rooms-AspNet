@@ -40,8 +40,8 @@ public static class ServiceCollectionExtension
     public static void AddAuthenticationBearer(this IServiceCollection services, IConfiguration configuration) 
     {
         string? key = configuration["Jwt:Key"] ?? throw new ArgumentNullException(nameof(key));
-        string? issuer = configuration["Jwt:Issuer"];
-        string? audience = configuration["Jwt:Audience"];
+        string? issuer = configuration["Jwt:Issuer"] ?? throw new ArgumentNullException(nameof(issuer));
+        string? audience = configuration["Jwt:Audience"] ?? throw new ArgumentNullException(nameof(audience));
 
         services.AddAuthentication(opt =>
         {
@@ -68,6 +68,15 @@ public static class ServiceCollectionExtension
                     return Task.CompletedTask;
                 }
             };
+        });
+    }
+
+    public static void AddApiAuthorization(this IServiceCollection services)
+    {
+        services.AddAuthorization(opt =>
+        {
+            opt.AddPolicy("AdminOnly", p => p.RequireRole("Admin"));
+            opt.AddPolicy("ManagerOnly", p => p.RequireAssertion(context => context.User.IsInRole("Manager") || context.User.IsInRole("Admin")));
         });
     }
 }

@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Text;
+using Rooms.Classic.Web.App.Dtos.Responses.Abstractions;
+using Rooms.Classic.Web.App.Dtos.Responses;
 
 namespace Rooms.Classic.Web.App.Services
 {
@@ -19,18 +22,72 @@ namespace Rooms.Classic.Web.App.Services
             _httpClient = httpClient;
         }
 
-        public async Task<ApiResponse<IEnumerable<RoomTypeViewModel>>> GetAllAsync() 
+        public async Task<ApiResponse> GetAllAsync()
         {
-           HttpResponseMessage response = await _httpClient.GetAsync(API_URL);
-           return new ApiResponse<IEnumerable<RoomTypeViewModel>>(response, JsonConvert.DeserializeObject<IEnumerable<RoomTypeViewModel>>(await response.Content.ReadAsStringAsync()));
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync(API_URL);
+
+            ApiResponse apiResponse;
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                apiResponse = JsonConvert.DeserializeObject<ApiSuccessResponse<IEnumerable<RoomTypeViewModel>>>(await httpResponse.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                apiResponse = JsonConvert.DeserializeObject<ApiErrorResponse<string>>(await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            apiResponse.HttpResponse = httpResponse;
+            return apiResponse;
         }
 
-        public async Task<ApiResponse<RoomTypeViewModel>> GetByIdAsync(Guid id) 
+        public async Task<ApiResponse> GetByIdAsync(Guid id)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync(API_URL + id);
-            var apiResponse = JsonConvert.DeserializeObject<ApiResponse<RoomTypeViewModel>>(await response.Content.ReadAsStringAsync());
-            apiResponse.HttpResponse = response;
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync(API_URL + id);
+
+            ApiResponse apiResponse;
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                apiResponse = JsonConvert.DeserializeObject<ApiSuccessResponse<RoomTypeViewModel>>(await httpResponse.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                apiResponse = JsonConvert.DeserializeObject<ApiErrorResponse<string>>(await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            apiResponse.HttpResponse = httpResponse;
             return apiResponse;
+        }
+
+        public async Task<ApiResponse> CreateAsync(RoomTypeViewModel viewModel)
+        {
+            try
+            {
+
+                StringContent content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                HttpResponseMessage httpResponse = await _httpClient.PostAsync(API_URL, content);
+
+                ApiResponse apiResponse;
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    apiResponse = JsonConvert.DeserializeObject<ApiSuccessResponse<RoomTypeViewModel>>(await httpResponse.Content.ReadAsStringAsync());
+                }
+                else
+                {
+                    string contentJson = await httpResponse.Content.ReadAsStringAsync();
+                    apiResponse = JsonConvert.DeserializeObject<ApiErrorResponse<Dictionary<string, List<string>>>>(contentJson);
+                }
+                    
+                apiResponse.HttpResponse = httpResponse;
+                return apiResponse;
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-CREATE PROC SP_Get_User_By_Email
+CREATE PROC SP_Users_Get_By_Email
 (
     @Email NVARCHAR(256)
 )

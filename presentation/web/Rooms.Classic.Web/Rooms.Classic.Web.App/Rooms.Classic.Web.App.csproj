@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\Responses\ApiResponse.cs" />
+    <Compile Include="Dtos\Responses\Abstractions\ApiResponse.cs" />
+    <Compile Include="Dtos\Responses\ApiErrorResponse.cs" />
+    <Compile Include="Dtos\Responses\ApiSuccessResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Interfaces\IRoomTypeService.cs" />
     <Compile Include="Services\RoomTypesService.cs" />

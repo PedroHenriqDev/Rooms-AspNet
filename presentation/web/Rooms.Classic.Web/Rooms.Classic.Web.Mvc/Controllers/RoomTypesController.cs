@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Rooms.Classic.Web.App.ViewModels;
+using Rooms.Classic.Web.App.Dtos.Responses.Abstractions;
 
 namespace Rooms.Classic.Web.Mvc.Controllers
 {
@@ -28,15 +29,23 @@ namespace Rooms.Classic.Web.Mvc.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<JsonResult> Create(RoomTypeViewModel viewModel)
+        {
+            ApiResponse apiResponse = await _service.CreateAsync(viewModel);
+            Response.StatusCode = (int)apiResponse.HttpResponse.StatusCode;
+            return Json(apiResponse);
+        }
+
         [HttpGet]
         [Route("{id:guid}")]
         public async Task<ActionResult> Edit(Guid id)
         {
-            ApiResponse<RoomTypeViewModel> response = await _service.GetByIdAsync(id);
+            ApiResponse response = await _service.GetByIdAsync(id);
 
-            if (response.HttpResponse.IsSuccessStatusCode && response.Value != null)
+            if (response.HttpResponse.IsSuccessStatusCode)
             {
-                return View(response.Value);
+                return View(((ApiSuccessResponse<RoomTypeViewModel>)response).Value);
             }
 
             return RedirectToNotFound();
@@ -46,11 +55,11 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         [Route("{id:guid}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            ApiResponse<RoomTypeViewModel> response = await _service.GetByIdAsync(id);
+            ApiResponse response = await _service.GetByIdAsync(id);
 
-            if (response.HttpResponse.IsSuccessStatusCode && response.Value != null)
+            if (response.HttpResponse.IsSuccessStatusCode)
             {
-                return View(response.Value);
+                return View(((ApiSuccessResponse<RoomTypeViewModel>)response).Value);
             }
 
             return RedirectToNotFound();
