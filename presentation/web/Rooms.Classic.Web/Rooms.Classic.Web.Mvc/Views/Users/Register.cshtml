@@ -1,0 +1,104 @@
+﻿<section id="app" class="vh-100 d-flex justify-content-center align-items-center">
+    <div v-if="isLoading">
+        <div class="loading-overlay">
+            <loader></loader>
+        </div>
+    </div>
+    <div v-else class="card p-4 border-0 shadow" style="max-width: 400px; width: 100%;">
+        <div class="card-body text-center">
+            <h2 class="mb-4">Register</h2>
+            <form>
+                <div class="mb-3">
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           v-model="name"
+                           class="form-control text-center"
+                           placeholder="Name"
+                           required
+                           maxlength="50" />
+                </div>
+                <div class="mb-3">
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           v-model="email"
+                           class="form-control text-center"
+                           placeholder="Email"
+                           required
+                           maxlength="256" />
+                </div>
+                <div class="mb-3">
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           v-model="password"
+                           class="form-control text-center"
+                           placeholder="Password"
+                           required />
+                </div>
+                <div class="mb-3">
+                    <input p type="date"
+                           id="birthDate"
+                           name="birthDate"
+                           v-model="birthDate"
+                           class="form-control text-center"
+                           required />
+                </div>
+                <div v-if="Errors" div class="mt-4 mb-4">
+                    <ul>
+                        <li class="text-danger" v-for="e in errors"> {{e}} </li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <div class="d-grid">
+                        <button type="button" v-on:click="register()" class="btn btn-dark">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        Vue.use(Toasted, {
+            position: 'bottom-center',
+            duration: 3000
+        });
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                name: "",
+                email: "",
+                password: "",
+                birthDate: "",
+                errors: [],
+                isLoading: false
+            },
+            methods: {
+                register: function () {
+                    this.isLoading = true;
+                    axios.post("@Url.Action("Register", "Users")", {
+                            name: this.name,
+                            email: this.email,
+                            password: this.password,
+                            birthDate: this.birthDate
+                        })
+                        .then(response => {
+                            console.log(response);
+                            this.$toasted.success("User registered successfully");
+                        })
+                        .catch(error => {
+                            console.log(error.response);
+                            if (error.response.status === 400) {
+                                this.errors = Object.entries(error.response.data.Errors).flatMap(([key, messages]) => messages);
+                            }
+                        })
+                        .finally(() => this.isLoading = false);
+                }
+            }
+        })
+    </script>
+}

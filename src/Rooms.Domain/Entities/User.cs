@@ -53,18 +53,18 @@ public class User : Entity
             .IsNotNullOrEmpty
             (
                 Password,
-                $"{Id}.{nameof(Password)}",
+                nameof(Password),
                 string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(Password))
             )
             .IsEmail
             (
                 Email,
-                $"{nameof(Email)}"
+                nameof(Email)
             )
             .IsNotNullOrEmpty
             (
                 Email, 
-                $"{Email}.{nameof(Email)}",
+                nameof(Email),
                 string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Email)))
             );
     }

@@ -155,14 +155,14 @@ public class Room : Entity
             .IsNotNullOrEmpty
             (
                 Name,
-                $"{Id}.{nameof(Name)}",
+                nameof(Name),
                 string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .IsLowerOrEqualsThan
             (
                 Name.Length,
                 ValidationsRules.MAX_ROOM_NAME_LENGTH,
-                $"{Id}.{nameof(Name)}",
+                nameof(Name),
                 string.Format(ValidationMessagesResource.SMALLER_MESSAGE,
                 nameof(Name), ValidationsRules.MAX_ROOM_NAME_LENGTH
                 )
@@ -171,42 +171,42 @@ public class Room : Entity
             (
                 TypeId,
                 Guid.Empty,
-                $"{Id}.{TypeId}",
+                nameof(TypeId),
                 string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(TypeId))
             )
             .IsGreaterThan
             (
                 Capacity,
                 ValidationsRules.MIN_CAPACITY,
-                $"{Id}.{nameof(Capacity)}",
+                nameof(Capacity),
                 string.Format(ValidationMessagesResource.GREATER_MESSAGE, nameof(Capacity), ValidationsRules.MIN_CAPACITY)
             )
             .IsLowerThan
             (
                 Capacity,
                 ValidationsRules.MAX_CAPACITY,
-                $"{Id}.{nameof(Capacity)}",
+                nameof(Capacity),
                 string.Format(ValidationMessagesResource.SMALLER_MESSAGE, nameof(Capacity), ValidationsRules.MAX_CAPACITY)
             )
             .IsLowerOrEqualsThan
             (
                 _seats.Count,
                 Capacity,
-                $"{Id}.{nameof(Capacity)}",
+                nameof(Capacity),
                 string.Format(ValidationMessagesResource.SEAT_CAPACITY_EXCEED_MESSAGE, _seats.Count, Capacity)
             )
             .IsLowerOrEqualsThan
             (
                 StartDate, 
                 EndDate,
-                 $"{Id}.{StartDate}&{EndDate}",
-                  ValidationMessagesResource.START_DATE_EARLIER_MESSAGE
+                nameof(StartDate),
+                ValidationMessagesResource.START_DATE_EARLIER_MESSAGE
             )
             .IsGreaterOrEqualsThan
             (
                 StartDate,
                 ValidationsRules.MIN_START_DATE,
-                $"{Id}.{nameof(StartDate)}",
+                nameof(StartDate),
                 string.Format(ValidationMessagesResource.GREATER_MESSAGE, nameof(StartDate), ValidationsRules.MIN_START_DATE)
             )
         );

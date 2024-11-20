@@ -44,9 +44,7 @@ namespace Rooms.Classic.Web.Mvc.Controllers
             ApiResponse response = await _service.GetByIdAsync(id);
 
             if (response.HttpResponse.IsSuccessStatusCode)
-            {
                 return View(((ApiSuccessResponse<RoomTypeViewModel>)response).Value);
-            }
 
             return RedirectToNotFound();
         }

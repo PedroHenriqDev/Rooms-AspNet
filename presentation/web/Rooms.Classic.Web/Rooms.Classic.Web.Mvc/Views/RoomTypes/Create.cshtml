@@ -21,7 +21,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="haveErrors" div class="mt-4 mb-4">
+                                <div v-if="errors" div class="mt-4 mb-4">
                                     <ul>
                                         <li class="text-danger" v-for="e in errors"> {{e}} </li>
                                     </ul>
@@ -45,6 +45,8 @@
 </div>
 
 @section Scripts{
+    <script src="~/Scripts/vue/components/loader.js"></script>
+
     <script>
         var app = new Vue({
             el: '#app',
@@ -70,7 +72,7 @@
                                 console.log(this.erros);
                             }
                             else {
-                                  console.log(error);
+                               console.log(error);
                             }
                           }).finally(() => {
                               this.isLoading = false;

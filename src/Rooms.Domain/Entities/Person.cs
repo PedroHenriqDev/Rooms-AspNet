@@ -72,7 +72,7 @@ public class Person : Entity
             (
                 SeatId,
                 Guid.Empty,
-                $"{Id}.{nameof(SeatId)}",
+                nameof(SeatId),
                 string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(SeatId))
             )
         );

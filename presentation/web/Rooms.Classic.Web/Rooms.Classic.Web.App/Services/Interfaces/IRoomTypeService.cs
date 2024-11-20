@@ -1,5 +1,4 @@
-﻿using Rooms.Classic.Web.Mvc.Responses;
-using Rooms.Classic.Web.App.ViewModels;
+﻿using Rooms.Classic.Web.App.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Rooms.Classic.Web.App.Dtos.Responses.Abstractions;

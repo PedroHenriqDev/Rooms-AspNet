@@ -50,21 +50,21 @@ public class Seat : Entity
             .IsNotNullOrEmpty
             (
                 Name,
-                $"{Id}.{nameof(Name)}",
+                nameof(Name),
                 string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .AreEquals 
             (
                 Name.Length,
                 EQUAL_NAME_LENGTH,
-                $"{Id}.{nameof(Name)}",
+                nameof(Name),
                 string.Format(ValidationMessagesResource.EQUAL_LENGTH_MESSAGE, nameof(Name), EQUAL_NAME_LENGTH)
             )
             .AreNotEquals
             (
                 RoomId,
                 Guid.Empty,
-                $"{Id}.{nameof(RoomId)}",
+                nameof(RoomId),
                 string.Format(ValidationMessagesResource.EMPTY_MESSAGE, nameof(RoomId))
             )
         );

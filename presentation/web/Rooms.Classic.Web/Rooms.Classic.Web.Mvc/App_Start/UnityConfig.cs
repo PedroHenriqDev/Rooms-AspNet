@@ -50,7 +50,7 @@ namespace Rooms.Classic.Web.Mvc
             container.RegisterInstance(httpClient);
 
             container.RegisterType<IRoomTypeService, RoomTypesService>();
-
+            container.RegisterType<IUserService, UserService>();
         }
     }
 }

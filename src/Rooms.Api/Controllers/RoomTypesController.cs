@@ -29,6 +29,7 @@ public class RoomTypesController : ControllerBase
     {
         IResponse response = await _service.GetAllAsync(parameters);
 
+
         HttpContext.AddPaginationHeader((IPagedList<RoomTypeDto>?)response.Value);
 
         return StatusCode(statusCode: (int)response.StatusCode, value: response);

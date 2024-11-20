@@ -35,14 +35,14 @@ public class RoomType : Entity
             .IsNotNullOrEmpty
             (
                 Name,
-                $"{Id}{nameof(Name)}",
+                nameof(Name),
                 string.Format(ValidationMessagesResource.NULL_OR_EMPTY_MESSAGE, nameof(Name))
             )
             .IsLowerOrEqualsThan
             (
                 Name.Length,
                 ValidationsRules.MAX_NAME_LENGTH,
-                $"{Id}.{nameof(Name)}",
+                nameof(Name),
                 string.Format(ValidationMessagesResource.SMALLER_MESSAGE,
                 nameof(Name), ValidationsRules.MAX_NAME_LENGTH
                 )
