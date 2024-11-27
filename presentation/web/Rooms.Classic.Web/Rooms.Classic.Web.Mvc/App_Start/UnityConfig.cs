@@ -42,15 +42,14 @@ namespace Rooms.Classic.Web.Mvc
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-            var httpClient = new HttpClient();
-
+            container.RegisterType<IAuthenticationService, AuthenticationService>();
             string baseAddress = ConfigurationManager.AppSettings["ApiBaseAddress"] ?? throw new ArgumentNullException();
-            httpClient.BaseAddress = new Uri(baseAddress);
-
-            container.RegisterInstance(httpClient);
-
-            container.RegisterType<IRoomTypeService, RoomTypesService>();
-            container.RegisterType<IUserService, UserService>();
+            container.RegisterFactory<IRoomTypeService>(c => new RoomTypesService(new Uri(baseAddress)));
+            container.RegisterFactory<IUserService>(c => 
+            {
+                IAuthenticationService authService = c.Resolve<IAuthenticationService>();
+                return new UserService(new Uri(baseAddress), authService);
+            });
         }
     }
 }

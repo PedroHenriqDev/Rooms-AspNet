@@ -24,6 +24,15 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         }
 
         [HttpGet]
+        public async Task<JsonResult> GetAllAsync()
+        {
+            ApiResponse apiResponse = await _service.GetAllAsync(HttpContext);
+            Response.StatusCode = (int)apiResponse.HttpApiResponse.StatusCode;
+
+            return Json(apiResponse, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -33,7 +42,7 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         public async Task<JsonResult> Create(RoomTypeViewModel viewModel)
         {
             ApiResponse apiResponse = await _service.CreateAsync(viewModel);
-            Response.StatusCode = (int)apiResponse.HttpResponse.StatusCode;
+            Response.StatusCode = (int)apiResponse.HttpApiResponse.StatusCode;
             return Json(apiResponse);
         }
 
@@ -42,8 +51,7 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         public async Task<ActionResult> Edit(Guid id)
         {
             ApiResponse response = await _service.GetByIdAsync(id);
-
-            if (response.HttpResponse.IsSuccessStatusCode)
+            if (response.HttpApiResponse.IsSuccessStatusCode)
                 return View(((ApiSuccessResponse<RoomTypeViewModel>)response).Value);
 
             return RedirectToNotFound();
@@ -55,10 +63,8 @@ namespace Rooms.Classic.Web.Mvc.Controllers
         {
             ApiResponse response = await _service.GetByIdAsync(id);
 
-            if (response.HttpResponse.IsSuccessStatusCode)
-            {
+            if (response.HttpApiResponse.IsSuccessStatusCode)
                 return View(((ApiSuccessResponse<RoomTypeViewModel>)response).Value);
-            }
 
             return RedirectToNotFound();
         }

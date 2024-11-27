@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rooms.Api.Extensions;
 using Rooms.App.Dto;
@@ -23,6 +24,7 @@ public class RoomTypesController : ControllerBase
     }
        
     [HttpGet]
+    [Authorize]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IResponse>> GetAllAsync([FromQuery] PaginationParameters parameters)
@@ -36,6 +38,7 @@ public class RoomTypesController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     [Route("{id:guid}")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
@@ -47,6 +50,7 @@ public class RoomTypesController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     [Route("search")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status404NotFound)]
@@ -57,6 +61,7 @@ public class RoomTypesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IResponse>> CreateAsync([FromBody] CreateRoomTypeRequest request)
@@ -66,6 +71,7 @@ public class RoomTypesController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize]
     [Route("{id:guid}")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
@@ -78,6 +84,7 @@ public class RoomTypesController : ControllerBase
     }
 
     [HttpDelete]
+    [Authorize]
     [Route("{id:guid}")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status400BadRequest)]
@@ -88,3 +95,4 @@ public class RoomTypesController : ControllerBase
         return StatusCode(statusCode: (int)response.StatusCode, value: response);
     }
 }
+

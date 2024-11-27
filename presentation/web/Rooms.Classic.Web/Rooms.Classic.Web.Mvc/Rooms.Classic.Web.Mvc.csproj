@@ -269,7 +269,6 @@
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="Scripts\vue\components\loader.js" />
-    <Content Include="Scripts\vue\index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -297,6 +296,7 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\RoomTypes\Edit.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

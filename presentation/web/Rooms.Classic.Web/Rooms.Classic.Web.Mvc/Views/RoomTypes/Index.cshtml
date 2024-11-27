@@ -29,10 +29,10 @@
                     <tbody>
                         <tr v-for="r in roomTypes">
                             <td>
-                                {{ r.name }}
+                                {{ r.Name }}
                             </td>
                             <td>
-                                {{ r.createdAt }}
+                                {{ r.CreatedAt }}
                             </td>
                             <td>
                                 <button type="button" v-on:click="redirectToDelete(r)" class="btn btn-danger">
@@ -85,5 +85,122 @@
 
 @section Scripts{
     <script src="~/Scripts/vue/components/loader.js"></script>
-    <script src="~/Scripts/vue/index.js"></script>
+    <script>
+        Vue.use(Toasted, {
+            position: 'bottom-center',
+            duration: 3000
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                roomTypes: [],
+                urlBase: 'https://localhost:7055/RoomTypes/',
+                isLoading: false,
+                totalItems: 0,
+                nameFilter: '',
+                minFilter: '',
+                maxFilter: '',
+                modal: ''
+            },
+            created() {
+                this.fetchRoomTypes();
+                this.notify();
+            },
+            methods: {
+                fetchRoomTypes() {
+                    $.ajax({
+                        type: "GET",
+                        url: '@Url.Action("GetAllAsync", "RoomTypes")',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json',
+                        beforeSend: function(){
+                            this.isLoading = true;
+                        },
+                        success: (response) => {
+                            this.roomTypes = response.Value;
+                            const paginationHeader = response.HttpApiResponse.Headers.find(header => header.Key === 'X-Pagination');
+                            if (paginationHeader) {
+                                let pagination = JSON.parse(paginationHeader.Value[0]);
+                                this.totalItems = pagination.TotalItems;
+                            }
+                            this.formatCreatedAt();
+                        },
+                        error: error => console.log(error),
+                        complete: () => this.isLoading = false
+                    })
+                },
+                search() {
+                    this.isLoading = true;
+                    this.closeModal();
+                    axios.get(this.mountUrlSearch()).then(response => {
+                        this.roomTypes = response.data.value;
+                        this.formatCreatedAt();
+                    }).catch(error => {
+                        console.log('Error');
+                    }).finally(() => {
+                        this.isLoading = false;
+                        this.openModal();
+                    });
+                },
+                mountUrlSearch() {
+                    let urlSearch = this.urlBase + 'search?';
+                    if (this.nameFilter) {
+                        urlSearch = urlSearch + `name=${this.nameFilter}&`;
+                    }
+
+                    if (this.minFilter) {
+                        urlSearch = urlSearch + `minDate=${this.minFilter}&`;
+                    }
+
+                    if (this.maxFilter) {
+                        urlSearch = urlSearch + `maxDate=${this.maxFilter}&`;
+                    }
+
+                    return urlSearch;
+                },
+                notify() {
+                    const key = "success";
+                    const notification = localStorage.getItem(key);
+                    if (notification) {
+                        this.$toasted.success(notification);
+                        localStorage.removeItem(key);
+                    }
+                },
+                formatCreatedAt() {
+                    this.roomTypes.forEach(r => {
+                        r.CreatedAt = this.formatDate(this.parseDate(r.CreatedAt));
+                    });
+                },
+                parseDate(date) {
+                    const timestamp = parseInt(date.replace(/\/Date\((\d+)\)\//, '$1'), 10);
+                    return new Date(timestamp);
+                },
+                formatDate(date) {
+                    return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                },
+                formatDateISO(date) {
+                    return date instanceof Date && !isNaN(date) ? date.toISOString().split('T')[0] : '';
+                },
+                redirectToDelete(roomType) {
+                    window.location.href = `/roomtypes/delete/${roomType.id}`;
+                },
+                redirectToEdit(roomType) {
+                    window.location.href = `/roomtypes/edit/${roomType.id}`;
+                },
+                openModal() {
+                    if (!this.modal) {
+                        this.modal = new bootstrap.Modal(this.$refs.modalSearch);
+                    }
+                    this.modal.show();
+                },
+                closeModal() {
+                    if (this.modal) {
+                        console.log('Here close modal');
+                        this.modal.hide();
+                    }
+                }
+            }
+        });
+</script>
 }

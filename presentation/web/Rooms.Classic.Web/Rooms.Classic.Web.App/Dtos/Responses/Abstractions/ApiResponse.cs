@@ -6,9 +6,9 @@ namespace Rooms.Classic.Web.App.Dtos.Responses.Abstractions
     {
         public ApiResponse(HttpResponseMessage httpResponse)
         {
-            HttpResponse = httpResponse;
+            HttpApiResponse = httpResponse;
         }
 
-        public HttpResponseMessage HttpResponse { get; set; }
+        public HttpResponseMessage HttpApiResponse { get; set; }
     }
 }

@@ -1,0 +1,74 @@
+﻿<section id="app" class="vh-100 d-flex justify-content-center align-items-center">
+    <div v-if="isLoading">
+        <div class="loading-overlay">
+            <loader></loader>
+        </div>
+    </div>
+    <div v-else class="card p-4 border-0 shadow" style="max-width: 400px; width: 100%;">
+        <div class="card-body text-center">
+            <h2 class="mb-4">Login</h2>
+            <form>
+                <div class="mb-3">
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           v-model="email"
+                           class="form-control text-center"
+                           placeholder="Email"
+                           required
+                           maxlength="256" />
+                </div>
+                <div class="mb-3">
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           v-model="password"
+                           class="form-control text-center"
+                           placeholder="Password"
+                           required />
+                </div>
+                <div class="text-center">
+                    <div class="d-grid">
+                        <button type="button" v-on:click="login()" class="btn btn-dark">Login</button>
+                        <a type="button" href="@Url.Action("Register", "Users")" class="btn btn-secondary">Sign Up</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    
+<script>
+    Vue.use(Toasted, {
+        position: 'bottom-center',
+        duration: 3000
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            email: "",
+            password: "",
+            isLoading: false,
+            errors: []
+        },
+        methods: {
+            login: function () {
+                this.isLoading = true;
+                axios.post("@Url.Action("Login", "Users")", { email: this.email, password: this.password })
+                    .then(response => {
+                        window.location.href = "@Url.Action("Index", "RoomTypes")";
+                    })
+                    .catch(error => {
+                        if (error.response.status === 401)
+                            this.$toasted.warning("Login invalid");
+                    })
+                    .finally(() => this.isLoading = false)
+            }
+        }
+    })
+</script>
+    
+}
